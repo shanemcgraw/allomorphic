@@ -169,4 +169,7 @@ var stopwords = ["a",
 "you've",
 "your",
 "yours",
-"yourself","yourselves"];
+"yourself",
+"yourselves",
+".",
+","];

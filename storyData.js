@@ -43,7 +43,7 @@ var four = [
 ["The Lady With The Dog", "Anton Chekhov", 1899],
 ["How the Leopard Got His Spots", "Rudyard Kipling", 1902],
 ["Araby", "James Joyce", 1914],
-["Goodbye", My Brother, by John Cheever", 1951],
+["Goodbye", "My Brother, by John Cheever", 1951],
 ["The Swimmer", "John Cheever", 1964],
 ["Cathedral", "Raymond Carver", 1983]
 ];
@@ -114,7 +114,7 @@ var two = [
 ["A Municipal Report", "O. Henry", 1905],
 ["The Secret Sharer", "Joseph Conrad", 1909],
 ["Sredni Vashtar", "Saki (Hugh Munro)", 1900],
-["The Prussian Officer", D H Lawrence", 1914],
+["The Prussian Officer", "D H Lawrence", 1914],
 ["The Metamorphosis", "Franz Kafka", 1915],
 ["The Tale", "Joseph Conrad", 1917],
 ["A. V. Laider", "Max Beerbohm", 1919],
@@ -147,7 +147,7 @@ var two = [
 ];
 
 
-var storyData = [eight, seven, six, five, four, three, two];
+var stories = [eight, seven, six, five, four, three, two];
 
 
 function formTextOb(textArray){
@@ -155,7 +155,6 @@ function formTextOb(textArray){
 	this.author = textArray[1];
 	this.dateWritten = textArray[2];
 }
-
 
 
 
