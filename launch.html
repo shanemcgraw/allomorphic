@@ -20,7 +20,7 @@
 
 		<h1>~Allomorpheus~</h1>
 		<p>
-			 <a href="https://en.wikipedia.org/wiki/Allomorph">Allomorph<a/>: a variant form of a morpheme; when a unit of meaning varies in sound without changing meaning
+			 <a href="https://en.wikipedia.org/wiki/Allomorph">Allomorph<a/>: a unit of meaning that varies in sound without changing meaning
 		</p>
 
 
@@ -34,10 +34,13 @@
 
 				<input type="text" id="movie" value="Favorite">
 				<input type="text" id="year" value="Year">
-				<input type="button" id="submitty" value="Add">
+				<input type="button" id="adder" value="Add">
 					
 			</form>
 
+		</div>
+
+		<div id="feedback">
 		</div>
 
 		<h2 id = "submission">
@@ -50,31 +53,57 @@
 
 
 		<script type="text/javascript">
-			var elButton = document.getElementById("submitty");
-			var elForm = document.getElementById("getMovieData");
-			var elMovie = document.getElementById("movie");
-			var elYear = document.getElementById("year");
-			var mData = document.getElementById("movieData");
+
+			//Helper functions
+
+			function get(x){
+				return document.getElementById(x);
+			}
+
+			function tagger(tag) {
+				return document.getElementsByTagName(tag);
+			}
+
+			function classer(classy) {
+				return document.getElementsByClassName(classy);
+			}
+
+
+			var elButton = get("adder");
+			var elForm = get("getMovieData");
+			var elMovie = get("movie");
+			var elYear = get("year");
+			var mData = get("movieData");
+			var numberOfMovies = tagger('movieData');
 
 			function returnMovie(){
-				var movieTitle = elMovie.value;
-				var year = elYear.value;
-				var numberOfMovies = document.getElementById('movieData');
 
-				//Add the freshly-submitted movie title to the list using DOM-manipulation
-				//if(numberOfMovies.length)
-				var newElm = document.createElement('li');
-				var text = document.createTextNode(movieTitle);
-				newElm.appendChild(text);
+				if(numberOfMovies > 3){
+					get("feedback").innerHTML = "<p>Please enter up to 3 movies</p>";
+				}
+				else{
+					var movieTitle = elMovie.value;
+					var year = elYear.value;
+					var movieConcat = "\"" + movieTitle + "\" " + "(" + year + ")";
 
-				var place = document.getElementById('movieData');
-				place.appendChild(newElm);
+					//Add the freshly-submitted movie info to the list using DOM-manipulation
+					//if(numberOfMovies.length)
+					var newElm = document.createElement('li');
+					var text = document.createTextNode(movieConcat);
+					newElm.className = "movieData";
+					newElm.appendChild(text);
+					var insert = document.getElementById('movieData');
+					insert.appendChild(newElm);
+				}
 
 
+				
 
 			};
 
 			elButton.addEventListener('click', returnMovie, false);
+
+			var numberOfMovies
 
 
 		</script>
