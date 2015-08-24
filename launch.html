@@ -4,11 +4,11 @@
 	<title>Launchsite</title>
 	<style type="text/css">
 	body{
-	background-color: #70B8FF
+	background-color: 406891
 
 	}
 	h1{
-		padding: 10 10 10 200
+		margin: 100 10 10 200
 	}
 	table{
 		border: solid 1px black;
@@ -18,18 +18,69 @@
 </head>
 <body>
 
-<!-- jQuery has landed -->
+		<h1>~Allomorpheus~</h1>
+		<p>
+			 <a href="https://en.wikipedia.org/wiki/Allomorph">Allomorph<a/>: a variant form of a morpheme; when a unit of meaning varies in sound without changing meaning
+		</p>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 
-		<h1>Movie Plot Generator</h1>
+		<!--<script src="../getMovieData.js"></script>-->
+		<div class="requestData">
+			<h2>
+				Enter three of your favorite movies:
+			</h2>
 
-		<script src="../JS/getMovieData.js"></script>
+			<form id="getMovieData">
 
-		<h2 id = "title">
-			Title
+				<input type="text" id="movie" value="Favorite">
+				<input type="text" id="year" value="Year">
+				<input type="button" id="submitty" value="Add">
+					
+			</form>
+
+		</div>
+
+		<h2 id = "submission">
+			Plot twist!
 		</h2>
+		<p>
+			<ul id="movieData">
+			</ul>
+		</p>
 
+
+		<script type="text/javascript">
+			var elButton = document.getElementById("submitty");
+			var elForm = document.getElementById("getMovieData");
+			var elMovie = document.getElementById("movie");
+			var elYear = document.getElementById("year");
+			var mData = document.getElementById("movieData");
+
+			function returnMovie(){
+				var movieTitle = elMovie.value;
+				var year = elYear.value;
+				var numberOfMovies = document.getElementById('movieData');
+
+				//Add the freshly-submitted movie title to the list using DOM-manipulation
+				//if(numberOfMovies.length)
+				var newElm = document.createElement('li');
+				var text = document.createTextNode(movieTitle);
+				newElm.appendChild(text);
+
+				var place = document.getElementById('movieData');
+				place.appendChild(newElm);
+
+
+
+			};
+
+			elButton.addEventListener('click', returnMovie, false);
+
+
+		</script>
+
+
+		<!--
 		<p id="moviePlot">
 
 		Plot twist!
@@ -43,27 +94,14 @@
 		<div id="poster">
 		<p>
 
-		Poster content.
+		Poster content
 
 		</p>
 		</div>
 
-		<div id="table">
-		
-			<table>
-				<th scope="col">Title</th>
-				<th scope="col">Genre</th>
-				<tr>
-				<td id="dataTitle"></td>
-				<td id="dataGenre"></td>
-				<tr>
-			</table>
-
-		</div>
 
 
 
-
-
+-->
 </body>
 </html>

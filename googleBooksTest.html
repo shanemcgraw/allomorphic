@@ -6,43 +6,40 @@
 
   </head>
   <body>
-    <div id="content"></div>
+    <div id="content">
+      <p>Descriptions</p>
+    </div>
+    
     <script>
-
-      console.log("Test");
-      console.log(stories);
-
-      console.log(stopwords);
-
       function handleResponse(response) {
-      //console.log(response.items[0].volumeInfo);
 
-      response.items.sort(function(a,b){return b.volumeInfo.description.length - a.volumeInfo.description.length});
+      //response.items.sort(function(a,b){return b.volumeInfo.description.length - a.volumeInfo.description.length});
 
 
-      for (var i = 0; i < 5; i++) {
+      for (var i = 0; i < response.length; i++){
         var item = response.items[i];
         // in production code, item.text should have the HTML entities escaped.
-        var desc = item.volumeInfo.description.split(" ");
+        
+        /*var desc = item.volumeInfo.description.split(" ");
 
         descript = desc.filter(function(word){
           if(stopwords.indexOf(word.toLowerCase()) === -1){
             return true;
           }
         }).join(" ");
+        */
 
-        document.getElementById("content").innerHTML += "<br><h2>Title </h2>" + item.volumeInfo.title +"<br> <h2>Description </h2>"+ descript + "<br> <h2>Genre </h2>" + item.volumeInfo.categories;
+        //document.getElementById("content").innerHTML += "<br><h2>Title </h2>" + item.volumeInfo.title +"<br> <h2>Description </h2>"+ descript + "<br> <h2>Genre </h2>" + item.volumeInfo.categories;
 
+        document.getElementById("content").innerHTML = "Testing";
 
 
       }
     }
 
-    /*var section = Math.floor(Math.random()*8);
-    var secPick = Math.floor(Math.random()*storyData[section].length);
-    console.log(storyData[section][secPick]);
-    */
+
     </script>
-    <script src="https://www.googleapis.com/books/v1/volumes?q=title&callback=handleResponse"></script>
+    <script src="https://www.googleapis.com/books/v1/volumes?q=sherlock&callback=handleResponse"></script>
+
   </body>
 </html>
