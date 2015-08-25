@@ -19,16 +19,23 @@
 <body>
 
 		<h1>~Allomorpheus~</h1>
-		<p>
+		<h5>
 			 <a href="https://en.wikipedia.org/wiki/Allomorph">Allomorph<a/>: a unit of meaning that varies in sound without changing meaning
-		</p>
+		</h5>
 
 
 		<!--<script src="../getMovieData.js"></script>-->
 		<div class="requestData">
 			<h2>
-				Enter three of your favorite movies:
+				Enter three of your favorite films
 			</h2>
+
+			<h5>
+				in any order
+			</h5>
+
+			<div id="feedback">
+			</div>
 
 			<form id="getMovieData">
 
@@ -40,16 +47,18 @@
 
 		</div>
 
-		<div id="feedback">
-		</div>
-
 		<h2 id = "submission">
 			Plot twist!
 		</h2>
+
 		<p>
 			<ul id="movieData">
 			</ul>
 		</p>
+
+		<form>
+			<input type="button" id="sumbit3" value="Generate">
+		</form>
 
 
 		<script type="text/javascript">
@@ -68,6 +77,14 @@
 				return document.getElementsByClassName(classy);
 			}
 
+			function create(el) {
+				return document.createElement(el);
+			}
+
+			function tNode(text) {
+				return document.createTextNode(text);
+			}
+
 
 			var elButton = get("adder");
 			var elForm = get("getMovieData");
@@ -75,11 +92,21 @@
 			var elYear = get("year");
 			var mData = get("movieData");
 			var numberOfMovies = tagger('movieData');
+			var movieCounter = 0;
 
-			function returnMovie(){
+			// New function "postMovie" will listen for a click on the "Add" button
+			// and take both the film title & year released to search the oMDB api -
+			// making a call to "oMDB". After receiving the data, it posts the content 
+			// as an unordered list item. It will also update the "movieCounter" to check
+			//that the user entered 3 movies
 
-				if(numberOfMovies > 3){
-					get("feedback").innerHTML = "<p>Please enter up to 3 movies</p>";
+			function postMovie(){
+
+
+				movieCounter++;
+
+				if(movieCounter > 3){
+					get("feedback").innerHTML = "<p id=\"error\">Please enter up to 3 movies</p>";
 				}
 				else{
 					var movieTitle = elMovie.value;
@@ -87,23 +114,18 @@
 					var movieConcat = "\"" + movieTitle + "\" " + "(" + year + ")";
 
 					//Add the freshly-submitted movie info to the list using DOM-manipulation
-					//if(numberOfMovies.length)
-					var newElm = document.createElement('li');
-					var text = document.createTextNode(movieConcat);
+					var newElm = create('li');
+					var text = tNode(movieConcat);
 					newElm.className = "movieData";
 					newElm.appendChild(text);
-					var insert = document.getElementById('movieData');
+					var insert = get('movieData');
 					insert.appendChild(newElm);
 				}
-
-
-				
-
 			};
 
-			elButton.addEventListener('click', returnMovie, false);
+			elButton.addEventListener('click', postMovie, false);
 
-			var numberOfMovies
+
 
 
 		</script>
