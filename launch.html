@@ -18,7 +18,7 @@
 </head>
 <body>
 
-		<h1>~Allomorpheus~</h1>
+		<h1>Allomorphic</h1>
 		<h5>
 			 <a href="https://en.wikipedia.org/wiki/Allomorph">Allomorph<a/>: a unit of meaning that varies in sound without changing meaning
 		</h5>
@@ -39,7 +39,7 @@
 
 			<form id="getMovieData">
 
-				<input type="text" id="movie" value="Favorite">
+				<input type="text" id="movie" value="Movie #1">
 				<input type="text" id="year" value="Year">
 				<input type="button" id="adder" value="Add">
 					
@@ -55,10 +55,6 @@
 			<ul id="movieData">
 			</ul>
 		</p>
-
-		<form>
-			<input type="button" id="sumbit3" value="Generate">
-		</form>
 
 
 		<script type="text/javascript">
@@ -85,7 +81,6 @@
 				return document.createTextNode(text);
 			}
 
-
 			var elButton = get("adder");
 			var elForm = get("getMovieData");
 			var elMovie = get("movie");
@@ -100,15 +95,20 @@
 			// as an unordered list item. It will also update the "movieCounter" to check
 			//that the user entered 3 movies
 
-			function postMovie(){
+			function postMovie(e){
+				//Get the 'target'; the element that the user clicks on
+				var target = e.target;
+				
+				//Create counter so the user sees error after 3 movie inputs
 
-
-				movieCounter++;
-
-				if(movieCounter > 3){
-					get("feedback").innerHTML = "<p id=\"error\">Please enter up to 3 movies</p>";
+				if(elButton.id === "generator"){
+					
 				}
-				else{
+				
+				else if(target.type === "button"){
+
+					movieCounter++;
+					
 					var movieTitle = elMovie.value;
 					var year = elYear.value;
 					var movieConcat = "\"" + movieTitle + "\" " + "(" + year + ")";
@@ -120,10 +120,31 @@
 					newElm.appendChild(text);
 					var insert = get('movieData');
 					insert.appendChild(newElm);
+					
+
+					var insert = get('movieData');
+					insert.appendChild(newElm);
+
+					if(movieCounter < 3){
+						elMovie.value = "Movie #" + (movieCounter+1).toString();
+
+					}
+					else if(movieCounter >= 3){
+						elMovie.value = '';
+						elYear.value = '';
+						elButton.type;
+						elButton.value = "Generate";
+						elButton.id = "generator";
+					}
+
+						elYear.innerHTML = "Year";
+
 				}
 			};
 
-			elButton.addEventListener('click', postMovie, false);
+			elForm.addEventListener('click', function(e){
+				postMovie(e);
+			});
 
 
 
