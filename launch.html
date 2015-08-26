@@ -15,12 +15,15 @@
 	}
 
 	</style>
+
+	<script type="text/javascript" src="warp.js"></script>
+
 </head>
 <body>
 
 		<h1>Allomorphic</h1>
 		<h5>
-			 <a href="https://en.wikipedia.org/wiki/Allomorph">Allomorph<a/>: a unit of meaning that varies in sound without changing meaning
+			 <a href="https://en.wikipedia.org/wiki/Allomorph" target="blank">Allomorph<a/>: a unit of meaning that varies in sound without changing meaning
 		</h5>
 
 
@@ -56,6 +59,30 @@
 			</ul>
 		</p>
 
+		<table>
+			<tr>
+				<th>Title</th>
+				<th>Year</th>
+				<th>Poster</th>
+			</tr>
+			<tr>
+				<td id="film1"></td>
+				<td id="year1"></td>
+				<td id="poster1"></td>
+			</tr>
+			<tr>
+				<td id="film2"></td>
+				<td id="year2"></td>
+				<td id="poster2"></td>
+			</tr>
+			<tr>
+				<td id="film3"></td>
+				<td id="year3"></td>
+				<td id="poster3"></td>
+			</tr>
+
+		</table>
+
 
 		<script type="text/javascript">
 
@@ -86,47 +113,45 @@
 			var elMovie = get("movie");
 			var elYear = get("year");
 			var mData = get("movieData");
-			var numberOfMovies = tagger('movieData');
 			var movieCounter = 0;
+
+			var film1, film2, film3;
+
+
 
 			// New function "postMovie" will listen for a click on the "Add" button
 			// and take both the film title & year released to search the oMDB api -
 			// making a call to "oMDB". After receiving the data, it posts the content 
-			// as an unordered list item. It will also update the "movieCounter" to check
-			//that the user entered 3 movies
+			// and will also update the "movieCounter" to check
+			// that the user entered 3 movies
 
 			function postMovie(e){
+
 				//Get the 'target'; the element that the user clicks on
 				var target = e.target;
 				
-				//Create counter so the user sees error after 3 movie inputs
 
 				if(elButton.id === "generator"){
-					
+					//Call getStory
 				}
 				
 				else if(target.type === "button"){
+
+					//Update counter so the user sees error after 3 movie inputs
 
 					movieCounter++;
 					
 					var movieTitle = elMovie.value;
 					var year = elYear.value;
-					var movieConcat = "\"" + movieTitle + "\" " + "(" + year + ")";
-
-					//Add the freshly-submitted movie info to the list using DOM-manipulation
-					var newElm = create('li');
-					var text = tNode(movieConcat);
-					newElm.className = "movieData";
-					newElm.appendChild(text);
-					var insert = get('movieData');
-					insert.appendChild(newElm);
 					
+					var urlToCall = urlBuild(titleSmoother(movieTitle), year);
 
-					var insert = get('movieData');
-					insert.appendChild(newElm);
-
+					//mrSulu on the bridge
+					mrSulu(urlToCall);
+					
 					if(movieCounter < 3){
-						elMovie.value = "Movie #" + (movieCounter+1).toString();
+						movie.value = "Movie #" + (movieCounter + 1).toString();
+						year.value = "Year";
 
 					}
 					else if(movieCounter >= 3){
@@ -137,7 +162,6 @@
 						elButton.id = "generator";
 					}
 
-						elYear.innerHTML = "Year";
 
 				}
 			};
@@ -146,34 +170,24 @@
 				postMovie(e);
 			});
 
+			function updateFilmTable(filmResponse){
+				var newEl = create("tr");
+				var text = tNode(filmResponse.Title);
+
+				newEl.appendChild(text);
+
+				var position = tagger('tr')[tagger('tr').length -1];
+				console.log(tagger('tr'));
+
+				position.appendChild(newEl);
+
+			}
+
 
 
 
 		</script>
 
 
-		<!--
-		<p id="moviePlot">
-
-		Plot twist!
-
-		</p>
-
-		<p id = "genre">
-			
-		</p>
-
-		<div id="poster">
-		<p>
-
-		Poster content
-
-		</p>
-		</div>
-
-
-
-
--->
 </body>
 </html>

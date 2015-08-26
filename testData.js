@@ -17,9 +17,8 @@ omdb.onload = function(e){
 
 	if(omdb.readyState === 4){
 		if(omdb.status === 200){
-			//firePhotonTorpedo();
-			console.log("Hey!");
-
+			firePhotonTorpedo();
+			console.log("Fire!");
 		}
 
 		else{
@@ -32,8 +31,7 @@ omdb.onload = function(e){
 omdb.onerror = function(error){
 	console.log("We found an error: "+error);
 };
-
+}
 //Engage, Mr. Sulu
 
 //omdb.send(null);
-}
