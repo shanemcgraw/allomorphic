@@ -65,21 +65,9 @@
 				<th>Year</th>
 				<th>Poster</th>
 			</tr>
-			<tr>
-				<td id="film1"></td>
-				<td id="year1"></td>
-				<td id="poster1"></td>
-			</tr>
-			<tr>
-				<td id="film2"></td>
-				<td id="year2"></td>
-				<td id="poster2"></td>
-			</tr>
-			<tr>
-				<td id="film3"></td>
-				<td id="year3"></td>
-				<td id="poster3"></td>
-			</tr>
+			<td id="filmTitle"></td>
+			<td id="filmYear"></td>
+			<td id="filmPoster"></td>
 
 		</table>
 
@@ -170,16 +158,29 @@
 				postMovie(e);
 			});
 
+
 			function updateFilmTable(filmResponse){
+
 				var newEl = create("tr");
 				var text = tNode(filmResponse.Title);
-
+				newEl.class = "film";
 				newEl.appendChild(text);
 
-				var position = tagger('tr')[tagger('tr').length -1];
-				console.log(tagger('tr'));
+				var position = get('filmTitle');
 
 				position.appendChild(newEl);
+
+				//domMan will automatically update the DOM for us by taking in the element to create, the text for the inserted text node into said element, the position (where the new element is going), and then a callback on the new element in case the user wants to set an id, class, etc. on it.
+
+				function domMan(elType, text, position, callback){
+					var newEl = create(elType);
+					var textInfo = tNode(text);
+					newEl.appendChild(text);
+					position.appendChild(newEl);
+
+					callback(newEl);
+
+				}
 
 			}
 
