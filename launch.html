@@ -1,26 +1,22 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Launchsite</title>
-	<style type="text/css">
-	body{
-	background-color: 406891
+	<head>
+		<title>Launchsite</title>
+		<style type="text/css">
+			body{
+			background-color: 406891
 
-	}
-	h1{
-		margin: 100 10 10 200
-	}
-	table{
-		border: solid 1px black;
-	}
+			}
+			h1{
+				margin: 100 10 10 200
+			}
+			table{
+				border: solid 1px black;
+			}
+		</style>
+	</head>
 
-	</style>
-
-	<script type="text/javascript" src="warp.js"></script>
-
-</head>
 <body>
-
 		<h1>Allomorphic</h1>
 		<h5>
 			 <a href="https://en.wikipedia.org/wiki/Allomorph" target="blank">Allomorph<a/>: a unit of meaning that varies in sound without changing meaning
@@ -51,7 +47,6 @@
 		</div>
 
 		<h2 id = "submission">
-			Plot twist!
 		</h2>
 
 		<p>
@@ -68,127 +63,25 @@
 			<td id="filmTitle"></td>
 			<td id="filmYear"></td>
 			<td id="filmPoster"></td>
+			<td id="cancel"></td>
 
 		</table>
 
+	<script type="text/javascript" src="warp.js"></script>
+	<script type="text/javascript" src="matrix.js"></script>
+	<script type="text/javascript">
 
-		<script type="text/javascript">
+		var elButton = get("adder");
+		var elForm = get("getMovieData");
+		var elMovie = get("movie");
+		var elYear = get("year");
+		var mData = get("movieData");
+		var movieCounter = 0;
 
-			//Helper functions
+		elForm.addEventListener('click', function(e){
+			postMovie(e);
+		});
 
-			function get(x){
-				return document.getElementById(x);
-			}
-
-			function tagger(tag) {
-				return document.getElementsByTagName(tag);
-			}
-
-			function classer(classy) {
-				return document.getElementsByClassName(classy);
-			}
-
-			function create(el) {
-				return document.createElement(el);
-			}
-
-			function tNode(text) {
-				return document.createTextNode(text);
-			}
-
-			var elButton = get("adder");
-			var elForm = get("getMovieData");
-			var elMovie = get("movie");
-			var elYear = get("year");
-			var mData = get("movieData");
-			var movieCounter = 0;
-
-			var film1, film2, film3;
-
-
-
-			// New function "postMovie" will listen for a click on the "Add" button
-			// and take both the film title & year released to search the oMDB api -
-			// making a call to "oMDB". After receiving the data, it posts the content 
-			// and will also update the "movieCounter" to check
-			// that the user entered 3 movies
-
-			function postMovie(e){
-
-				//Get the 'target'; the element that the user clicks on
-				var target = e.target;
-				
-
-				if(elButton.id === "generator"){
-					//Call getStory
-				}
-				
-				else if(target.type === "button"){
-
-					//Update counter so the user sees error after 3 movie inputs
-
-					movieCounter++;
-					
-					var movieTitle = elMovie.value;
-					var year = elYear.value;
-					
-					var urlToCall = urlBuild(titleSmoother(movieTitle), year);
-
-					//mrSulu on the bridge
-					mrSulu(urlToCall);
-					
-					if(movieCounter < 3){
-						movie.value = "Movie #" + (movieCounter + 1).toString();
-						year.value = "Year";
-
-					}
-					else if(movieCounter >= 3){
-						elMovie.value = '';
-						elYear.value = '';
-						elButton.type;
-						elButton.value = "Generate";
-						elButton.id = "generator";
-					}
-
-
-				}
-			};
-
-			elForm.addEventListener('click', function(e){
-				postMovie(e);
-			});
-
-
-			function updateFilmTable(filmResponse){
-
-				var newEl = create("tr");
-				var text = tNode(filmResponse.Title);
-				newEl.class = "film";
-				newEl.appendChild(text);
-
-				var position = get('filmTitle');
-
-				position.appendChild(newEl);
-
-				//domMan will automatically update the DOM for us by taking in the element to create, the text for the inserted text node into said element, the position (where the new element is going), and then a callback on the new element in case the user wants to set an id, class, etc. on it.
-
-				function domMan(elType, text, position, callback){
-					var newEl = create(elType);
-					var textInfo = tNode(text);
-					newEl.appendChild(text);
-					position.appendChild(newEl);
-
-					callback(newEl);
-
-				}
-
-			}
-
-
-
-
-		</script>
-
-
+	</script>
 </body>
 </html>

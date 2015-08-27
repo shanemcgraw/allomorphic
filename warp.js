@@ -10,7 +10,7 @@ var warpDrive = function(engage){
 			if(omdb.readyState === 4){
 				if(omdb.status === 200){
 					engage(JSON.parse(omdb.responseText));
-					console.log(JSON.parse(omdb.responseText));
+					console.log(omdb.responseText);
 				}
 				else{
 					console.log(omdb.statusText);
