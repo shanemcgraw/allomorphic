@@ -18,9 +18,18 @@ function tNode(text) {
 	return document.createTextNode(text);
 }
 
-function makeImage(link){
-	return "<img src=\'"+link+"\' alt=\'Movie Poster\'>";
+function makeImage(imgLink, errLink){
+	return '<img src='+imgLink+' alt="Poster not found" onError="this.onerror=null; this.src=mainecoon.jpg;" />';
 }
+
+function removeEl(elId){
+	get(elID).parentNode.removeChild(get(elID));
+}
+
+
+//document.getElementById('foobar').parentNode
+    //.removeChild(document.getElementById('foobar'));
+
 
 function domMan(elType, text, position, callback){
 	var newEl = create(elType);
@@ -37,20 +46,40 @@ function updateFilmTable(filmResponse){
 
 	//Changing the poster size in the film response to a smaller size
 	var posterLink = filmResponse.Poster;
-	var posterParsed = posterLink.split("SX300.jpg");
-	filmResponse["Poster"] = posterParsed[0] + "SX200.jpg";
+	if(posterLink !== undefined){
+		var posterParsed = posterLink.split("SX300.jpg");
+		filmResponse["Poster"] = posterParsed[0] + "SX200.jpg";
+	}
 
-	domMan("tr", tNode(filmResponse.Title), get('filmTitle'));
-	domMan("tr", tNode(filmResponse.Year), get('filmYear'));
-	domMan("tr", tNode(""), get('filmPoster'), function(){
-		
-		//this callback function updates what would normally be a simple text node into an image of the film poster
-		var number = get("filmPoster").childNodes.length - 1;
+	if(filmResponse.Title !== undefined){
 
-		get("filmPoster").childNodes[number].innerHTML = makeImage(filmResponse.Poster);
+		domMan("tr", tNode(filmResponse.Title), get('filmTitle'));
+		domMan("tr", tNode(filmResponse.Year), get('filmYear'));
+		domMan("tr", tNode(""), get('filmPoster'), function(){
+			
+			//this callback function updates what would normally be a simple text node into an image of the film poster
+			var number = get("filmPoster").childNodes.length - 1;
 
-	});
+			get("filmPoster").childNodes[number].innerHTML = makeImage(filmResponse.Poster, 'mainecoon.jpg');
+
+		});
+		movieCounter++;
+		if(get("feedback").childNodes[1]){
+			removeEl("noFind");
+		}
+
+	}
+
+	else if(get("feedback").childNodes[1] === undefined){
+		domMan("p", tNode("Hmm. We weren't able to find that film in the database... is there another that you like?"), get("feedback"), function(){
+			get("feedback").childNodes[1].id = "noFind";
+			console.log(get("feedback"));
+		});
+	}
 }
+
+
+
 
 function postMovie(e){
 
@@ -65,8 +94,6 @@ function postMovie(e){
 	else if(target.type === "button"){
 
 		//Update counter so the user sees error after 3 movie inputs
-
-		movieCounter++;
 		
 		var movieTitle = elMovie.value;
 		var year = elYear.value;
@@ -75,9 +102,9 @@ function postMovie(e){
 
 		//mrSulu on the bridge
 		mrSulu(urlToCall);
-		
+
 		if(movieCounter < 3){
-			movie.value = "Movie #" + (movieCounter + 1).toString();
+			movie.value = "Movie";
 			year.value = "Year";
 
 		}

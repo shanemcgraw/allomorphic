@@ -38,7 +38,7 @@
 
 			<form id="getMovieData">
 
-				<input type="text" id="movie" value="Movie #1">
+				<input type="text" id="movie" value="Movie">
 				<input type="text" id="year" value="Year">
 				<input type="button" id="adder" value="Add">
 					
@@ -76,7 +76,7 @@
 		var elMovie = get("movie");
 		var elYear = get("year");
 		var mData = get("movieData");
-		var movieCounter = 0;
+		var movieCounter = 1;
 
 		elForm.addEventListener('click', function(e){
 			postMovie(e);
