@@ -19,7 +19,7 @@ function tNode(text) {
 }
 
 function makeImage(imgLink, errLink){
-	return '<img src='+imgLink+' alt="Poster not found" onError="this.onerror=null; this.src=mainecoon.jpg;" />';
+	return '<img src='+imgLink+' alt="Poster not found" onError="this.onerror=null; this.src=\'mainecoon.jpg\';" />';
 }
 
 function removeEl(elId){
@@ -92,28 +92,50 @@ function postMovie(e){
 	}
 	
 	else if(target.type === "button"){
+		if(elMovie.value !== "Movie" && elMovie.value && elYear.value !== "Year" && elYear.value){
+			var movieTitle = elMovie.value;
+			var year = elYear.value;
+			
+			var urlToCall = urlBuild(titleSmoother(movieTitle), year);
 
-		//Update counter so the user sees error after 3 movie inputs
-		
-		var movieTitle = elMovie.value;
-		var year = elYear.value;
-		
-		var urlToCall = urlBuild(titleSmoother(movieTitle), year);
+			//mrSulu on the bridge
+			mrSulu(urlToCall);
 
-		//mrSulu on the bridge
-		mrSulu(urlToCall);
+			if(movieCounter < 3){
+				movie.value = "Movie";
+				year.value = "Year";
+			}
 
-		if(movieCounter < 3){
-			movie.value = "Movie";
-			year.value = "Year";
-
+			else if(movieCounter >= 3){
+				elMovie.value = '';
+				elYear.value = '';
+				elButton.type;
+				elButton.value = "Generate";
+				elButton.id = "generator";
+			}
 		}
-		else if(movieCounter >= 3){
-			elMovie.value = '';
-			elYear.value = '';
-			elButton.type;
-			elButton.value = "Generate";
-			elButton.id = "generator";
+		
+		else if(elYear.value === "Year" && elYear.value){
+
+			if(elMovie.value === "Movie" && elMovie.value){
+				//clear the feedback paragraph
+				get("feedback").innerHTML = "";
+				//update with error
+				domMan("p", tNode("Movie and Year required"), get("feedback"));
+			}
+			else{
+				//clear the feedback paragraph
+				get("feedback").innerHTML = "";
+				//update with error
+				domMan("p", tNode("Year required"), get("feedback"));
+			}
+		}
+
+		else{
+			//clear the feedback paragraph
+			get("feedback").innerHTML = "";
+			//update with error
+			domMan("p", tNode("Movie title required"), get("feedback"));
 		}
 	}
 };
