@@ -7,7 +7,10 @@ var warpDrive = function(engage){
 		var omdb = new XMLHttpRequest();
 
 		omdb.onload = function(){
-			if(omdb.readyState === 4){
+			if(omdb.readyState === 1){
+				get("feedback").innerHTML = "TESTING";
+			}
+			else if(omdb.readyState === 4){
 				if(omdb.status === 200){
 					engage(JSON.parse(omdb.responseText));
 					console.log(omdb.responseText);

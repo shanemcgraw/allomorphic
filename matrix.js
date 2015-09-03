@@ -92,7 +92,7 @@ function postMovie(e){
 	}
 	
 	else if(target.type === "button"){
-		if(elMovie.value !== "Movie" && elMovie.value && elYear.value !== "Year" && elYear.value){
+		if(elMovie.value !== "Movie" && elMovie.value && elYear.value !== "Year" && 2016 > parseInt(elYear.value) && parseInt(elYear.value) > 1890){
 			var movieTitle = elMovie.value;
 			var year = elYear.value;
 			
@@ -114,20 +114,22 @@ function postMovie(e){
 				elButton.id = "generator";
 			}
 		}
+
+		//With the logic of Spock, we can determine if the fields filled out in the form are okay or not. Basically, this tests for acceptable data entered into the form field. If not, it will update the "feedback" tag right above the form, so the user can read it and act accordingly. Live long and prosper!
 		
-		else if(elYear.value === "Year" && elYear.value){
+		else if(elYear.value === "Year" || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890 || parseInt(elYear.value)){
 
 			if(elMovie.value === "Movie" && elMovie.value){
 				//clear the feedback paragraph
 				get("feedback").innerHTML = "";
 				//update with error
-				domMan("p", tNode("Movie and Year required"), get("feedback"));
+				domMan("p", tNode("Valid movie title and year required"), get("feedback"));
 			}
 			else{
 				//clear the feedback paragraph
 				get("feedback").innerHTML = "";
 				//update with error
-				domMan("p", tNode("Year required"), get("feedback"));
+				domMan("p", tNode("Please enter valid year between 1890 and 2015"), get("feedback"));
 			}
 		}
 
