@@ -43,6 +43,9 @@ function domMan(elType, text, position, callback){
 }
 
 function updateFilmTable(filmResponse){
+	//And here we have the table coming out of the shadows (if it's the first movie loading in the list, that is)
+	get("filmTable").style.visibility = "visible";
+
 
 	//Changing the poster size in the film response to a smaller size
 	var posterLink = filmResponse.Poster;
@@ -50,7 +53,7 @@ function updateFilmTable(filmResponse){
 		var posterParsed = posterLink.split("SX300.jpg");
 		filmResponse["Poster"] = posterParsed[0] + "SX200.jpg";
 	}
-
+	//Making sure the film came through
 	if(filmResponse.Title !== undefined){
 
 		domMan("tr", tNode(filmResponse.Title), get('filmTitle'));
@@ -63,6 +66,19 @@ function updateFilmTable(filmResponse){
 			get("filmPoster").childNodes[number].innerHTML = makeImage(filmResponse.Poster, 'mainecoon.jpg');
 
 		});
+
+		/*domMan("tr", tNode(""), get('cancel'), function(){
+			
+			//this same (kind of silly) callback function adds an image for the cancel 
+			var number = get("cancel").childNodes.length - 1;
+
+			get("cancel").childNodes[number].innerHTML = makeImage('cancel.png', 'mainecoon.jpg');
+
+		});
+		*/
+
+		//removeFilm();
+
 		movieCounter++;
 		if(get("feedback").childNodes[1]){
 			removeEl("noFind");
@@ -79,12 +95,26 @@ function updateFilmTable(filmResponse){
 }
 
 
+function removeFilm(filmRow){
+	var el = get("filmTable");
+	console.log(el.childNodes[3].childNodes[1].childNodes[2]);
+
+	for(var i=0;i<7;i+=2){
+		var parent = el.childNodes[3].childNodes[1].childNodes[2].childNodes[i];
+		var child = el.childNodes[3].childNodes[1].childNodes[2].childNodes[i].childNodes[0];
+		parent.removeChild(child);
+	}
+
+
+}
+
 
 
 function postMovie(e){
 
 	//Get the 'target'; the element that the user clicks on
 	var target = e.target;
+
 	
 
 	if(elButton.id === "generator"){
@@ -92,7 +122,10 @@ function postMovie(e){
 	}
 	
 	else if(target.type === "button"){
-		if(elMovie.value !== "Movie" && elMovie.value && elYear.value !== "Year" && 2016 > parseInt(elYear.value) && parseInt(elYear.value) > 1890){
+		
+		var yearInt = parseInt(elYear.value);
+
+		if(elMovie.value !== "Movie" && elMovie.value && elYear.value !== "Year" && 2016 > yearInt && yearInt > 1890){
 			var movieTitle = elMovie.value;
 			var year = elYear.value;
 			
@@ -102,8 +135,8 @@ function postMovie(e){
 			mrSulu(urlToCall);
 
 			if(movieCounter < 3){
-				movie.value = "Movie";
-				year.value = "Year";
+				elYear.value = "Year";
+				elMovie.value = "Movie";
 			}
 
 			else if(movieCounter >= 3){

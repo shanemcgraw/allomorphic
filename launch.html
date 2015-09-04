@@ -30,7 +30,7 @@
 			</h2>
 
 			<h5>
-				in any order
+				For best results, search for their full names (e.g. "Lord of the Rings: The Return of the King")
 			</h5>
 
 			<div id="feedback">
@@ -53,8 +53,19 @@
 			<ul id="movieData">
 			</ul>
 		</p>
+		
 
 		<div id="filmTable">
+
+		<script type="text/javascript">
+
+			//Snuffing out the table before it loads in the DOM and ruins the suprise!
+			//We want to hide the film table until it's loaded via AJAX
+
+			document.getElementById("filmTable").style.visibility = "hidden";
+
+		</script>
+
 			<table>
 				<tr>
 					<th>Title</th>
@@ -66,12 +77,12 @@
 				<td id="filmPoster"></td>
 				<td id="cancel"></td>
 		</table>
-		</div>
-	
+		</div>	
 
 	<script type="text/javascript" src="warp.js"></script>
 	<script type="text/javascript" src="matrix.js"></script>
 	<script type="text/javascript">
+
 
 		var elButton = get("adder");
 		var elForm = get("getMovieData");
