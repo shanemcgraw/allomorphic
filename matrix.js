@@ -135,8 +135,8 @@ function postMovie(e){
 			mrSulu(urlToCall);
 
 			if(movieCounter < 3){
-				elYear.value = "Year";
-				elMovie.value = "Movie";
+				elYear.value = "2003";
+				elMovie.value = "Lord of the Rings: The Return of the King";
 			}
 
 			else if(movieCounter >= 3){
@@ -150,7 +150,7 @@ function postMovie(e){
 
 		//With the logic of Spock, we can determine if the fields filled out in the form are okay or not. Basically, this tests for acceptable data entered into the form field. If not, it will update the "feedback" tag right above the form, so the user can read it and act accordingly. Live long and prosper!
 		
-		else if(elYear.value === "Year" || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890 || parseInt(elYear.value)){
+		else if(elYear.value === "Year" || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890 || typeof parseInt(elYear.value) === "number"){
 
 			if(elMovie.value === "Movie" && elMovie.value){
 				//clear the feedback paragraph
@@ -168,6 +168,7 @@ function postMovie(e){
 
 		else{
 			//clear the feedback paragraph
+			console.log(elYear.value);
 			get("feedback").innerHTML = "";
 			//update with error
 			domMan("p", tNode("Movie title required"), get("feedback"));
