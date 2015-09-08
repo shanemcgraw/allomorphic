@@ -156,7 +156,15 @@ function formTextOb(textArray){
 	this.dateWritten = textArray[2];
 }
 
+var storyData = [];
 
+stories.forEach(function(storyArr){
+									storyArr.forEach(function(story){
+																		storyData.push(formTextOb(story));
+																	 });
+								});
+
+console.log(storyData);
 
 
 

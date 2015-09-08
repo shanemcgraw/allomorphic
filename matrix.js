@@ -18,8 +18,8 @@ function tNode(text) {
 	return document.createTextNode(text);
 }
 
-function makeImage(imgLink, errLink){
-	return '<img src='+imgLink+' alt="Poster not found" onError="this.onerror=null; this.src=\'mainecoon.jpg\';" />';
+function makeImage(imgLink, errLink, classID){
+	return "<img src='" + imgLink + "' class='" + classID + "' alt='Poster not found' onError = 'this.onerror=null; this.src=\'mainecoon.jpg\';/>";
 }
 
 function removeEl(elId){
@@ -47,6 +47,13 @@ function updateFilmTable(filmResponse){
 	get("filmTable").style.visibility = "visible";
 
 
+	var cancelElements = classer("cancel");
+	console.log(cancelElements);
+	for(var x=0;x<cancelElements.length;x++){
+		cancelElements[x].id="cancelMovie"+(x+1).toString();
+	}
+
+
 	//Changing the poster size in the film response to a smaller size
 	var posterLink = filmResponse.Poster;
 	if(posterLink !== undefined){
@@ -66,20 +73,16 @@ function updateFilmTable(filmResponse){
 			get("filmPoster").childNodes[number].innerHTML = makeImage(filmResponse.Poster, 'mainecoon.jpg');
 
 		});
-
-		/*domMan("tr", tNode(""), get('cancel'), function(){
-			
-			//this same (kind of silly) callback function adds an image for the cancel 
+/*
+		domMan("tr", tNode(""), get('cancel'), function(){
+			//this same callback function adds an image for the cancel 
 			var number = get("cancel").childNodes.length - 1;
-
-			get("cancel").childNodes[number].innerHTML = makeImage('cancel.png', 'mainecoon.jpg');
-
+			var idNumber = (movieCounter - 1).toString();
+			get("cancel").childNodes[number].innerHTML = makeImage('cancel.png','mainecoon.jpg','cancel');
 		});
-		*/
+*/
 
-		//removeFilm();
 
-		movieCounter++;
 		if(get("feedback").childNodes[1]){
 			removeEl("noFind");
 		}
@@ -89,43 +92,53 @@ function updateFilmTable(filmResponse){
 	else if(get("feedback").childNodes[1] === undefined){
 		domMan("p", tNode("Hmm. We weren't able to find that film in the database... is there another that you like?"), get("feedback"), function(){
 			get("feedback").childNodes[1].id = "noFind";
-			console.log(get("feedback"));
 		});
 	}
 }
-
-
+/*
+//this function goes all "Agent Smith" on the film that the user identified to eliminate. I'm speaking, of course, of the first Matrix- not its unfortunate and bumbling sequels.
 function removeFilm(filmRow){
+	//making sure that we don't accidentally update the button to "Generate" before there are 3 movies in the table
+	movieCounter--;
+
 	var el = get("filmTable");
-	console.log(el.childNodes[3].childNodes[1].childNodes[2]);
+
+	//based on the DOM elements in the filmTable section, every other childNode contains the information that we need to delete. This for loop takes care of it! 
 
 	for(var i=0;i<7;i+=2){
 		var parent = el.childNodes[3].childNodes[1].childNodes[2].childNodes[i];
-		var child = el.childNodes[3].childNodes[1].childNodes[2].childNodes[i].childNodes[0];
+		var child = el.childNodes[3].childNodes[1].childNodes[2].childNodes[i].childNodes[filmRow-1];
 		parent.removeChild(child);
 	}
 
-
 }
 
+function detectCancel(e){
+	var target = e.target;
+	console.log(target.id);
+	var filmToDelete = parseInt(target.id.split("cancelMovie").join(""));
+	removeFilm(filmToDelete);
+}
+*/
 
 
 function postMovie(e){
 
 	//Get the 'target'; the element that the user clicks on
 	var target = e.target;
-
 	
-
+	
 	if(elButton.id === "generator"){
 		//Call getStory
 	}
 	
 	else if(target.type === "button"){
-		
+
 		var yearInt = parseInt(elYear.value);
 
 		if(elMovie.value !== "Movie" && elMovie.value && elYear.value !== "Year" && 2016 > yearInt && yearInt > 1890){
+			movieCounter++;
+
 			var movieTitle = elMovie.value;
 			var year = elYear.value;
 			
@@ -134,12 +147,12 @@ function postMovie(e){
 			//mrSulu on the bridge
 			mrSulu(urlToCall);
 
-			if(movieCounter < 3){
-				elYear.value = "2003";
-				elMovie.value = "Lord of the Rings: The Return of the King";
+			if(movieCounter < 4){
+				elYear.value = "1941";
+				elMovie.value = "The Maltese Falcon";
 			}
 
-			else if(movieCounter >= 3){
+			else if(movieCounter >= 4){
 				elMovie.value = '';
 				elYear.value = '';
 				elButton.type;
@@ -168,7 +181,6 @@ function postMovie(e){
 
 		else{
 			//clear the feedback paragraph
-			console.log(elYear.value);
 			get("feedback").innerHTML = "";
 			//update with error
 			domMan("p", tNode("Movie title required"), get("feedback"));

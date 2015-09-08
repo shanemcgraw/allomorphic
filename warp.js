@@ -1,3 +1,5 @@
+
+
 var warpDrive = function(engage){
 
 	//To "get" ourselves a nice clean closure, we return a function with an added "destination" param, aka the URL of the request (since they'll be changing every movie)
@@ -5,41 +7,19 @@ var warpDrive = function(engage){
 	return function(destination){
 
 		//A helpful search gif that will display a rotating wheel, to suggest hard search work by our page!
-		get("feedback").innerHTML = "Searching<img src=\"../loading.gif\">";
-		var yourOut;
-		var yourReallyOut;
+		get("feedback").innerHTML = "Searching<img src=\"loading.gif\">";
 		
-		//This will empathize with the frustrated user, reminding them (subconsciously, perhaps) that there's a lot of data to go through!
-		delayedAlert();
-
-		function delayedAlert() {
-	  	yourOut = window.setTimeout(stillSearch, 5000);
-	  	yourReallyOut = window.setTimeout(stillerSearch, 7000);
-		}
-
-		function stillSearch() {
-  		get("feedback").innerHTML = "Searching rapidly<img src=\"../loading.gif\">";
-		}
-
-		function stillerSearch() {
-  		get("feedback").innerHTML = "Searching even more rapidly<img src=\"../loading.gif\">";
-		}
-
 
 		var omdb = new XMLHttpRequest();
 
 		omdb.onload = function(){
 			if(omdb.readyState === 4){
-				if(omdb.status === 200){
-					window.clearTimeout(yourOut);
-					window.clearTimeout(yourReallyOut);
+				if(omdb.status === 200){	
 					get("feedback").innerHTML = "";
-
-
-					engage(JSON.parse(omdb.responseText));
-
-					//console.log(omdb.responseText);
-
+					var data = JSON.parse(omdb.responseText);
+					engage(data);
+					filmData.push(data);
+					console.log(filmData);
 				}
 				else{
 					console.log(omdb.statusText);
@@ -62,6 +42,7 @@ function mrSulu(url){
 }
 
 //urlBuild will make our URL for Mr. Sulu ship-shape
+
 
 function urlBuild(movie, year){
 	var title = titleSmoother(movie);
