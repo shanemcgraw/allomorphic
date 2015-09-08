@@ -164,7 +164,42 @@ stories.forEach(function(storyArr){
 																	 });
 								});
 
-console.log(storyData);
+console.log(JSON.stringify(storyData));
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

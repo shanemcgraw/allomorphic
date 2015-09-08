@@ -18,8 +18,8 @@ function tNode(text) {
 	return document.createTextNode(text);
 }
 
-function makeImage(imgLink, errLink, classID){
-	return "<img src='" + imgLink + "' class='" + classID + "' alt='Poster not found' onError = 'this.onerror=null; this.src=\'mainecoon.jpg\';/>";
+function makeImage(imgLink, classID){
+	return '<img src='+imgLink+' alt="Poster not found" onError="this.onerror=null; this.src=\'mainecoon.jpg\';" />';
 }
 
 function removeEl(elId){
@@ -70,7 +70,7 @@ function updateFilmTable(filmResponse){
 			//this callback function updates what would normally be a simple text node into an image of the film poster
 			var number = get("filmPoster").childNodes.length - 1;
 
-			get("filmPoster").childNodes[number].innerHTML = makeImage(filmResponse.Poster, 'mainecoon.jpg');
+			get("filmPoster").childNodes[number].innerHTML = makeImage(filmResponse.Poster);
 
 		});
 /*

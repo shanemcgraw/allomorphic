@@ -13,7 +13,7 @@ function createArrOfObs(textArr){
     arrOfObs.push(o);
     }
     );
-    return arrOfObs;
+    return JSON.stringify(arrOfObs);
     
 }
 
