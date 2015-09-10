@@ -1,18 +1,34 @@
+
+
+
 var stories = [
     {
         title: "The Last Question",
         author: "Isaac Asimov",
-        dateWritten: 1956
+        dateWritten: 1956,
+        genre:["scifi","adventure","cerebral", "famous"],
+        plot = "The story deals with the development of universe-scale computers called Multivacs and their relationships with humanity through the courses of seven historic settings, beginning in 2061."
     },
     {
         title: "The Celebrated Jumping Frog of Calaveras County",
         author: "Mark Twain",
-        dateWritten: 1865
+        dateWritten: 1865,
+        genre: ["famous"],
+        plot: "This colorful tale about a man and his famous jumping frog earned Twain fame and acclaim and is well worth a read."
+    },
+    {
+        title: "The Body",
+        author: "Stephen King",
+        dateWritten: 1982,
+        genre: ["famous"],
+        plot: "The story takes place during the summer of 1960 in the fictional town of Castle Rock, Maine. After a boy from Chamberlain, Maine, named Ray Brower disappears and is presumed dead, Gordie Lachance and his three friends, Chris Chambers, Teddy Duchamp and Vern Tessio set out to find his body after telling their parents they will be camping out."
     },
     {
         title: "The Rocking-Horse Winner",
         author: "D.H. Lawrence",
-        dateWritten: 1926
+        dateWritten: 1926,
+        genre : ["sad","shocking"],
+        plot:"This twisted tale will stick with you long after you’ve read it, documenting the strange relationship between a spendthrift mother and her son, who only longs to make her happy."
     },
     {
         title: "A Good Man Is Hard to Find",
@@ -20,6 +36,13 @@ var stories = [
         dateWritten: 1953,
         genre : ["sad","shocking"],
         plot:"A manipulative grandmother is at the center of this tragic and shocking story about coming to terms with who you really are."
+    },
+    {
+        title: "The Snows of Kilimanjaro",
+        author: "Ernest Hemingway",
+        dateWritten: 1936,
+        genre : ["sad","shocking"],
+        plot:"A writer on safari in Africa is close to death and looks back on his life regrettably in this short tale."
     },
     {
         title: "The Lame Shall Enter First",
@@ -86,7 +109,10 @@ var stories = [
     {
         title: "The Yellow Wallpaper",
         author: "Charlotte Perkins Gilman",
-        dateWritten: 1892
+        dateWritten: 1892,
+        genre:["sad","shocking"],
+        plot:"An early work of feminist literature, this story follows a young woman as she descends into psychosis, becoming obsessed with the pattern and color of the wallpaper."
+
     },
     {
         title: "To Build a Fire",
@@ -123,7 +149,9 @@ var stories = [
     {
         title: "The Legend of Sleepy Hollow",
         author: "Washington Irving",
-        dateWritten: 1820
+        dateWritten: 1820,
+        genre: ["famous","horror"],
+        plot:"From the listless repose of the place, and the peculiar character of its inhabitants, who are descendants from the original Dutch settlers, this sequestered glen has long been known by name of Sleepy Hollow ... A drowsy, dreamy influence seems to hang over the land, and to pervade the very atmosphere."
     },
     {
         title: "The Minister's Black Veil",
@@ -158,7 +186,9 @@ var stories = [
     {
         title: "Rikki-Tikki-Tavi",
         author: "Rudyard Kipling",
-        dateWritten: 1894
+        dateWritten: 1894,
+        genre:["famous"],
+        plot:"The story follows the experiences of a young mongoose named Rikki-Tikki-Tavi (for his chattering vocalizations) after he is adopted into a British family residing in India, as a pet and as protection against venomous cobra snakes."
     },
     {
         title: "Regret",
@@ -315,7 +345,9 @@ var stories = [
     {
         title: "The Use of Force",
         author: "William Carlos Williams",
-        dateWritten: 1938
+        dateWritten: 1938,
+        genre:["sad","shocking"],
+        plot : "This story asks readers to consider whether or not it is ethical to hurt someone for their own good and, more importantly, whether one should be ashamed to enjoy the experience."
     },
     {
         title: "The Door",
@@ -340,7 +372,9 @@ var stories = [
     {
         title: "Where Are You Going, Where Have You Been?",
         author: "Joyce Carol Oates",
-        dateWritten: 1966
+        dateWritten: 1966,
+        genre:["sad","shocking"],
+        plot:"This short story was inspired by the murders committed in Tucson, Arizona, by serial killer Charles Schmid."
     },
     {
         title: "The Ambitious Guest",

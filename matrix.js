@@ -19,7 +19,7 @@ function tNode(text) {
 }
 
 function makeImage(imgLink, classID){
-	return '<img src='+imgLink+' alt="Poster not found" onError="this.onerror=null; this.src=\'mainecoon.jpg\';" />';
+	return '<img src='+imgLink+' alt="Poster not found" onError="this.onerror=null; this.src=\'fallback.jpg\';" />';
 }
 
 function removeEl(elId){
