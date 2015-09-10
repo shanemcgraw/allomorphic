@@ -7,117 +7,167 @@ var stories = [
         author: "Isaac Asimov",
         dateWritten: 1956,
         genre:["scifi","adventure","cerebral", "famous"],
-        plot = "The story deals with the development of universe-scale computers called Multivacs and their relationships with humanity through the courses of seven historic settings, beginning in 2061."
+        link:"http://www.physics.princeton.edu/ph115/LQ.pdf",
+        plot : "The story deals with the development of universe-scale computers called Multivacs and their relationships with humanity through the courses of seven historic settings, beginning in 2061."
     },
     {
         title: "The Celebrated Jumping Frog of Calaveras County",
         author: "Mark Twain",
         dateWritten: 1865,
         genre: ["famous"],
+        link:"http://twain.lib.virginia.edu/projects/price/frog.htm",
         plot: "This colorful tale about a man and his famous jumping frog earned Twain fame and acclaim and is well worth a read."
     },
     {
-        title: "The Body",
-        author: "Stephen King",
-        dateWritten: 1982,
-        genre: ["famous"],
-        plot: "The story takes place during the summer of 1960 in the fictional town of Castle Rock, Maine. After a boy from Chamberlain, Maine, named Ray Brower disappears and is presumed dead, Gordie Lachance and his three friends, Chris Chambers, Teddy Duchamp and Vern Tessio set out to find his body after telling their parents they will be camping out."
+        title: "Three Questions",
+        author: "Leo Tolstoy",
+        dateWritten: 1885,
+        link:"http://www.fa.org/uploaded/US_Attachments/SR9Questions.pdf",
+        genre: ["famous","adventure"],
+        plot : "While Tolstoy may be better known for his epic novels, this short story in the form of a parable about a king searching for the most important questions in life shows he mastered the medium of the short story as well."
     },
     {
         title: "The Rocking-Horse Winner",
         author: "D.H. Lawrence",
         dateWritten: 1926,
-        genre : ["sad","shocking"],
+        link:"http://www.classicshorts.com/stories/rockwinr.html",
+        genre : ["dark","shocking"],
         plot:"This twisted tale will stick with you long after you’ve read it, documenting the strange relationship between a spendthrift mother and her son, who only longs to make her happy."
     },
     {
         title: "A Good Man Is Hard to Find",
+        link:"http://pegasus.cc.ucf.edu/~surette/goodman.html",
         author: "Flannery O'Connor",
         dateWritten: 1953,
-        genre : ["sad","shocking"],
+        genre : ["dark","shocking"],
         plot:"A manipulative grandmother is at the center of this tragic and shocking story about coming to terms with who you really are."
     },
     {
         title: "The Snows of Kilimanjaro",
         author: "Ernest Hemingway",
+        link:"http://xroads.virginia.edu/~drbr/heming.html",
         dateWritten: 1936,
-        genre : ["sad","shocking"],
+        genre : ["dark","shocking"],
         plot:"A writer on safari in Africa is close to death and looks back on his life regrettably in this short tale."
     },
     {
         title: "The Lame Shall Enter First",
         author: "Flannery O'Connor",
         dateWritten: 1965,
-        genre : ["sad","shocking"],
+        genre : ["dark","shocking"],
         plot: "In this tragic story, a man’s idealism and self-interest cause him to ignore the needs of his grieving son– with sad consequences."
+    },
     {
         title: "The Necklace",
         author: "Guy de Maupassant",
-        dateWritten: 1884
+        link:"http://photos.state.gov/libraries/hochiminh/646441/vantt/The%20necklace.pdf",
+        dateWritten: 1884,
+        plot : "Popular for its shock and the inspiration for many other writers, this short story is a must-read for anyone interested in the genre.",
+        genre:["twist","drama"]
     },
     {
         title: "The Lottery",
         author: "Shirley Jackson",
         dateWritten: 1948,
-        genre:
+        link:"https://sites.middlebury.edu/individualandthesociety/files/2010/09/jackson_lottery.pdf",
+        genre: ["dark","drama","famous"],
         plot: "First published in 1948, this short has been ranked as one of the most famous short stories in American literature– despite its negative reception in some places."
     },
     {
         title: "The Cask of Amontillado",
         author: "Edgar Allan Poe",
-        dateWritten: 1846
+        dateWritten: 1846,
+        link:"http://www.ibiblio.org/ebooks/Poe/Amontillado.pdf",
+        plot:"The story is set in an unnamed Italian city at carnival time in an unspecified year, and is about a man taking fatal revenge on a friend who has insulted him.",
+        genre:["dark","horror"]
+    },
+    {
+        title : "Man from the South", 
+        author : "Roald Dahl",
+        dateWritten: 1948,
+        link:"https://maggiemcneill.files.wordpress.com/2013/03/man-from-the-south.pdf",
+        genre : ["fantasy","dark","twist"],
+        plot : "In this short story, a mysterious man offers a bargain for lighting a lighter on the first try. Win, you get a new car. Lose, he gets to take your finger."
+    },
+    {   
+        title : "Pastoralia", 
+        author : "George Saunders", 
+        plot : "Winning Saunders an O. Henry Award in 2001, this story focuses on a man who is stuck in a life he hates in a dystopian future.",
+        dateWritten : 2000,
+        genre : ["scifi","satire","drama"]
     },
     {
         title: "The Monkey's Paw",
         author: "W. W. Jacobs",
-        dateWritten: 1902
+        link:"http://resources.mhs.vic.edu.au/creating/downloads/The_Monkey's_Paw.pdf",
+        dateWritten: 1902,
+        plot : "In this terrifying tale, readers will learn to be careful what they wish for– it might not always be what they want.",
+        genre:["horror","dark","twist"]
     },
     {
         title: "A Hunger Artist",
         author: "Franz Kafka",
         dateWritten: 1922,
-        genre:["sad","shocking"],
+        link:"http://ada.evergreen.edu/~arunc/texts/literature/kafka/hunger.pdf",
+        genre:["dark","shocking"],
         plot:"Exploring themes like death, art, isolation and personal failure, this work is one of Kafka’s best and, sadly, most autobiographical."
     },
     {
         title: "Young Goodman Brown",
         author: "Nathaniel Hawthorne",
-        dateWritten: 1835
+        dateWritten: 1835,
+        link:"http://web.ics.purdue.edu/~rebeccal/lit/238f11/pdfs/YoungGoodmanBrown.pdf",
+        genre:[],
+        plot:""
     },
     {
         title: "Signs and Symbols",
         author: "Nathaniel Hawthorne",
         dateWritten: 1835,
-        genre:["sad","shocking"],
+        genre:["dark","shocking"],
         plot:"First published in The New Yorker, this short story tells the sad tale of an elderly couple and their mentally ill son."        
     },
     {
         title: "The Fall of the House of Usher",
         author: "Edgar Allan Poe",
-        dateWritten: 1839
+        dateWritten: 1839,
+        plot : "This classic tale of gothic horror will have you hanging on to every last detail.",
+        genre:["famous","horror","dark"]
     },
     {
         title: "The Tell-Tale Heart",
         author: "Edgar Allan Poe",
-        dateWritten: 1843
+        dateWritten: 1843,
+        plot : "There are few out there who haven’t read or at least heard of this classic tale. Over a few short pages, Poe builds the suspense as a murderer begins to feel the guilt of his crime."
+        genre : ["famous","horror","dark"]
     },
     {
         title: "An Occurrence at Owl Creek Bridge",
         author: "Ambrose Bierce",
-        dateWritten: 1890
+        dateWritten: 1890,
+        plot : "Made into a Twilight Zone episode, this classic short story is set during the Civil War, where a man is about to hang for being a Confederate sympathizer.",
+        genre:["twist","adventure","drama"]
     },
     {
         title: "The Yellow Wallpaper",
         author: "Charlotte Perkins Gilman",
         dateWritten: 1892,
-        genre:["sad","shocking"],
+        genre:["dark","shocking"],
         plot:"An early work of feminist literature, this story follows a young woman as she descends into psychosis, becoming obsessed with the pattern and color of the wallpaper."
-
+    },
+    {   
+        title : "The Secret Life of Walter Mitty",
+        dateWritten : 1939, 
+        author : "James Thurber", 
+        plot : "The most famous of Thurber’s stories, inspiring the term 'Mittyesque', focuses on a man who is bored with his mundane life and escapes through a series of grand, heroic fantasies inspired by his surroundings.",
+        genre : ["famous","fantasy"]
     },
     {
         title: "To Build a Fire",
         author: "Jack London",
-        dateWritten: 1908
+        dateWritten: 1908,
+        plot : "Known for his epic tales about man in nature, this short story doesn’t disappoint as a man and dog are pitted against the wilderness in a battle for survival.",
+        genre:["adventure","famous"]
     },
     {
         title: "The Dead",
@@ -128,7 +178,7 @@ var stories = [
         title: "In the Penal Colony",
         author: "Franz Kafka",
         dateWritten: 1919,
-        genre:["sad","shocking"],
+        genre:["dark","shocking"],
         plot:"An elaborate torture and execution device that carves a sentence into a prisoner’s skin before death is at the center of this famous short story by Kafka."
     },
     {
@@ -144,7 +194,9 @@ var stories = [
     {
         title: "Harrison Bergeron",
         author: "Kurt Vonnegut, Jr.",
-        dateWritten: 1961
+        dateWritten: 1961,
+        plot : "In this satirical, dystopian story society has finally achieved equality by handicapping the most intelligent, athletic or beautiful members of society.",
+        genre:["comedy","satire"]
     },
     {
         title: "The Legend of Sleepy Hollow",
@@ -161,7 +213,8 @@ var stories = [
     {
         title: "The Masque of the Red Death",
         author: "Edgar Allan Poe",
-        dateWritten: 1842
+        dateWritten: 1842,
+
     },
     {
         title: "The Purloined Letter",
@@ -223,7 +276,9 @@ var stories = [
     {
         title: "The Swimmer",
         author: "John Cheever",
-        dateWritten: 1964
+        dateWritten: 1964,
+        plot : "This story may have been originally conceived as a novel, but it holds up well as a short story, blending realism and surrealism as it explores life in suburban American.",
+        genre :["drama","famous"]
     },
     {
         title: "Cathedral",
@@ -273,7 +328,9 @@ var stories = [
     {
         title: "The Gift of the Magi",
         author: "O. Henry",
-        dateWritten: 1905
+        dateWritten: 1905,
+        genre:["twist"],
+        plot : "This sentimental story has a twist with a lesson about the true meaning of gift giving."
     },
     {
         title: "Eveline",
@@ -289,18 +346,22 @@ var stories = [
         title: "The Fly",
         author: "Katherine Mansfield",
         dateWritten: 1922,
-        genre : ["sad","shocking"],
+        genre : ["dark","shocking"],
         plot:"This short story deals with some heavy themes, like death, truth and the horrors of war."
     },
     {
         title: "The Diamond As Big as the Ritz",
         author: "F. Scott Fitzgerald",
-        dateWritten: 1922
+        dateWritten: 1922,
+        plot : "Included in a short story collection and published on its own, this story documents the lengths one family will go to in order to keep their secret source of wealth a hidden.",
+        genre:["drama"]
     },
     {
         title: "The Most Dangerous Game",
         author: "Richard Connell",
-        dateWritten: 1924
+        dateWritten: 1924,
+        plot : "Adapted into a movie starring Ice-T, the literary version of this story is perhaps more serious and compelling than the pop culture it has inspired.",
+        genre : ["adventure","famous"]
     },
     {
         title: "The Story of My Dovecot",
@@ -346,7 +407,7 @@ var stories = [
         title: "The Use of Force",
         author: "William Carlos Williams",
         dateWritten: 1938,
-        genre:["sad","shocking"],
+        genre:["dark","shocking"],
         plot : "This story asks readers to consider whether or not it is ethical to hurt someone for their own good and, more importantly, whether one should be ashamed to enjoy the experience."
     },
     {
@@ -357,7 +418,9 @@ var stories = [
     {
         title: "A Very Old Man with Enormous Wings",
         author: "Gabriel Garcia Marquez",
-        dateWritten: 1955
+        dateWritten: 1955,
+        plot : "This magical realist story focuses on a couple who have found what they believe to be an angel in their front yard– for better or for worse.",
+        genre:["famous","fantasy"]
     },
     {
         title: "Sonny's Blues",
@@ -373,7 +436,7 @@ var stories = [
         title: "Where Are You Going, Where Have You Been?",
         author: "Joyce Carol Oates",
         dateWritten: 1966,
-        genre:["sad","shocking"],
+        genre:["dark","shocking"],
         plot:"This short story was inspired by the murders committed in Tucson, Arizona, by serial killer Charles Schmid."
     },
     {
@@ -389,7 +452,9 @@ var stories = [
     {
         title: "The Nose",
         author: "Nikolai Gogol",
-        dateWritten: 1835
+        dateWritten: 1835,
+        plot : "This short satirical work tells the tale of a St. Petersburg official whose nose decides it’s had enough and leaves his face to start a life of its own.",
+        genre:["comedy","dark"]
     },
     {
         title: "The Eclipse",
@@ -437,9 +502,18 @@ var stories = [
         dateWritten: 1883
     },
     {
+        title : "The South", 
+        author : "Jorge Luis Borges", 
+        plot : "Considered by Borges to be one of his best short stories, this story centers on a man who is on his way home after a near death experience.",
+        genre:["adventure","famous"],
+        dateWritten: 1953
+    },
+    {
         title: "The Looking Glass",
         author: "Anton Chekhov",
-        dateWritten: 1885
+        dateWritten: 1885,
+        plot : "A marriage-obsessed young woman begins to see her future life being played out in her looking glass in this short tale.",
+        genre:["fantasy"]
     },
     {
         title: "The Private History of a Campaign That Failed",
@@ -459,7 +533,9 @@ var stories = [
     {
         title: "The Nightingale and the Rose",
         author: "Oscar Wilde",
-        dateWritten: 1888
+        dateWritten: 1888,
+        plot : "This story uses the form of a fairy tale to look at love, sacrifice and relationships.",
+        genre:["fantasy","famous"]
     },
     {
         title: "The Man Who Would Be King",
@@ -689,7 +765,9 @@ var stories = [
     {
         title: "A Sound of Thunder",
         author: "Ray Bradbury",
-        dateWritten: 1952
+        dateWritten: 1952,
+        plot : "This work is the most re-published sci-fi short story of all time, documenting with great aplomb the devastating consequences of the 'butterfly effect.'",
+        genre: ["scifi","famous"]
     },
     {
         title: "A Mother's Tale",
