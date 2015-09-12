@@ -1,6 +1,3 @@
-
-
-
 var stories = [
     {
         title: "The Last Question",
@@ -14,7 +11,7 @@ var stories = [
         title: "The Celebrated Jumping Frog of Calaveras County",
         author: "Mark Twain",
         dateWritten: 1865,
-        genre: ["famous"],
+        genre: ["famous","colorful"],
         link:"http://twain.lib.virginia.edu/projects/price/frog.htm",
         plot: "This colorful tale about a man and his famous jumping frog earned Twain fame and acclaim and is well worth a read."
     },
@@ -113,44 +110,41 @@ var stories = [
         plot:"Exploring themes like death, art, isolation and personal failure, this work is one of Kafka’s best and, sadly, most autobiographical."
     },
     {
-        title: "Young Goodman Brown",
-        author: "Nathaniel Hawthorne",
-        dateWritten: 1835,
-        link:"http://web.ics.purdue.edu/~rebeccal/lit/238f11/pdfs/YoungGoodmanBrown.pdf",
-        genre:[],
-        plot:""
-    },
-    {
         title: "Signs and Symbols",
-        author: "Nathaniel Hawthorne",
-        dateWritten: 1835,
+        author: "Vladimir Nabokov",
+        dateWritten: 1948,
         genre:["dark","shocking"],
+        link:"http://www.newyorker.com/magazine/1948/05/15/symbols-and-signs",
         plot:"First published in The New Yorker, this short story tells the sad tale of an elderly couple and their mentally ill son."        
     },
     {
         title: "The Fall of the House of Usher",
         author: "Edgar Allan Poe",
         dateWritten: 1839,
+        link:"http://www.ibiblio.org/ebooks/Poe/Usher.pdf",
         plot : "This classic tale of gothic horror will have you hanging on to every last detail.",
         genre:["famous","horror","dark"]
     },
     {
         title: "The Tell-Tale Heart",
         author: "Edgar Allan Poe",
+        link:"http://xroads.virginia.edu/~hyper/POE/telltale.html",
         dateWritten: 1843,
-        plot : "There are few out there who haven’t read or at least heard of this classic tale. Over a few short pages, Poe builds the suspense as a murderer begins to feel the guilt of his crime."
+        plot : "There are few out there who haven’t read or at least heard of this classic tale. Over a few short pages, Poe builds the suspense as a murderer begins to feel the guilt of his crime.",
         genre : ["famous","horror","dark"]
     },
     {
         title: "An Occurrence at Owl Creek Bridge",
         author: "Ambrose Bierce",
         dateWritten: 1890,
+        link:"http://compositionawebb.pbworks.com/f/owl.pdf",
         plot : "Made into a Twilight Zone episode, this classic short story is set during the Civil War, where a man is about to hang for being a Confederate sympathizer.",
         genre:["twist","adventure","drama"]
     },
     {
         title: "The Yellow Wallpaper",
         author: "Charlotte Perkins Gilman",
+        link:"https://www.nlm.nih.gov/literatureofprescription/exhibitionAssets/digitalDocs/The-Yellow-Wall-Paper.pdf",
         dateWritten: 1892,
         genre:["dark","shocking"],
         plot:"An early work of feminist literature, this story follows a young woman as she descends into psychosis, becoming obsessed with the pattern and color of the wallpaper."
@@ -159,12 +153,14 @@ var stories = [
         title : "The Secret Life of Walter Mitty",
         dateWritten : 1939, 
         author : "James Thurber", 
+        link:"http://www.fraumuenster.ch/wp-content/uploads/2013/09/The-Secret-Life-of-Walter-Mitty.pdf",
         plot : "The most famous of Thurber’s stories, inspiring the term 'Mittyesque', focuses on a man who is bored with his mundane life and escapes through a series of grand, heroic fantasies inspired by his surroundings.",
         genre : ["famous","fantasy"]
     },
     {
         title: "To Build a Fire",
         author: "Jack London",
+        link:"http://americanenglish.state.gov/files/ae/resource_files/to-build-a-fire.pdf",
         dateWritten: 1908,
         plot : "Known for his epic tales about man in nature, this short story doesn’t disappoint as a man and dog are pitted against the wilderness in a battle for survival.",
         genre:["adventure","famous"]
@@ -172,35 +168,47 @@ var stories = [
     {
         title: "The Dead",
         author: "James Joyce",
-        dateWritten: 1914
+        link:"http://www.darlington.k12.sc.us/common/pages/DisplayFile.aspx?itemId=22079888",
+        plot: "By general consensus, this is the greatest of all the stories in Dubliners — the longest, richest, and most emotionally affecting — and the story more than any other that points toward Joyce's career as one of the English language's greatest novelists ever.",
+        dateWritten: 1914,
+        genre:["drama","famous"]
     },
     {
         title: "In the Penal Colony",
         author: "Franz Kafka",
+        link:"https://manwithoutqualities.files.wordpress.com/2011/09/in-the-penal-colony.pdf",
         dateWritten: 1919,
-        genre:["dark","shocking"],
+        genre:["dark","shocking","horror"],
         plot:"An elaborate torture and execution device that carves a sentence into a prisoner’s skin before death is at the center of this famous short story by Kafka."
     },
     {
         title: "The Garden Party",
         author: "Katherine Mansfield",
-        dateWritten: 1922
+        plot:"The Sheridan family is preparing to host a garden party. Laura is supposed to be in charge but has trouble with the workers who appear to know better...",
+        genre:["drama"]
+        dateWritten: 1922,
+        link:"http://www.katherinemansfieldsociety.org/assets/KM-Stories/THE-GARDEN-PARTY1921.pdf"
     },
     {
         title: "Hills Like White Elephants",
         author: "Ernest Hemingway",
-        dateWritten: 1927
+        dateWritten: 1927,
+        plot:"The story focuses on a conversation between an American man and a girl at a Spanish train station while waiting for a train to Madrid.",
+        link:"http://www.massey.ac.nz/massey/fms/Colleges/College%20of%20Humanities%20and%20Social%20Sciences/EMS/Readings/139.105/Additional/Hills%20Like%20White%20Elephants%20-%20Ernest%20Hemingway.pdf",
+        genre:["dark","drama"]
     },
     {
         title: "Harrison Bergeron",
         author: "Kurt Vonnegut, Jr.",
         dateWritten: 1961,
         plot : "In this satirical, dystopian story society has finally achieved equality by handicapping the most intelligent, athletic or beautiful members of society.",
-        genre:["comedy","satire"]
+        genre:["comedy","satire"],
+        link:"http://www.tnellen.com/westside/harrison.pdf"
     },
     {
         title: "The Legend of Sleepy Hollow",
         author: "Washington Irving",
+        link:"http://www.ibiblio.org/ebooks/Irving/Sleepy/Irving_Sleepy.pdf",
         dateWritten: 1820,
         genre: ["famous","horror"],
         plot:"From the listless repose of the place, and the peculiar character of its inhabitants, who are descendants from the original Dutch settlers, this sequestered glen has long been known by name of Sleepy Hollow ... A drowsy, dreamy influence seems to hang over the land, and to pervade the very atmosphere."
@@ -208,50 +216,76 @@ var stories = [
     {
         title: "The Minister's Black Veil",
         author: "Nathaniel Hawthorne",
-        dateWritten: 1836
+        dateWritten: 1836,
+        plot:"One day, Parson Hooper, the reverend of Milford, arrives at mass on the Sabbath with a black veil covering his eyes. The townspeople immediately begin to gossip; some say that he has gone mad, while others believe he is covering a shameful sin.",
+        genre:["drama"],
+        link:"http://www.eldritchpress.org/nh/mbv.html"
     },
     {
         title: "The Masque of the Red Death",
         author: "Edgar Allan Poe",
         dateWritten: 1842,
+        genre:["dark","drama","shocking"],
+        plot:"The story follows Prince Prospero's attempts to avoid a dangerous plague known as the Red Death by hiding in his abbey.",
+        link:"http://www.ibiblio.org/ebooks/Poe/Red_Death.pdf"
 
     },
     {
         title: "The Purloined Letter",
         author: "Edgar Allan Poe",
-        dateWritten: 1844
+        dateWritten: 1844,
+        genre:["adventure","cerebral"],
+        link:"http://xroads.virginia.edu/~hyper/POE/purloine.html",
+        plot:"The unnamed narrator is discussing with the famous Parisian amateur detective C. Auguste Dupin some of his most celebrated cases when they are joined by the Prefect of the Police, a man known as G—."
     },
     {
         title: "Bartleby the Scrivener",
         author: "Herman Melville",
-        dateWritten: 1853
+        dateWritten: 1853,
+        plot:"The narrator, an elderly, unnamed Manhattan lawyer with a comfortable business, relates the story of the strangest man he has known: Bartleby.",
+        link:"http://moglen.law.columbia.edu/LCS/bartleby.pdf",
+        genre:["drama"]
+
     },
     {
         title: "The Luck of Roaring Camp",
         author: "Bret Harte",
-        dateWritten: 1868
+        dateWritten: 1868,
+        plot:"The story is about the birth of a baby boy in a 19th-century gold prospecting camp.",
+        genre:["drama","adventure","dark"],
+        link: "http://www.bartleby.com/310/4/1.html"
     },
     {
         title: "The Outcasts of Poker Flat",
         author: "Bret Harte",
-        dateWritten: 1869
+        dateWritten: 1869,
+        genre:["drama","adventure"],
+        plot:"The story takes place in a Californian community known as Poker Flat, near the town of La Porte. Poker Flat, some characters think, is on a downward slope.",
+        link:"http://swc2.hccs.edu/kindle/Harte_Bret_The_Outcasts_of_Poker_Flat.pdf"
     },
     {
         title: "Rikki-Tikki-Tavi",
         author: "Rudyard Kipling",
         dateWritten: 1894,
-        genre:["famous"],
+        genre:["famous","adventure","colorful","fantasy"],
+        link:"http://www.cs.cmu.edu/~mongoose/rtt.html",
         plot:"The story follows the experiences of a young mongoose named Rikki-Tikki-Tavi (for his chattering vocalizations) after he is adopted into a British family residing in India, as a pet and as protection against venomous cobra snakes."
     },
     {
         title: "Regret",
+        plot:"This short story is about Mamzelle Aurelle who is still single at the age of 50. She has never been married; in fact, she has never been in love.",
         author: "Kate Chopin",
-        dateWritten: 1894
+        dateWritten: 1894,
+        genre:["drama"],
+        link:"http://www.katechopin.org/pdfs/Kate%20Chopin,%20Regret.pdf"
     },
     {
         title: "The Story of An Hour",
         author: "Kate Chopin",
-        dateWritten: 1894
+        dateWritten: 1894,
+        plot:"The short story describes the series of emotions Louise Mallard endures after hearing of the death of her husband Brently",
+        genre:["twist","drama","shocking"],
+        link:"http://www.vcu.edu/engweb/webtexts/hour/"
     },
     {
         title: "The Lady With The Dog",

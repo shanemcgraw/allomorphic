@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<title>Short Story Genres</title>
+	<script src="stories.js" type="text/javascript"></script>
+
+</head>
+
+<body>
+	<h1>Short Story Genres</h1>
+	<ul id="list"></ul>
+
+
+	<script type="text/javascript">
+
+		var genres = [];
+
+		stories.forEach(getGenres);
+
+		function getGenres(genreArray){
+			//console.log(genreArray);
+			if(genreArray["genre"]){
+				genreArray["genre"].forEach(function(genre){
+					if(genres.indexOf(genre) === -1){
+						genres.push(genre);
+					}
+			});
+			}
+		}
+
+		genres.forEach(function(i){
+			document.getElementById("list").innerHTML += "<li>" + i + "</li>";
+		})
+	</script>
+
+</body>
+</html>
