@@ -4,84 +4,82 @@
 		<title>Launchsite</title>
 		<style type="text/css">
 			body{
-			background-color: 406891
-
+			background-color: 406891;
 			}
 			h1{
-				margin: 100 10 10 200
+				margin: 100 10 10 200;
 			}
 			table{
 				border: solid 1px black;
+			}
+			body, table{
+				text-align: center;
 			}
 		</style>
 	</head>
 
 <body>
-		<h1>Allomorphic</h1>
-		<h5>
-			 <a href="https://en.wikipedia.org/wiki/Allomorph" target="blank">Allomorph<a/>: a unit of meaning that varies in sound without changing meaning
-		</h5>
+	<h1>Allomorphic</h1>
+	<h5>
+		 <a href="https://en.wikipedia.org/wiki/Allomorph" target="blank">Allomorph<a/>: a unit of meaning that varies in sound without changing meaning
+	</h5>
 
-
-		<!--<script src="../getMovieData.js"></script>-->
-		<div class="requestData">
-			<h2>
-				Enter three of your favorite films
-			</h2>
-
-			<h5>
-				For best results, search for their full names (e.g. "The Lord of the Rings: The Return of the King")
-			</h5>
-
-			<div id="feedback">
-			</div>
-
-			<form id="getMovieData">
-
-				<input type="text" id="movie" value="Up">
-				<input type="text" id="year" value="2009">
-				<input type="button" id="adder" value="Add">
-					
-			</form>
-
-		</div>
-
-		<h2 id = "submission">
+	<div class="requestData">
+		<h2>
+			Enter three of your favorite films
 		</h2>
 
-		<p>
-			<ul id="movieData">
-			</ul>
-		</p>
-		
+		<h5>
+			For best results, search for their full names (e.g. "The Lord of the Rings: The Return of the King")
+		</h5>
 
-		<div id="filmTable">
+		<div id="feedback">
+		</div>
 
+		<form id="getMovieData">
+
+			<input type="text" id="movie" value="Up">
+			<input type="text" id="year" value="2009">
+			<input type="button" id="adder" value="Add">
+				
+		</form>
+
+	</div>
+
+	<h2 id = "submission">
+	</h2>
+
+	<p>
+		<ul id="movieData">
+		</ul>
+	</p>
+	
+
+	<div id="filmTable">
 		<script type="text/javascript">
 
 			//Snuffing out the table before it loads in the DOM and ruins the suprise!
 			//We want to hide the film table until it's loaded via AJAX
-
 			document.getElementById("filmTable").style.visibility = "hidden";
-
 		</script>
 
-			<table>
-				<tr>
-					<th>Title</th>
-					<th>Year</th>
-					<th>Poster</th>
-				</tr>
-				<td id="filmTitle"></td>
-				<td id="filmYear"></td>
-				<td id="filmPoster"></td>
-				<!--<td id="cancel"></td>-->
+		<table>
+			<tr>
+				<th>Title</th>
+				<th>Year</th>
+				<th>Poster</th>
+			</tr>
+			<td id="filmTitle"></td>
+			<td id="filmYear"></td>
+			<td id="filmPoster"></td>
 		</table>
-		</div>	
+	</div>	
 
+	<script type="text/javascript" src="storySelect.js"></script>
 	<script type="text/javascript" src="data.js"></script>
 	<script type="text/javascript" src="warp.js"></script>
 	<script type="text/javascript" src="matrix.js"></script>
+	<script type="text/javascript" src="assignAge.js"></script>
 
 	<script type="text/javascript">
 
@@ -93,16 +91,15 @@
 		var mData = get("movieData");
 		var tableData = get("filmTable");
 
+		//these are just a couple of helpful variables to make sure the user doesn't accidentally input more than 3 movies or generates another story
 		var movieCounter = 1;
+		var genStory = true;
+
 
 		elForm.addEventListener('click', function(e){
 			postMovie(e);
 		});
-/*
-		tableData.addEventListener('click', function(e){
-			detectCancel(e);
-		})
-*/
+
 
 	</script>
 </body>

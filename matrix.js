@@ -27,9 +27,6 @@ function removeEl(elId){
 }
 
 
-//document.getElementById('foobar').parentNode
-    //.removeChild(document.getElementById('foobar'));
-
 
 function domMan(elType, text, position, callback){
 	var newEl = create(elType);
@@ -47,19 +44,10 @@ function updateFilmTable(filmResponse){
 	get("filmTable").style.visibility = "visible";
 
 
-	var cancelElements = classer("cancel");
-	console.log(cancelElements);
-	for(var x=0;x<cancelElements.length;x++){
-		cancelElements[x].id="cancelMovie"+(x+1).toString();
-	}
 
-
-	//Changing the poster size in the film response to a smaller size
+	//Getting the poster link to display...
 	var posterLink = filmResponse.Poster;
-	if(posterLink !== undefined){
-		var posterParsed = posterLink.split("SX300.jpg");
-		filmResponse["Poster"] = posterParsed[0] + "SX200.jpg";
-	}
+
 	//Making sure the film came through
 	if(filmResponse.Title !== undefined){
 
@@ -73,15 +61,6 @@ function updateFilmTable(filmResponse){
 			get("filmPoster").childNodes[number].innerHTML = makeImage(filmResponse.Poster);
 
 		});
-/*
-		domMan("tr", tNode(""), get('cancel'), function(){
-			//this same callback function adds an image for the cancel 
-			var number = get("cancel").childNodes.length - 1;
-			var idNumber = (movieCounter - 1).toString();
-			get("cancel").childNodes[number].innerHTML = makeImage('cancel.png','mainecoon.jpg','cancel');
-		});
-*/
-
 
 		if(get("feedback").childNodes[1]){
 			removeEl("noFind");
@@ -95,31 +74,6 @@ function updateFilmTable(filmResponse){
 		});
 	}
 }
-/*
-//this function goes all "Agent Smith" on the film that the user identified to eliminate. I'm speaking, of course, of the first Matrix- not its unfortunate and bumbling sequels.
-function removeFilm(filmRow){
-	//making sure that we don't accidentally update the button to "Generate" before there are 3 movies in the table
-	movieCounter--;
-
-	var el = get("filmTable");
-
-	//based on the DOM elements in the filmTable section, every other childNode contains the information that we need to delete. This for loop takes care of it! 
-
-	for(var i=0;i<7;i+=2){
-		var parent = el.childNodes[3].childNodes[1].childNodes[2].childNodes[i];
-		var child = el.childNodes[3].childNodes[1].childNodes[2].childNodes[i].childNodes[filmRow-1];
-		parent.removeChild(child);
-	}
-
-}
-
-function detectCancel(e){
-	var target = e.target;
-	console.log(target.id);
-	var filmToDelete = parseInt(target.id.split("cancelMovie").join(""));
-	removeFilm(filmToDelete);
-}
-*/
 
 
 function postMovie(e){
@@ -128,11 +82,13 @@ function postMovie(e){
 	var target = e.target;
 	
 	
-	if(elButton.id === "generator"){
+	if(target.id === "generator" && genStory){
 		//Call getStory
+		explode();
+		genStory = false;
 	}
 	
-	else if(target.type === "button"){
+	else if(target.id === "adder"){
 
 		var yearInt = parseInt(elYear.value);
 
