@@ -2,7 +2,7 @@
 
 //this function will filter down stories that contain a specific genre
 //and return the filtered array of story objects
-
+/*
     
 function filterStory(genre){
 	var getGenre = function(story){
@@ -44,3 +44,5 @@ function getStory(genreList){
 												return a.score - b.score;
 											});
 }
+
+*/

@@ -61,9 +61,6 @@ function updateFilmTable(filmResponse){
 		get("poster"+filmNumber).parentNode.class = "films";
 
 
-		domMan("figcaption", tNode(filmResponse.Title), get("film"+filmNumber));
-		//domMan("figcaption", tNode(filmResponse.Plot), get("film"+filmNumber));
-
 
 		if(get("feedback").childNodes[1]){
 			removeEl("noFind");
@@ -146,3 +143,26 @@ function postMovie(e){
 		}
 	}
 };
+
+
+//In this function, we'll take the target
+function getFilmInfo(e){
+
+	var target = e.target;
+
+	if(e.target.nodeName === "IMG"){
+		var movieNumber = parseInt(target.id.split("poster")[1]) - 1;
+		e.target.style.class = "highlight";
+		console.log(e.target.style);
+		get("movieFacts").innerHTML = "<h2>\""+filmData[movieNumber]["Title"] + "\"</h2><p id=plot>"+filmData[movieNumber]["Plot"]+"</p>";
+	}
+	else{
+		get("movieFacts").innerHTML = "";
+	}
+
+}
+
+
+
+
+

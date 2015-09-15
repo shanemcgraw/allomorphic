@@ -18,92 +18,101 @@
 			figure{
 				display: inline-block;
 			}
+			.highlight{
+				border: solid 2px black;
+			}
 			
 		</style>
 	</head>
 
-<body>
-	<h1>Allomorphic</h1>
-	<h5>
-		 <a href="https://en.wikipedia.org/wiki/Allomorph" target="blank">Allomorph<a/>: a unit of meaning that varies in sound without changing meaning
-	</h5>
+	<body>
+		<div id="Content">
+			<h1>Allomorphic</h1>
+			<h5>
+				 <a href="https://en.wikipedia.org/wiki/Allomorph" target="blank">Allomorph<a/>: a unit of meaning that varies in sound without changing meaning
+			</h5>
 
-	<div class="requestData">
-		<h2>
-			Enter three of your favorite films
-		</h2>
+			<div class="requestData">
+				<h2>
+					Enter three of your favorite films
+				</h2>
 
-		<h5>
-			For best results, search for their full names (e.g. "The Lord of the Rings: The Return of the King")
-		</h5>
+				<h5>
+					For best results, search for their full names (e.g. "The Lord of the Rings: The Return of the King")
+				</h5>
 
-		<div id="feedback">
-		</div>
+				<div id="feedback">
+				</div>
 
-		<form id="getMovieData">
+				<form id="getMovieData">
 
-			<input type="text" id="movie" value="Up">
-			<input type="text" id="year" value="2009">
-			<input type="button" id="adder" value="Add">
+					<input type="text" id="movie" value="Up">
+					<input type="text" id="year" value="2009">
+					<input type="button" id="adder" value="Add">
+						
+				</form>
+
+			</div>
+
+			<div id = "output">
+
+				<script type="text/javascript">
+					//Making sure we don't give away the suprise before the proper time!
+					document.getElementById('output').style.visibility = "hidden";
+
+				</script>
+				<h1>
+					Your Story Selection:
+				</h1>
+				<h2 id="selection"></h2>
+			</div>
+
+
+			<div id="filmTable">
+				<div id="posterSection">
+				</div>
+				<div id="movieFacts">
+				</div>
+			</div>
+
+			<script type="text/javascript" src="stories.js"></script>
+			<script type="text/javascript" src="storySelect.js"></script>
+			<script type="text/javascript" src="data.js"></script>
+			<script type="text/javascript" src="warp.js"></script>
+			<script type="text/javascript" src="matrix.js"></script>
+			<script type="text/javascript" src="assignAge.js"></script>
+
+			<script type="text/javascript">
+
+
+				var elButton = get("adder");
+				var elForm = get("getMovieData");
+				var elMovie = get("movie");
+				var elYear = get("year");
+				var mData = get("movieData");
+				var tableData = get("filmTable");
+				var content = get("Content");
+
+				//these are just a couple of helpful variables to make sure the user doesn't accidentally input more than 3 movies or generates an extra story
+				var movieCounter = 1;
+				var genStory = true;
+
+
+				elForm.addEventListener('click', function(e){
+																					 postMovie(e);
+																				 }, false);
+
+				content.addEventListener('click', function(e){
+																						getFilmInfo(e);
+																					}, false);
+
+
+
+
 				
-		</form>
 
-	</div>
 
-	<h2 id = "submission">
-	</h2>
-
-	<p>
-		<ul id="movieData">
-		</ul>
-	</p>
-	
-
-	<div id="filmTable">
-		<script type="text/javascript">
-
-		</script>
-		<div id="posterSection">
-			
-
+			</script>
 		</div>
-
-	</div>
-	<div id = "output">
-		<h1>
-			Your Story Selection:
-		</h1>
-		<h2 id="selection"></h2>
-	</div>
-
-	<script type="text/javascript" src="storySelect.js"></script>
-	<script type="text/javascript" src="data.js"></script>
-	<script type="text/javascript" src="warp.js"></script>
-	<script type="text/javascript" src="matrix.js"></script>
-	<script type="text/javascript" src="assignAge.js"></script>
-
-	<script type="text/javascript">
-
-
-		var elButton = get("adder");
-		var elForm = get("getMovieData");
-		var elMovie = get("movie");
-		var elYear = get("year");
-		var mData = get("movieData");
-		var tableData = get("filmTable");
-
-		//these are just a couple of helpful variables to make sure the user doesn't accidentally input more than 3 movies or generates another story
-		var movieCounter = 1;
-		var genStory = true;
-
-
-		elForm.addEventListener('click', function(e){
-			postMovie(e);
-		});
-
-		
-
-
-	</script>
-</body>
+	</body>
 </html>
