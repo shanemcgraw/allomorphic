@@ -18,9 +18,10 @@ function tNode(text) {
 	return document.createTextNode(text);
 }
 
-function makeImage(imgLink, classID){
-	return '<img src='+imgLink+' alt="Poster not found" onError="this.onerror=null; this.src=\'fallback.jpg\';" />';
+function makeImage(imgLink, imageId){
+	return '<img '+'id= '+imageId+' src='+imgLink+' alt="Poster not found" onError="this.onerror=null; this.src=\'fallback.jpg\';" />';
 }
+
 
 function removeEl(elId){
 	get(elID).parentNode.removeChild(get(elID));
@@ -40,27 +41,29 @@ function domMan(elType, text, position, callback){
 }
 
 function updateFilmTable(filmResponse){
-	//And here we have the table coming out of the shadows (if it's the first movie loading in the list, that is)
-	get("filmTable").style.visibility = "visible";
-
-
 
 	//Getting the poster link to display...
 	var posterLink = filmResponse.Poster;
 
 	//Making sure the film came through
 	if(filmResponse.Title !== undefined){
+		//we'll define a helpful variable to reference the move number we're working with
+		var filmNumber = (movieCounter-1).toString();
 
-		domMan("tr", tNode(filmResponse.Title), get('filmTitle'));
-		domMan("tr", tNode(filmResponse.Year), get('filmYear'));
-		domMan("tr", tNode(""), get('filmPoster'), function(){
-			
+		//This will add in the poster to our site. Pretty!
+		domMan("figure", tNode(""), get('posterSection'), function(){
 			//this callback function updates what would normally be a simple text node into an image of the film poster
-			var number = get("filmPoster").childNodes.length - 1;
-
-			get("filmPoster").childNodes[number].innerHTML = makeImage(filmResponse.Poster);
-
+			var number = get("posterSection").childNodes.length - 1;
+			get("posterSection").childNodes[number].innerHTML = makeImage(filmResponse.Poster, "poster"+filmNumber);
 		});
+
+		get("poster"+filmNumber).parentNode.id = "film"+filmNumber;
+		get("poster"+filmNumber).parentNode.class = "films";
+
+
+		domMan("figcaption", tNode(filmResponse.Title), get("film"+filmNumber));
+		//domMan("figcaption", tNode(filmResponse.Plot), get("film"+filmNumber));
+
 
 		if(get("feedback").childNodes[1]){
 			removeEl("noFind");

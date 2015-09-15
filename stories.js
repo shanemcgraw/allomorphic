@@ -587,5 +587,13 @@ var stories = [{ title: 'The Last Question',
     plot: 'A semi-barbaric king devises a semi-barabaric (but entirely fair) method of criminal trial involving two doors, a beautiful lady and a very hungry tiger.',
     link: 'http://www.eastoftheweb.com/short-stories/UBooks/LadyTige.shtml',
     genre: [ 'comedy' ],
-    score: 0 } 
+    score: 0 },
+  { title:"The Adventure of the Speckled Band",
+    author:"Sir Arthur Conan Doyle",
+    year:1892,
+    plot:"Sherlock Holmes and Dr. Watson rise unusually early one morning to meet Helen Stoner, a young woman who fears that her life is being threatened by her stepfather, Sir Grimesby Roylott, a doctor who practiced in India and who was married to Helen’s mother there...",
+    genre:["adventure","cerebral","shocking"],
+    link:"https://sherlock-holm.es/stories/pdf/a4/1-sided/spec.pdf",
+    score: 0 },
+
     ];

@@ -785,8 +785,8 @@ function getStory(genreList){
 	//selection as the first element in the returned array. 
 
 	return stories.sort(function(a,b){
-												return a.score - b.score;
-											});
+						  return b.score - a.score;
+						});
 }
 
 

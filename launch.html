@@ -15,6 +15,10 @@
 			body, table{
 				text-align: center;
 			}
+			figure{
+				display: inline-block;
+			}
+			
 		</style>
 	</head>
 
@@ -58,23 +62,13 @@
 	<div id="filmTable">
 		<script type="text/javascript">
 
-			//Snuffing out the table before it loads in the DOM and ruins the suprise!
-			//We want to hide the film table until it's loaded via AJAX
-			document.getElementById("filmTable").style.visibility = "hidden";
 		</script>
+		<div id="posterSection">
+			
 
-		<table>
-			<tr>
-				<th>Title</th>
-				<th>Year</th>
-				<th>Poster</th>
-			</tr>
-			<td id="filmTitle"></td>
-			<td id="filmYear"></td>
-			<td id="filmPoster"></td>
-		</table>
-	</div>	
+		</div>
 
+	</div>
 	<div id = "output">
 		<h1>
 			Your Story Selection:
