@@ -1,4 +1,4 @@
-var genres = [], rankedGenres = {};
+var genres = [], rankedGenres = {}, rankedList;
 
 var storyMasterList = ['scifi',
   'adventure',
@@ -16,49 +16,51 @@ var storyMasterList = ['scifi',
   'romance'];
 
 
-//Here's an IIFE with more explosion than the CGI in a Michael Bay film
+//Here's our kickstarter function (the one that gets everything going) with more explosion than the CGI in a Michael Bay film
 
 function explode(){
-	return (function getGenreList(){
 
-        //Release the Kraken! AKA the "output" div tag
-        get('output').style.visibility = '';
+  //Release the Kraken! AKA the "output" div tag
+  get('output').style.visibility = '';
 
-		//Here's where things get a bit complex. In the "filmData" array, we have 3 elements in each array that contain one or many genres per movie, in a String type. 
-		//So, we just need to have a forEach get each string-list of genres, split it with the native method on strings to convert it to its own array, and then have another forEach push each of the specific genres to the "genres" array that we defined above. How hard could it be?
-		filmData.forEach(function(movie){
-											movie["Genre"].split(", ").forEach(function(specificGenre){
-																													findGenre(specificGenre);
-																												 });
-										 });
-		//	#boomgoesthedynamite
-
-		//Cool. Now, we need to set up an object called "rankedGenres", that takes 
-		// a count of the genres in the list and ranks them.
-
-		//Since undefined + 1 = NaN, we need to instate each genre as 0 before counting them up.
-		//A forEach will do the trick! 
-		genres.forEach(function(genre){
-									 	 rankedGenres[genre] = 0;
+	//Here's where things get a bit complex. In the "filmData" array, we have 3 elements in each array that contain one or many genres per movie, in a String type. 
+	//So, we just need to have a forEach get each string-list of genres, split it with the native method on strings to convert it to its own array, and then have another forEach push each of the specific genres to the "genres" array that we defined above. How hard could it be?
+	filmData.forEach(function(movie){
+										movie["Genre"].split(", ").forEach(function(specificGenre){
+																												findGenre(specificGenre);
+																											 });
 									 });
 
-		//And now we count 'em up!
-		genres.forEach(function(genre){
-									 	 rankedGenres[genre]++;
-									 });
+	//	#boomgoesthedynamite
 
-		var onDeck = sortRanked(rankedGenres);
+	//Cool. Now, we need to set up an object called "rankedGenres", that takes 
+	// a count of the genres in the list and ranks them.
 
-		var finalMasterGenreList = cleanUp(onDeck);
-        console.log(finalMasterGenreList);
-		var storyOutput = getStory(finalMasterGenreList);
-		var selection = get("selection");
+	//Since undefined + 1 = NaN, we need to create each genre as 0 before counting them up.
+	//A forEach will do the trick! 
+	genres.forEach(function(genre){
+								 	 rankedGenres[genre] = 0;
+								 });
 
-		selection.innerHTML = "<a target= \"_blank\" href = \"" + storyOutput[0].link + "\">\""+storyOutput[0].title + "\"</a><br><br>" + storyOutput[0].plot;
+	//And now we count 'em up!
+	genres.forEach(function(genre){
+								 	 rankedGenres[genre]++;
+								 });
 
+	var onDeck = sortRanked(rankedGenres);
 
-	})();
+	var finalMasterGenreList = cleanUp(onDeck);
+  //console.log(finalMasterGenreList);
+	var storyOutput = getStory(finalMasterGenreList);
+
+	var boundStoryArray = postStory(storyOutput);
+
+	rankedList = boundStoryArray;
+
+	boundStoryArray(shortStory);
+
 }
+
 
 function sortRanked(object){
 	//this function will take in the rankedGenres object, and output an array 
@@ -187,6 +189,7 @@ function getStory(genreList){
 	//the first genre element in the array, we'll swap out the element with a new sub-
 	//array that contains both the genre, and the importanceScore (which is just the 
 	//length of the array minus the current index)
+
 	var newList = genreList.map(function(genre, index){
 																return [genre, genreList.length - index];
 															});
@@ -201,11 +204,27 @@ function getStory(genreList){
 	var sortedStoryArray = stories.sort(function(a,b){
     						 return b.score - a.score;
     					   });
+		rankedList = sortedStoryArray;
     return sortedStoryArray;
 }
 
+function postStory(storyArray){
+	return function(index){
+					 get("selection").innerHTML = "<a id=\"linkToStory\" target= \"_blank\" href = \"" + storyArray[index].link + "\">\""+storyArray[index].title + "\"</a>";
+					 
+					 var content = storyArray[index].plot;
+					 domMan("p",tNode(content),get("selection"))
+				 }
+}
 
+function butThatsAnotherStory(e){
+	var target = e.target;
 
-
-
+	if(target.id === "anotherStory"){
+		if(shortStory < stories.length - 1){
+			shortStory++;
+			rankedList(shortStory);
+		}
+	}
+}
 

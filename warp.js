@@ -7,7 +7,7 @@ var warpDrive = function(engage){
 	return function(destination){
 
 		//A helpful search gif that will display a rotating wheel, to suggest hard search work by our page!
-		get("feedback").innerHTML = "Searching<img src=\"loading.gif\">";
+		get("feedback").innerHTML = "<img src=\"loading.gif\">";
 		
 
 		var omdb = new XMLHttpRequest();
@@ -19,7 +19,6 @@ var warpDrive = function(engage){
 					var data = JSON.parse(omdb.responseText);
 					engage(data);
 					filmData.push(data);
-					console.log(filmData);
 				}
 				else{
 					console.log(omdb.statusText);

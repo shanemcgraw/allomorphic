@@ -28,14 +28,14 @@ function removeEl(elId){
 }
 
 
-
+//This is a function that will help us manipulate the DOM, while adding in a callback if we need some extra functionality
 function domMan(elType, text, position, callback){
 	var newEl = create(elType);
 	var textInfo = text;
 	newEl.appendChild(text);
 	position.appendChild(newEl);
 
-	if(callback){
+	if(callback !== undefined){
 		callback(newEl);
 	}
 }
@@ -83,7 +83,6 @@ function postMovie(e){
 	
 	
 	if(target.id === "generator" && genStory){
-		//Call getStory
 		explode();
 		genStory = false;
 	}
@@ -121,25 +120,25 @@ function postMovie(e){
 		
 		else if(elYear.value === "Year" || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890 || typeof parseInt(elYear.value) === "number"){
 
-			if(elMovie.value === "Movie" && elMovie.value){
+			if((elMovie.value === "Movie" || !elMovie.value) && !elYear.value){
 				//clear the feedback paragraph
 				get("feedback").innerHTML = "";
 				//update with error
 				domMan("p", tNode("Valid movie title and year required"), get("feedback"));
 			}
-			else{
+			else if(!elYear.value || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890){
 				//clear the feedback paragraph
 				get("feedback").innerHTML = "";
 				//update with error
 				domMan("p", tNode("Please enter valid year between 1890 and 2015"), get("feedback"));
 			}
-		}
-
-		else{
-			//clear the feedback paragraph
-			get("feedback").innerHTML = "";
-			//update with error
-			domMan("p", tNode("Movie title required"), get("feedback"));
+		
+			else{
+				//clear the feedback paragraph
+				get("feedback").innerHTML = "";
+				//update with error
+				domMan("p", tNode("Movie title required"), get("feedback"));
+			}
 		}
 	}
 };
@@ -156,8 +155,12 @@ function getFilmInfo(e){
 		console.log(e.target.style);
 		get("movieFacts").innerHTML = "<h2>\""+filmData[movieNumber]["Title"] + "\"</h2><p id=plot>"+filmData[movieNumber]["Plot"]+"</p>";
 	}
+	else if(target.id === "plot"){
+		return null;
+	}
 	else{
 		get("movieFacts").innerHTML = "";
+		console.log(target.parentElement);
 	}
 
 }
