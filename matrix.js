@@ -60,19 +60,16 @@ function updateFilmTable(filmResponse){
 		get("poster"+filmNumber).parentNode.id = "film"+filmNumber;
 		get("poster"+filmNumber).parentNode.class = "films";
 
-
-
-		if(get("feedback").childNodes[1]){
-			removeEl("noFind");
-		}
+		console.log(filmData);
 
 	}
 
-	else if(get("feedback").childNodes[1] === undefined){
+	/*else if(get("feedback").childNodes[1] === undefined){
 		domMan("p", tNode("Hmm. We weren't able to find that film in the database... is there another that you like?"), get("feedback"), function(){
-			get("feedback").childNodes[1].id = "noFind";
 		});
-	}
+		console.log(filmData);
+		filmData.shift();
+	}*/
 }
 
 
@@ -92,22 +89,23 @@ function postMovie(e){
 		var yearInt = parseInt(elYear.value);
 
 		if(elMovie.value !== "Movie" && elMovie.value && elYear.value !== "Year" && 2016 > yearInt && yearInt > 1890){
-			movieCounter++;
 
 			var movieTitle = elMovie.value;
 			var year = elYear.value;
+			movieCounter++;
+
 			
 			var urlToCall = urlBuild(titleSmoother(movieTitle), year);
 
 			//mrSulu on the bridge
 			mrSulu(urlToCall);
 
-			if(movieCounter < 4){
+			if(movieCounter < 3){
 				elYear.value = "1941";
 				elMovie.value = "The Maltese Falcon";
 			}
 
-			else if(movieCounter >= 4){
+			else if(movieCounter >= 3){
 				elMovie.value = '';
 				elYear.value = '';
 				elButton.type;
@@ -118,15 +116,16 @@ function postMovie(e){
 
 		//With the logic of Spock, we can determine if the fields filled out in the form are okay or not. Basically, this tests for acceptable data entered into the form field. If not, it will update the "feedback" tag right above the form, so the user can read it and act accordingly. Live long and prosper!
 		
-		else if(elYear.value === "Year" || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890 || typeof parseInt(elYear.value) === "number"){
+		else{
 
-			if((elMovie.value === "Movie" || !elMovie.value) && !elYear.value){
+			if((elMovie.value === "Movie" || !elMovie.value) && (isNaN(parseInt(elYear.value)) || typeof parseInt(elYear.value) !== "number" || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890)){
 				//clear the feedback paragraph
 				get("feedback").innerHTML = "";
 				//update with error
 				domMan("p", tNode("Valid movie title and year required"), get("feedback"));
 			}
-			else if(!elYear.value || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890){
+
+			else if(isNaN(parseInt(elYear.value)) || typeof parseInt(elYear.value) !== "number" || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890){
 				//clear the feedback paragraph
 				get("feedback").innerHTML = "";
 				//update with error
@@ -150,9 +149,8 @@ function getFilmInfo(e){
 	var target = e.target;
 
 	if(e.target.nodeName === "IMG"){
-		var movieNumber = parseInt(target.id.split("poster")[1]) - 1;
+		var movieNumber = parseInt(target.id.split("poster")[1]);
 		e.target.style.class = "highlight";
-		console.log(e.target.style);
 		get("movieFacts").innerHTML = "<h2>\""+filmData[movieNumber]["Title"] + "\"</h2><p id=plot>"+filmData[movieNumber]["Plot"]+"</p>";
 	}
 	else if(target.id === "plot"){
@@ -160,7 +158,7 @@ function getFilmInfo(e){
 	}
 	else{
 		get("movieFacts").innerHTML = "";
-		console.log(target.parentElement);
+		//console.log(target.parentElement);
 	}
 
 }

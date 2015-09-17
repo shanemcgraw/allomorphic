@@ -2,7 +2,7 @@
 
 var warpDrive = function(engage){
 
-	//To "get" ourselves a nice clean closure, we return a function with an added "destination" param, aka the URL of the request (since they'll be changing every movie)
+	//To get ourselves a nice clean closure, we return a function with an added "destination" param, aka the URL of the request (since they'll be changing every movie)
 	//Everything else is a basic XHR request
 	return function(destination){
 
@@ -14,11 +14,19 @@ var warpDrive = function(engage){
 
 		omdb.onload = function(){
 			if(omdb.readyState === 4){
-				if(omdb.status === 200){	
-					get("feedback").innerHTML = "";
+				if(omdb.status === 200){
 					var data = JSON.parse(omdb.responseText);
-					engage(data);
-					filmData.push(data);
+					if(data.Response === "True"){
+						get("feedback").innerHTML = "";
+						engage(data);
+						filmData.push(data);
+					}	
+					else{
+						console.log("NOHPE!");
+						get("feedback").innerHTML = "";
+						domMan("p", tNode("Hmm. We weren't able to find that film in the database... is there another that you like?"), get("feedback"), function(){
+						});
+					}
 				}
 				else{
 					console.log(omdb.statusText);
@@ -37,6 +45,7 @@ var warpDrive = function(engage){
 //As always, Mr. Sulu takes us there with speed
 
 function mrSulu(url){
+	console.log(movieCounter);
 	return warpDrive(updateFilmTable)(url);
 }
 

@@ -19,7 +19,6 @@ var storyMasterList = ['scifi',
 //Here's our kickstarter function (the one that gets everything going) with more explosion than the CGI in a Michael Bay film
 
 function explode(){
-
   //Release the Kraken! AKA the "output" div tag
   get('output').style.visibility = '';
 
@@ -50,7 +49,7 @@ function explode(){
 	var onDeck = sortRanked(rankedGenres);
 
 	var finalMasterGenreList = cleanUp(onDeck);
-  //console.log(finalMasterGenreList);
+  console.log(finalMasterGenreList);
 	var storyOutput = getStory(finalMasterGenreList);
 
 	var boundStoryArray = postStory(storyOutput);
@@ -121,6 +120,7 @@ var replacements = {
 	"Mystery" : genreChecker(["adventure","cerebral","twist","shocking","romance"]),
 	"Music" : genreChecker(["colorful","fantasy","comedy","romance"]),
 	"Musical" : genreChecker(["colorful","fantasy","comedy","romance"]),
+    "Sci-Fi" : genreChecker(["scifi"]),
 	"Thriller" : genreChecker(["adventure","cerebral","twist","shocking"]),
 	"Sport" : genreChecker(["adventure","shocking","famous"]),
 	"War" : genreChecker(["drama","adventure","famous"]),
@@ -130,7 +130,7 @@ var replacements = {
 //Next, we have the list of genres we don't have in array form, so we don't have to waste computing time doing a for-in loop or something like that,
 //looking for the specific genre in the "replacements" array.
 
-var lookoutGenres = ["Action","Animation","Family","Biography","History","Documentary","Crime","Comedy","Film-Noir","Mystery","Music","Musical","Thriller","Sport","War","Western"];
+var lookoutGenres = ["Sci-Fi","Action","Animation","Family","Biography","History","Documentary","Crime","Comedy","Film-Noir","Mystery","Music","Musical","Thriller","Sport","War","Western"];
 
 
 
@@ -176,7 +176,6 @@ function storyScore(genre, point){
 	return hits.forEach(function(story){
 								story.score += point;
 							 });
-
 }
 
 //["comedy", "satire", "drama", "romance", "colorful", "fantasy", "adventure"]

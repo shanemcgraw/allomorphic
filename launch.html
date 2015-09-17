@@ -2,37 +2,14 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<!--<link rel="stylesheet" type="text/css" href="style.css">-->
 		<title>Launchsite</title>
-		<style type="text/css">
-			body{
-			background-color: 406891;
-			}
-			h1{
-				margin: 100 10 10 200;
-			}
-			table{
-				border: solid 1px black;
-			}
-			body, table{
-				text-align: center;
-			}
-			figure{
-				display: inline-block;
-			}
-			.highlight{
-				border: solid 2px black;
-			}
-			
-		</style>
+
 	</head>
 
 	<body>
 		<div id="Content">
-			<h1>Allomorphic</h1>
-			<h5>
-				 <a href="https://en.wikipedia.org/wiki/Allomorph" target="blank">Allomorph<a/>: a unit of meaning that varies in sound without changing meaning
-			</h5>
-
+			<h1 id="hello">Allomorphic</h1>
 			<div class="requestData">
 				<h2>
 					Enter three of your favorite films
@@ -101,7 +78,7 @@
 
 
 				//these are just a couple of helpful variables to make sure the user doesn't accidentally input more than 3 movies or generates an extra story
-				var movieCounter = 1;
+				var movieCounter = 0;
 				var genStory = true;
 
 				//Here's a variable to keep track of the story displayed on the page
