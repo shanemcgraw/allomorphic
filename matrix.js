@@ -40,15 +40,17 @@ function domMan(elType, text, position, callback){
 	}
 }
 
+
+
 function updateFilmTable(filmResponse){
 
 	//Getting the poster link to display...
 	var posterLink = filmResponse.Poster;
 
 	//Making sure the film came through
-	if(filmResponse.Title !== undefined){
+	if(filmResponse.Response === "True"){
 		//we'll define a helpful variable to reference the move number we're working with
-		var filmNumber = (movieCounter-1).toString();
+		var filmNumber = (movieCounter).toString();
 
 		//This will add in the poster to our site. Pretty!
 		domMan("figure", tNode(""), get('posterSection'), function(){
@@ -59,8 +61,6 @@ function updateFilmTable(filmResponse){
 
 		get("poster"+filmNumber).parentNode.id = "film"+filmNumber;
 		get("poster"+filmNumber).parentNode.class = "films";
-
-		console.log(filmData);
 
 	}
 
@@ -81,7 +81,7 @@ function postMovie(e){
 	
 	if(target.id === "generator" && genStory){
 		explode();
-		genStory = false;
+		get("theButton").innerHTML = ""; // = false;
 	}
 	
 	else if(target.id === "adder"){
@@ -92,29 +92,20 @@ function postMovie(e){
 
 			var movieTitle = elMovie.value;
 			var year = elYear.value;
-			movieCounter++;
 
 			
+
+
+
 			var urlToCall = urlBuild(titleSmoother(movieTitle), year);
 
 			//mrSulu on the bridge
 			mrSulu(urlToCall);
-
-			if(movieCounter < 3){
-				elYear.value = "1941";
-				elMovie.value = "The Maltese Falcon";
-			}
-
-			else if(movieCounter >= 3){
-				elMovie.value = '';
-				elYear.value = '';
-				elButton.type;
-				elButton.value = "Generate";
-				elButton.id = "generator";
-			}
+			
 		}
 
-		//With the logic of Spock, we can determine if the fields filled out in the form are okay or not. Basically, this tests for acceptable data entered into the form field. If not, it will update the "feedback" tag right above the form, so the user can read it and act accordingly. Live long and prosper!
+		//With the logic of Spock, we can determine if the fields filled out in the form are okay or not. 
+		//Basically, this tests for acceptable data entered into the form field. If not, it will update the "feedback" tag right above the form, so the user can read it and act accordingly. Live long and prosper!
 		
 		else{
 

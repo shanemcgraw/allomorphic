@@ -12,6 +12,13 @@ var warpDrive = function(engage){
 
 		var omdb = new XMLHttpRequest();
 
+		// Here we have a series of checks based on the X.H.R. It checks 1) if the 
+		// request is finished and the response is ready (readyState === 4)
+		// 2) if the status is "OK", meaning it's good to give us that movie data
+		// and 3) if the movie data is found in the oMDB database. not much good if 
+		// the response and status are ok without meaningful data to get to the user!
+
+
 		omdb.onload = function(){
 			if(omdb.readyState === 4){
 				if(omdb.status === 200){
@@ -20,9 +27,39 @@ var warpDrive = function(engage){
 						get("feedback").innerHTML = "";
 						engage(data);
 						filmData.push(data);
+
+						// If everything's okay, we want to make sure that we don't have too many 
+						// movie "assets" displayed on the page. technically, we can get as many movies
+						// as we want, but 3 seems to be a pretty good number. The movieCounter variable
+						// starts at 0, but it's a bit confusing: it's both inclusive (since it gets checked)
+						// after the response already comes back) and reflects (# of movies - 1). All of that
+						// to say, it needs to check the page by subtracting 2 from the number of movies we 
+						// want, so we check if it's greater than 1 (since 3-2 = 1).
+						// (catches breath)
+						// If there are 3 assets up on the page, the innerHTML of the input form fields will disappear
+	
+
+						if(movieCounter > 1){
+							get("movieInput").innerHTML = "";
+							elButton.value = "Generate";
+							elButton.id = "generator";
+						}
+						else if(movieCounter <= 1){
+							elYear.value = "1941";
+							elMovie.value = "The Maltese Falcon";
+						}
+
+						movieCounter++;
+
+						
+						console.log("Count after: "+movieCounter);
+
 					}	
 					else{
 						console.log("NOHPE!");
+						
+						console.log("Movie counter: " + movieCounter);
+
 						get("feedback").innerHTML = "";
 						domMan("p", tNode("Hmm. We weren't able to find that film in the database... is there another that you like?"), get("feedback"), function(){
 						});
@@ -45,7 +82,6 @@ var warpDrive = function(engage){
 //As always, Mr. Sulu takes us there with speed
 
 function mrSulu(url){
-	console.log(movieCounter);
 	return warpDrive(updateFilmTable)(url);
 }
 
