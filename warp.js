@@ -47,19 +47,13 @@ var warpDrive = function(engage){
 						else if(movieCounter <= 1){
 							elYear.value = "1941";
 							elMovie.value = "The Maltese Falcon";
+							get('option').style.visibility = "";
 						}
 
-						movieCounter++;
-
-						
-						console.log("Count after: "+movieCounter);
-
+						movieCounter++;						
 					}	
 					else{
-						console.log("NOHPE!");
-						
-						console.log("Movie counter: " + movieCounter);
-
+						console.log("Invalid entry");
 						get("feedback").innerHTML = "";
 						domMan("p", tNode("Hmm. We weren't able to find that film in the database... is there another that you like?"), get("feedback"), function(){
 						});

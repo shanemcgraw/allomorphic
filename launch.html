@@ -2,11 +2,9 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-		<!--<link rel="stylesheet" type="text/css" href="style.css">-->
+		<link rel="stylesheet" type="text/css" href="style.css">
 		<title>Launchsite</title>
-
 	</head>
-
 	<body>
 		<div id="Content">
 			<h1 id="hello">Allomorphic</h1>
@@ -35,11 +33,9 @@
 			</div>
 
 			<div id = "output">
-
 				<script type="text/javascript">
 					//Making sure we don't give away the suprise before the proper time!
 					document.getElementById('output').style.visibility = "hidden";
-
 				</script>
 				<h1>
 					Your Story Selection:
@@ -55,56 +51,59 @@
 				<div id="movieFacts">
 				</div>
 			</div>
-
-
-			<script type="text/javascript" src="stories.js"></script>
-			<script type="text/javascript" src="data.js"></script>
-			<script type="text/javascript" src="warp.js"></script>
-			<script type="text/javascript" src="matrix.js"></script>
-			<script type="text/javascript" src="assignAge.js"></script>
-			<script type="text/javascript" src="storySelect.js"></script>
-
-
-			<script type="text/javascript">
-
-
-				var elButton = get("adder");
-				var elForm = get("getMovieData");
-				var elMovie = get("movie");
-				var elYear = get("year");
-				var mData = get("movieData");
-				var tableData = get("filmTable");
-				var content = get("Content");
-				var another = get("anotherStory");
-				var selection = get("selection");
-
-
-				//these are just a couple of helpful variables to make sure the user doesn't accidentally input more than 3 movies or generates an extra story
-				var movieCounter = 0;
-				var genStory = true;
-
-				//Here's a variable to keep track of the story displayed on the page
-				var shortStory = 0;
-
-
-				elForm.addEventListener('click', function(e){
-																					 postMovie(e);
-																				 }, false);
-
-				content.addEventListener('click', function(e){
-																						getFilmInfo(e);
-																					}, false);
-				another.addEventListener('click', function(e){
-																						butThatsAnotherStory(e);
-																					}, false);
-
-
-
-
-				
-
-
-			</script>
 		</div>
+
+		<div id="option">
+			<script type="text/javascript">
+				document.getElementById('option').style.visibility = "hidden";
+			</script>
+			<input type="button" id="restart" value="Restart"></input>
+		</div>
+
+		<script type="text/javascript" src="stories.js"></script>
+		<script type="text/javascript" src="data.js"></script>
+		<script type="text/javascript" src="warp.js"></script>
+		<script type="text/javascript" src="matrix.js"></script>
+		<script type="text/javascript" src="assignAge.js"></script>
+		<script type="text/javascript" src="storySelect.js"></script>
+
+
+		<script type="text/javascript">
+
+
+			var elButton = get("adder");
+			var elForm = get("getMovieData");
+			var elMovie = get("movie");
+			var elYear = get("year");
+			var mData = get("movieData");
+			var tableData = get("filmTable");
+			var content = get("Content");
+			var another = get("anotherStory");
+			var selection = get("selection");
+			var startOver = get("restart");
+
+
+			//these are just a couple of helpful variables to make sure the user doesn't accidentally input more than 3 movies or generates an extra story
+			var movieCounter = 0;
+			var genStory = true;
+
+			//Here's a variable to keep track of the story displayed on the page
+			var shortStory = 0;
+
+
+			elForm.addEventListener('click', function(e){
+																				 postMovie(e);
+																			 }, false);
+
+			content.addEventListener('click', function(e){
+																					getFilmInfo(e);
+																				}, false);
+			another.addEventListener('click', function(e){
+																					butThatsAnotherStory(e);
+																				}, false);
+			startOver.addEventListener('click', function(){
+																						location.reload();
+																					}, false);
+		</script>
 	</body>
 </html>

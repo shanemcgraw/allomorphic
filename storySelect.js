@@ -25,10 +25,10 @@ function explode(){
 	//Here's where things get a bit complex. In the "filmData" array, we have 3 elements in each array that contain one or many genres per movie, in a String type. 
 	//So, we just need to have a forEach get each string-list of genres, split it with the native method on strings to convert it to its own array, and then have another forEach push each of the specific genres to the "genres" array that we defined above. How hard could it be?
 	filmData.forEach(function(movie){
-										movie["Genre"].split(", ").forEach(function(specificGenre){
-																												findGenre(specificGenre);
-																											 });
-									 });
+					   movie["Genre"].split(", ").forEach(function(specificGenre){
+															findGenre(specificGenre);
+														  });
+					 });
 
 	//	#boomgoesthedynamite
 
@@ -38,20 +38,19 @@ function explode(){
 	//Since undefined + 1 = NaN, we need to create each genre as 0 before counting them up.
 	//A forEach will do the trick! 
 	genres.forEach(function(genre){
-								 	 rankedGenres[genre] = 0;
-								 });
+				     rankedGenres[genre] = 0;
+				   });
 
 	//And now we count 'em up!
 	genres.forEach(function(genre){
-								 	 rankedGenres[genre]++;
-								 });
+				     rankedGenres[genre]++;
+				   });
+
 
 	var onDeck = sortRanked(rankedGenres);
 
 	var finalMasterGenreList = cleanUp(onDeck);
-  console.log(finalMasterGenreList);
 	var storyOutput = getStory(finalMasterGenreList);
-
 	var boundStoryArray = postStory(storyOutput);
 
 	rankedList = boundStoryArray;
@@ -152,8 +151,8 @@ function findGenre(movieGenre){
 
 function cleanUp(finalGenreList){
 	return finalGenreList.filter(function(genre){
-													return storyMasterList.indexOf(genre) !== -1;
-												});
+								   return storyMasterList.indexOf(genre) !== -1;
+								 });
 }
 
 
@@ -165,8 +164,8 @@ function cleanUp(finalGenreList){
     
 function filterStory(genre){
 	var getGenre = function(story){
-									 return story.genre.indexOf(genre) !== -1;
-								 };
+					 return story.genre.indexOf(genre) !== -1;
+				   };
 	return stories.filter(getGenre);
 }
 
@@ -174,8 +173,8 @@ function filterStory(genre){
 function storyScore(genre, point){
 	var hits = filterStory(genre);
 	return hits.forEach(function(story){
-								story.score += point;
-							 });
+    					  story.score += point;
+    					});
 }
 
 //["comedy", "satire", "drama", "romance", "colorful", "fantasy", "adventure"]
@@ -190,8 +189,8 @@ function getStory(genreList){
 	//length of the array minus the current index)
 
 	var newList = genreList.map(function(genre, index){
-																return [genre, genreList.length - index];
-															});
+								  return [genre, genreList.length - index];
+								});
 
 	//Cool. Now we need to call our storyScore on each of the stories...
 	newList.forEach(function(genreSubArray){
@@ -201,19 +200,21 @@ function getStory(genreList){
 	//Great! Finally, we sort all the objects by their "score" property, and we have our top 
 	//selection as the first element in the returned array. 
 	var sortedStoryArray = stories.sort(function(a,b){
-    						 return b.score - a.score;
-    					   });
-		rankedList = sortedStoryArray;
+                						  return b.score - a.score;
+                					    });
+	//rankedList = sortedStoryArray;
     return sortedStoryArray;
 }
 
 function postStory(storyArray){
 	return function(index){
-					 get("selection").innerHTML = "<a id=\"linkToStory\" target= \"_blank\" href = \"" + storyArray[index].link + "\">\""+storyArray[index].title + "\"</a>";
-					 
-					 var content = storyArray[index].plot;
-					 domMan("p",tNode(content),get("selection"))
-				 }
+             get("instructions").innerHTML = "";
+    	     get("selection").innerHTML = "<a id=\"linkToStory\" target= \"_blank\" href = \"" + storyArray[index].link + "\">\""+storyArray[index].title + "\"</a>";
+    		 
+    		 var content = storyArray[index].plot;
+
+    		 domMan("p",tNode(content),get("selection"))
+		   }
 }
 
 function butThatsAnotherStory(e){

@@ -1,14 +1,20 @@
+.noHighlight{
+	border: none;
+}
 body{
 	background-color: 406891;
 	font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+	min-width: 610px;
+
+}
+.highlight{
+	border: 8px solid #FFC045;
 }
 #hello{
 	font-size: 100px;
 	padding: 0 0 0 0;
 	margin: 0 0 0 0;
 	font-weight: 100;
-
-
 }
 table{
 	border: solid 1px black;
@@ -19,21 +25,18 @@ body, table{
 figure{
 	display: inline-block;
 }
-.highlight{
-	border: solid 2px black;
-}
 body{
 	background-color: #000000;
 	color: #ffffff;
 	background-size: 10000px 10000px;
 	background-image: url("../space.JPG");
-	background-size: 1500px 1400px;
+	background-size: 1500px 2000px;
 }
 input{
 }
 
 a:link{
-	color: cyan;
+	color: #0A91AB;
 }
 a:visited{
 	color: deeppink;

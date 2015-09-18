@@ -19,7 +19,7 @@ function tNode(text) {
 }
 
 function makeImage(imgLink, imageId){
-	return '<img '+'id= '+imageId+' src='+imgLink+' alt="Poster not found" onError="this.onerror=null; this.src=\'fallback.jpg\';" />';
+	return '<img '+'id= '+imageId+' src='+imgLink+' alt="Poster" onError="this.onerror=null; this.src=\'fallback.jpg\';" />';
 }
 
 
@@ -138,10 +138,14 @@ function postMovie(e){
 function getFilmInfo(e){
 
 	var target = e.target;
+	var highlighted = document.querySelectorAll(".highlight");
+		for(var i = 0; i<highlighted.length;i++){
+			highlighted[i].className = "noHighlighted";
+		}
 
 	if(e.target.nodeName === "IMG"){
 		var movieNumber = parseInt(target.id.split("poster")[1]);
-		e.target.style.class = "highlight";
+		e.target.className = "highlight";
 		get("movieFacts").innerHTML = "<h2>\""+filmData[movieNumber]["Title"] + "\"</h2><p id=plot>"+filmData[movieNumber]["Plot"]+"</p>";
 	}
 	else if(target.id === "plot"){
