@@ -80,9 +80,12 @@ function sortRanked(object){
 								 });
 	//now we're no longer concerned about the numbers, just the order. let's go ahead and take those metrics out...
 	//...and return what we have!
-	return sortThese.map(function(subarray){
+	return sortThese;
+
+	/*.map(function(subarray){
 												 return subarray[0];
 											 });
+*/
 
 }
 
@@ -151,7 +154,7 @@ function findGenre(movieGenre){
 
 function cleanUp(finalGenreList){
 	return finalGenreList.filter(function(genre){
-								   return storyMasterList.indexOf(genre) !== -1;
+								   return storyMasterList.indexOf(genre[0]) !== -1;
 								 });
 }
 
@@ -185,15 +188,10 @@ function getStory(genreList){
 	//The first thing to do is change the genreList ever so slightly to get a sense of 
 	//importance for each genre. Since they're all ranked by importance starting with
 	//the first genre element in the array, we'll swap out the element with a new sub-
-	//array that contains both the genre, and the importanceScore (which is just the 
-	//length of the array minus the current index)
+	//array that contains both the genre, and the importanceScore (which is how many times
+	//each genre showed up in our list).
 
-	var newList = genreList.map(function(genre, index){
-								  return [genre, genreList.length - index];
-								});
-
-	//Cool. Now we need to call our storyScore on each of the stories...
-	newList.forEach(function(genreSubArray){
+	genreList.forEach(function(genreSubArray){
 		              storyScore(genreSubArray[0],genreSubArray[1]);
 	                });
 
