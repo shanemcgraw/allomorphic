@@ -1,21 +1,57 @@
-.noHighlight{
-	border: none;
+html, body, h1, h2, h3, h4, ul, ol, li, p, a {
+  padding: 0;
+  border: 0;
+  margin: 0;
 }
+
 body{
-	background-color: 406891;
+	background-color: #000000;
+	color: #ffffff;
+	background-size: 10000px 10000px;
+	background-image: url("space.JPG");
+	background-attachment:fixed;
+	background-size: 2500px 1750px;
 	font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
 	min-width: 610px;
+}
+h1{
+	font-size: 100px;
+	padding: 0 0 0 0;
+	margin: 10px 10px 10px 10px;
+	font-weight: 100;
+}
 
+.noHighlight{
+	border: none;
 }
 .highlight{
 	border: 8px solid #FFC045;
 }
-#hello{
-	font-size: 100px;
-	padding: 0 0 0 0;
-	margin: 0 0 0 0;
-	font-weight: 100;
+
+input:focus { outline: none; }
+
+input{
+	font-size: 120%;
+	color: #ffffff;
+	background-color: #224E8C;
+	border: 1px solid #316DBF;
+	font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+	margin: 10px 1px 10px 1px
 }
+
+input[type="button"]{
+	margin: 5px 0 5px 0
+}
+
+input[type="text"]:focus{
+	background-color: #183D6F;
+	color: #ffffff;
+}
+input[type="button"]:active{
+	background-color: gold;
+}
+
+
 table{
 	border: solid 1px black;
 }
@@ -25,14 +61,12 @@ body, table{
 figure{
 	display: inline-block;
 }
-body{
-	background-color: #000000;
-	color: #ffffff;
-	background-size: 10000px 10000px;
-	background-image: url("../space.JPG");
-	background-size: 1500px 2000px;
+
+
 }
-input{
+
+#theButton{
+	margin:;
 }
 
 a:link{
