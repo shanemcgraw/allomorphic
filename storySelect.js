@@ -20,7 +20,7 @@ var storyMasterList = ['scifi',
 
 function explode(){
   //Release the Kraken! AKA the "output" div tag
-  get('output').style.visibility = '';
+  get('output').style.display = '';
 
 	//Here's where things get a bit complex. In the "filmData" array, we have 3 elements in each array that contain one or many genres per movie, in a String type. 
 	//So, we just need to have a forEach get each string-list of genres, split it with the native method on strings to convert it to its own array, and then have another forEach push each of the specific genres to the "genres" array that we defined above. How hard could it be?
@@ -48,9 +48,11 @@ function explode(){
 
 
 	var onDeck = sortRanked(rankedGenres);
+    console.log(rankedGenres);
 
 	var finalMasterGenreList = cleanUp(onDeck);
 	var storyOutput = getStory(finalMasterGenreList);
+    console.log(finalMasterGenreList);
 	var boundStoryArray = postStory(storyOutput);
 
 	rankedList = boundStoryArray;
@@ -188,8 +190,8 @@ function getStory(genreList){
 	//The first thing to do is change the genreList ever so slightly to get a sense of 
 	//importance for each genre. Since they're all ranked by importance starting with
 	//the first genre element in the array, we'll swap out the element with a new sub-
-	//array that contains both the genre, and the importanceScore (which is how many times
-	//each genre showed up in our list).
+	//array that contains both the genre, and the "importance score" (which is how many 
+    //times each genre showed up in our list).
 
 	genreList.forEach(function(genreSubArray){
 		              storyScore(genreSubArray[0],genreSubArray[1]);

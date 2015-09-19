@@ -7,9 +7,9 @@ html, body, h1, h2, h3, h4, ul, ol, li, p, a {
 body{
 	background-color: #000000;
 	color: #ffffff;
-	background-size: 10000px 10000px;
 	background-image: url("space.JPG");
-	background-attachment:fixed;
+	background-position:center top;
+	background-repeat: no-repeat;
 	background-size: 2500px 1750px;
 	font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
 	min-width: 610px;
@@ -19,6 +19,14 @@ h1{
 	padding: 0 0 0 0;
 	margin: 10px 10px 10px 10px;
 	font-weight: 100;
+}
+img{
+	width: auto;
+	height: 250px;
+}
+#loading{
+	width: auto;
+	height: auto;
 }
 
 .noHighlight{

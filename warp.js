@@ -7,7 +7,7 @@ var warpDrive = function(engage){
 	return function(destination){
 
 		//A helpful search gif that will display a rotating wheel, to suggest hard search work by our page!
-		get("feedback").innerHTML = "<img src=\"loading.gif\">";
+		get("feedback").innerHTML = "<img id=\"loading\" src=\"loading.gif\">";
 		
 
 		var omdb = new XMLHttpRequest();
@@ -47,7 +47,7 @@ var warpDrive = function(engage){
 						else if(movieCounter <= 1){
 							elYear.value = "1941";
 							elMovie.value = "The Maltese Falcon";
-							get('option').style.visibility = "";
+							get('option').style.display = "";
 						}
 
 						movieCounter++;						
