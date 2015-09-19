@@ -3,7 +3,7 @@ What is an allomorph? One evening (as most evenings), I was digging around in a 
 
 Allomorphs are morphemes that sound different than each other, but have the same meaning. A quick Google search shows that the "-z" sound in "dogs" is an allomorph with "-s" sound in "hats"; they both describe a plurality, but they don't sound the same.
 
-Much like the concept this site is built on (other than JS, of course)! Although films may be quite different than a story that takes up a few pages, many contain similar meanings. Hopefully both give us the opportunity to think rightly about the world that we live in, either in agreement, or disagreement, with the story tellers that bring them into our lives.
+This is the concept this site was built upon. Although films may be quite different than a story that takes up a few pages, many contain similar meanings. Hopefully both give us the opportunity to think rightly about the world that we live in, either in agreement, or disagreement, with the story tellers that bring them into our lives.
 
 
 # ON THE SHORT STORY LIBRARY #
