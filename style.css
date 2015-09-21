@@ -7,7 +7,7 @@ html, body, h1, h2, h3, h4, ul, ol, li, p, a {
 body{
 	background-color: #000000;
 	color: #ffffff;
-	background-image: url("space.JPG");
+	background-image: url("images/bay.JPG");
 	background-position:center top;
 	background-repeat: no-repeat;
 	background-size: 2500px 1750px;
@@ -19,6 +19,15 @@ h1{
 	padding: 0 0 0 0;
 	margin: 10px 10px 10px 10px;
 	font-weight: 100;
+}
+h2{
+
+}
+p{
+	margin: 10px auto 10px auto;
+	vertical-align: middle;
+	width: 500px;
+
 }
 img{
 	width: auto;
@@ -33,16 +42,19 @@ img{
 	border: none;
 }
 .highlight{
-	border: 8px solid #FFC045;
+	border: 8px solid #D7D0C5;
+	border-radius: 10px;
 }
 
 input:focus { outline: none; }
 
 input{
 	font-size: 120%;
+	text-align: center;
 	color: #ffffff;
-	background-color: #224E8C;
-	border: 1px solid #316DBF;
+	background-color: transparent;
+	border: 1px solid #646770;
+	border-radius: 10px;
 	font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
 	margin: 10px 1px 10px 1px
 }
@@ -51,12 +63,12 @@ input[type="button"]{
 	margin: 5px 0 5px 0
 }
 
-input[type="text"]:focus{
-	background-color: #183D6F;
+input[type="text"]:focus, input[type="text"]:hover{
+	background-color: #B2D1DE;
 	color: #ffffff;
 }
-input[type="button"]:active{
-	background-color: gold;
+input[type="button"]:active, input[type="button"]:hover{
+	background-color: #B2D1DE;
 }
 
 
@@ -68,18 +80,30 @@ body, table{
 }
 figure{
 	display: inline-block;
+	margin: 20px 20px 20px 20px;
 }
 
+#linkToStory {
+	font-family: 'IM Fell English', serif;
+	font-size: 30px;
 
+}
+
+#selection p{
+	font-family: 'IM Fell English', serif;
 }
 
 #theButton{
 	margin:;
 }
+#option{
+	position:left bottom;
+	margin-top:50%;
+}
 
 a:link{
-	color: #0A91AB;
+	color: #B2D1DE;
 }
 a:visited{
-	color: deeppink;
+	color: #FC91FF;
 }

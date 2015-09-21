@@ -33,6 +33,7 @@ function filter(list, test){
 
 		return successArr;
 	}
+
 	else if(typeof list === "object"){
 		var successOb = {};
 
@@ -50,6 +51,54 @@ function filter(list, test){
 	}
 	else{
 		return "Please input array or object";
+	}
+}
+
+
+
+//Starting again...
+
+function each(list, cb){
+	if(Array.isArray(list)){
+		for(var i=0;i<list.length;i++){
+			cb(list);
+		}
+	}
+	else if(typeof list === "object"){
+		var keys = Object.keys(list);
+		for(var i=0;i<keys.length;i++){
+			cb(list[[keys][i]]);
+		}
+	}
+	else{
+		console.log("Please enter an object or an array");
+	}
+}
+
+
+function filter(list, test){
+	
+	var successArr = [];
+	var successOb = {};
+
+	if(Array.isArray(list)){
+		
+		function testEmArrEd(element){
+			if(test(element)){
+				successArr.push(element);
+			}
+		}
+		each(list, testEmArrEd);
+		return successArr;
+	}
+	else if(typeof list === "object"){
+		function testEmObEd(key){
+			if(test(list[key])){
+				successOb[key] = list[key];
+			}
+		}
+		each(list, testEmObEd);
+		return successOb;
 	}
 }
 

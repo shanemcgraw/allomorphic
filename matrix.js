@@ -136,7 +136,6 @@ function postMovie(e){
 
 //In this function, we'll take the target
 function getFilmInfo(e){
-
 	var target = e.target;
 	var highlighted = document.querySelectorAll(".highlight");
 		for(var i = 0; i<highlighted.length;i++){
@@ -146,7 +145,7 @@ function getFilmInfo(e){
 	if(e.target.nodeName === "IMG"){
 		var movieNumber = parseInt(target.id.split("poster")[1]);
 		e.target.className = "highlight";
-		get("movieFacts").innerHTML = "<h2>\""+filmData[movieNumber]["Title"] + "\"</h2><p id=plot>"+filmData[movieNumber]["Plot"]+"</p>";
+		get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] + "\"</h2><p id='selectedYear'>"+data.filmData[movieNumber]["Year"]+"</p><p id=selectedPlot>"+data.filmData[movieNumber]["Plot"]+"</p>";
 	}
 	else if(target.id === "plot"){
 		return null;
