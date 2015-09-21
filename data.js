@@ -1,2 +1,6 @@
-var filmData = [];
-console.log(filmData);
+//var filmData : [];
+var data = {
+    genres : [], 
+    rankedGenres : {}, 
+    filmData : []
+};

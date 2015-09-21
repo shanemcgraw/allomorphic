@@ -7,7 +7,7 @@ var warpDrive = function(engage){
 	return function(destination){
 
 		//A helpful search gif that will display a rotating wheel, to suggest hard search work by our page!
-		get("feedback").innerHTML = "<img src=\"loading.gif\">";
+		get("feedback").innerHTML = "<img id=\"loading\" src=\"loading.gif\">";
 		
 
 		var omdb = new XMLHttpRequest();
@@ -22,11 +22,11 @@ var warpDrive = function(engage){
 		omdb.onload = function(){
 			if(omdb.readyState === 4){
 				if(omdb.status === 200){
-					var data = JSON.parse(omdb.responseText);
-					if(data.Response === "True"){
+					var omdbData = JSON.parse(omdb.responseText);
+					if(omdbData.Response === "True"){
 						get("feedback").innerHTML = "";
-						engage(data);
-						filmData.push(data);
+						engage(omdbData);
+						data.filmData.push(omdbData);
 
 						// If everything's okay, we want to make sure that we don't have too many 
 						// movie "assets" displayed on the page. technically, we can get as many movies
@@ -47,7 +47,7 @@ var warpDrive = function(engage){
 						else if(movieCounter <= 1){
 							elYear.value = "1941";
 							elMovie.value = "The Maltese Falcon";
-							get('option').style.visibility = "";
+							get('option').style.display = "";
 						}
 
 						movieCounter++;						
@@ -55,7 +55,7 @@ var warpDrive = function(engage){
 					else{
 						console.log("Invalid entry");
 						get("feedback").innerHTML = "";
-						domMan("p", tNode("Hmm. We weren't able to find that film in the database... is there another that you like?"), get("feedback"), function(){
+						domMan("p", tNode(cantFind()), get("feedback"), function(){
 						});
 					}
 				}
@@ -72,6 +72,12 @@ var warpDrive = function(engage){
 	}
 }
 
+function cantFind(){
+	var responses = ["Hmm. We weren't able to find that film in the database... is there another that you like?","You have very interesting taste! Unfortunately, we couldn't find that one in our system. Try another!","Interesting... we couldn't find that one in our DB. Is there another one that you fancy?","Blast! We don't have that one. (I'm sure you here that from your local library all the time.) Can you try another?"];
+	var pick = Math.floor(Math.random() * responses.length);
+	return responses[pick];
+}
+
 
 //As always, Mr. Sulu takes us there with speed
 
@@ -85,7 +91,7 @@ function mrSulu(url){
 function urlBuild(movie, year){
 	var title = titleSmoother(movie);
 	var domain = "http://www.omdbapi.com/?type=movie&t=";
-	var end = "&plot=full&r=json";
+	var end = "&plot=short&r=json";
 
 	return domain + title + "&" + year + end;
 }
