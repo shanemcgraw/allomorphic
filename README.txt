@@ -4,7 +4,7 @@ I love good movies. My dad got me started on the giants; Hitchcock, Welles, Hust
 
 While there is a romance to film that cannot be replaced, I've found myself wanting to be able to engage my mind in the scene rather than passively watching the events transpire before me- experiencing what the silver screen can't give: smell, touch, etc.
 
-While smelling the gunfire from Sam Spade's .45 isn't possible unless you're an unfortunate character in "The Maltese Falcon", there is a sense in which this can be visualized in the mind with greater detail while reading it off of a page.
+While smelling the gunfire from Sam Spade's .45 isn't possible unless you're an unfortunate player in the world of "The Maltese Falcon", there is a sense in which this can be visualized in the mind with greater detail while reading it off of a page.
 
 Enter short stories. While many movie-lovers (myself included) don't have time to plunge into a 300 page novel, I believe the same essence of a good can be captured by a few pages and a bit more brain power. The only question- which kind of story are you feeling? Is it the charmed, heart-wrenching drama of Rick and Ilsa (here's looking at you, kid) in 1930's Morocco? ...Or the thought-planting thriller in the mind of a powerful business mogul's heir? Based on the three titles entered, the page will give (and continue to give, if prompted) a recommendation- engaging the user's mind in a way that isn't possible with a film.
 
