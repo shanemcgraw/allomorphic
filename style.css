@@ -46,9 +46,9 @@ img{
 	border-radius: 10px;
 }
 
-input:focus { outline: none; }
+button:focus, input:focus { outline: none; }
 
-input{
+button, input{
 	font-size: 120%;
 	text-align: center;
 	color: #ffffff;
@@ -59,7 +59,7 @@ input{
 	margin: 10px 1px 10px 1px
 }
 
-input[type="button"]{
+button, input[type="button"]{
 	margin: 5px 0 5px 0
 }
 
@@ -67,14 +67,27 @@ input[type="text"]:focus, input[type="text"]:hover{
 	background-color: #B2D1DE;
 	color: #ffffff;
 }
-input[type="button"]:active, input[type="button"]:hover{
+button:hover, input[type="button"]:active, input[type="button"]:hover{
 	background-color: #B2D1DE;
 }
 
-
-table{
-	border: solid 1px black;
+#instructions{
+	margin: 20px auto 20px auto;
 }
+
+#filmTable{
+	margin: 40px auto 30px auto;
+}
+
+#feedback:not(:empty){
+	opacity: 0.5;
+	background-color: #FFE0DF;
+	color: #FF5149;
+	border: 1px solid red;
+	max-width: 600px;
+	margin:0 auto 10px auto;
+}
+
 body, table{
 	text-align: center;
 }
@@ -91,14 +104,25 @@ figure{
 
 #selection p{
 	font-family: 'IM Fell English', serif;
+	margin: none;
+}
+#output {
+	margin: 20px auto 10px auto;
+}
+#output #selection > p{
+	margin: 10px auto auto auto;
+	text-align: justify;
 }
 
-#theButton{
-	margin:;
-}
 #option{
 	position:left bottom;
 	margin-top:50%;
+}
+#movieFacts{
+	margin: 10px auto 20px auto;
+}
+#movieFacts #selectedPlot{
+	text-align: justify;
 }
 
 a:link{

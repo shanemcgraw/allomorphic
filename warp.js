@@ -7,7 +7,7 @@ var warpDrive = function(engage){
 	return function(destination){
 
 		//A helpful search gif that will display a rotating wheel, to suggest hard search work by our page!
-		get("feedback").innerHTML = "<img id=\"loading\" src=\"loading.gif\">";
+		get("loading").innerHTML = "<img id=\"loading\" src=\"loading.gif\">";
 		
 
 		var omdb = new XMLHttpRequest();
@@ -25,6 +25,7 @@ var warpDrive = function(engage){
 					var omdbData = JSON.parse(omdb.responseText);
 					if(omdbData.Response === "True"){
 						get("feedback").innerHTML = "";
+						get("loading").innerHTML = "";
 						engage(omdbData);
 						data.filmData.push(omdbData);
 
@@ -40,8 +41,11 @@ var warpDrive = function(engage){
 	
 
 						if(movieCounter > 1){
-							get("movieInput").innerHTML = "";
-							elButton.value = "Generate";
+							//we want to hide the movieInput section completely, erasing even the space it took up
+							get("movieInput").style.display = "none";
+							//we want to erase the instructions too, but to keep things from changing too much, we want to keep the same space it took up and just have it invisible
+							get("instructions").innerHTML = "<p>Click to generate a story to read!</p>";
+							elButton.value = "Storify";
 							elButton.id = "generator";
 						}
 						else if(movieCounter <= 1){
@@ -55,6 +59,7 @@ var warpDrive = function(engage){
 					else{
 						console.log("Invalid entry");
 						get("feedback").innerHTML = "";
+						get("loading").innerHTML = "";
 						domMan("p", tNode(cantFind()), get("feedback"), function(){
 						});
 					}

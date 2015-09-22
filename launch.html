@@ -10,17 +10,18 @@
 		<div id="Content">
 			<h1 id="hello">Allomorphic</h1>
 			<div class="requestData">
-			<div id="instructions">
-				<h2>
-					Enter three of your favorite films
-				</h2>
-				<h5>
-					For best results, enter their full names (e.g. "The Lord of the Rings: The Return of the King")
-				</h5>
-			</div>
-
-				<div id="feedback">
+				<div id="instructions">
+					<h2>
+						Enter three of your favorite films
+					</h2>
+					<h5>
+						For best results, enter their full names (e.g. "The Lord of the Rings: The Return of the King")
+					</h5>
 				</div>
+
+				<div id="feedback"></div>
+
+				<div id="loading"></div>
 
 				<form id="getMovieData">
 					<div id="movieInput">
@@ -31,6 +32,14 @@
 						<input type="button" id="adder" value="Add">
 					</div>
 				</form>
+			</div>
+
+
+			<div id="filmTable">
+				<div id="posterSection">
+				</div>
+				<div id="movieFacts">
+				</div>
 			</div>
 
 			<div id = "output">
@@ -45,13 +54,6 @@
 				<button id="anotherStory">Give me another</button>
 			</div>
 
-
-			<div id="filmTable">
-				<div id="posterSection">
-				</div>
-				<div id="movieFacts">
-				</div>
-			</div>
 		</div>
 
 		<div id="option">
@@ -60,6 +62,8 @@
 			</script>
 			<input type="button" id="restart" value="Restart"></input>
 		</div>
+
+
 
 		<script type="text/javascript" src="stories.js"></script>
 		<script type="text/javascript" src="data.js"></script>

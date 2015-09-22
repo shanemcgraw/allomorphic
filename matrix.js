@@ -114,6 +114,8 @@ function postMovie(e){
 				get("feedback").innerHTML = "";
 				//update with error
 				domMan("p", tNode("Valid movie title and year required"), get("feedback"));
+				get("movie").focus();
+
 			}
 
 			else if(isNaN(parseInt(elYear.value)) || typeof parseInt(elYear.value) !== "number" || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890){
@@ -121,6 +123,7 @@ function postMovie(e){
 				get("feedback").innerHTML = "";
 				//update with error
 				domMan("p", tNode("Please enter valid year between 1890 and 2015"), get("feedback"));
+				get("year").focus();
 			}
 		
 			else{
@@ -128,6 +131,7 @@ function postMovie(e){
 				get("feedback").innerHTML = "";
 				//update with error
 				domMan("p", tNode("Movie title required"), get("feedback"));
+				get("movie").focus();
 			}
 		}
 	}
@@ -142,10 +146,10 @@ function getFilmInfo(e){
 			highlighted[i].className = "noHighlighted";
 		}
 
-	if(e.target.nodeName === "IMG"){
+	if(e.target.nodeName === "IMG" && e.target.id !== "loading"){
 		var movieNumber = parseInt(target.id.split("poster")[1]);
 		e.target.className = "highlight";
-		get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] + "\"</h2><p id='selectedYear'>"+data.filmData[movieNumber]["Year"]+"</p><p id=selectedPlot>"+data.filmData[movieNumber]["Plot"]+"</p>";
+		get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] + "\"</h2><p id='selectedYear'><em>"+data.filmData[movieNumber]["Year"]+"</em></p><p id=selectedPlot>"+data.filmData[movieNumber]["Plot"]+"</p>";
 	}
 	else if(target.id === "plot"){
 		return null;
