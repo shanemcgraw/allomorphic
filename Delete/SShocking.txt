@@ -1,0 +1,1 @@
+{title : "The Gift of the Magi", author : "O. Henry", plot : "This sentimental story has a twist with a lesson about the true meaning of gift giving."}
