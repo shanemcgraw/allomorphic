@@ -1,4 +1,4 @@
-# On the project #
+# On project 'Allomorphic' #
 
 I love good movies. My dad got me started on the giants; Hitchcock, Welles, Huston... all great. 
 
