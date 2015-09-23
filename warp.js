@@ -44,8 +44,9 @@ var warpDrive = function(engage){
 							//we want to hide the movieInput section completely, erasing even the space it took up
 							get("movieInput").style.display = "none";
 							//we want to erase the instructions too, but to keep things from changing too much, we want to keep the same space it took up and just have it invisible
-							get("instructions").innerHTML = "<p>Click to generate a story to read!</p>";
-							elButton.value = "Storify";
+							get("instructions").innerHTML = "";
+
+							elButton.value = "Shortify!";
 							elButton.id = "generator";
 						}
 						else if(movieCounter <= 1){

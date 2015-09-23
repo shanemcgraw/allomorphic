@@ -72,11 +72,11 @@ button:hover, input[type="button"]:active, input[type="button"]:hover{
 }
 
 #instructions{
-	margin: 20px auto 20px auto;
+	margin: 20px auto 10px auto;
 }
 
 #filmTable{
-	margin: 40px auto 30px auto;
+	margin: 30px auto 30px auto;
 }
 
 #feedback:not(:empty){
@@ -99,8 +99,8 @@ figure{
 #linkToStory {
 	font-family: 'IM Fell English', serif;
 	font-size: 30px;
-
 }
+
 
 #selection p{
 	font-family: 'IM Fell English', serif;
@@ -116,13 +116,25 @@ figure{
 
 #option{
 	position:left bottom;
-	margin-top:50%;
+	margin-top:30%;
 }
 #movieFacts{
 	margin: 10px auto 20px auto;
+	color: #6F7F97;
+}
+#selectedTitle, #selectedYear{
+	display: block;
+}
+#selectedTitle{
+	margin: auto 10px auto auto;
+	text-align: center;
+}
+#selctedYear{
+
 }
 #movieFacts #selectedPlot{
 	text-align: justify;
+	display: block;
 }
 
 a:link{
