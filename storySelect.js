@@ -61,7 +61,7 @@ function explode(){
 
 	data.rankedList = boundStoryArray;
 
-	boundStoryArray(shortStory);
+	boundStoryArray(data.shortStory);
 
 }
 
@@ -223,9 +223,9 @@ function postStory(storyArray){
 function butThatsAnotherStory(e){
 	var target = e.target;
 	if(target.id === "anotherStory"){
-		if(shortStory < stories.length - 1){
-			shortStory++;
-			data.rankedList(shortStory);
+		if(data.shortStory < stories.length - 1){
+			data.shortStory++;
+			data.rankedList(data.shortStory);
 		}
 	}
 }

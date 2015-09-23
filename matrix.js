@@ -50,7 +50,7 @@ function updateFilmTable(filmResponse){
 	//Making sure the film came through
 	if(filmResponse.Response === "True"){
 		//we'll define a helpful variable to reference the move number we're working with
-		var filmNumber = (movieCounter).toString();
+		var filmNumber = (data.movieCounter).toString();
 
 		//This will add in the poster to our site. Pretty!
 		domMan("figure", tNode(""), get('posterSection'), function(){
@@ -79,7 +79,7 @@ function postMovie(e){
 	var target = e.target;
 	
 	
-	if(target.id === "generator" && genStory){
+	if(target.id === "generator" && data.genStory){
 		explode();
 		get("theButton").innerHTML = ""; // = false;
 	}

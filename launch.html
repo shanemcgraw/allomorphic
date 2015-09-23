@@ -89,11 +89,12 @@
 
 
 			//these are just a couple of helpful variables to make sure the user doesn't accidentally input more than 3 movies or generates an extra story
-			var movieCounter = 0;
-			var genStory = true;
+			//we'll store them in the "data" object
+			data.movieCounter = 0;
+			data.genStory = true;
 
 			//Here's a variable to keep track of the story displayed on the page
-			var shortStory = 0;
+			data.shortStory = 0;
 
 			elForm.addEventListener('click', function(e){
 																				 postMovie(e);

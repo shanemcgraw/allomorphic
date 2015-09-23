@@ -2,5 +2,5 @@
 var data = {
     genres : [], 
     rankedGenres : {}, 
-    filmData : []
+    filmData : [],
 };

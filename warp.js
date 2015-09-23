@@ -1,5 +1,3 @@
-
-
 var warpDrive = function(engage){
 
 	//To get ourselves a nice clean closure, we return a function with an added "destination" param, aka the URL of the request (since they'll be changing every movie)
@@ -31,7 +29,7 @@ var warpDrive = function(engage){
 
 						// If everything's okay, we want to make sure that we don't have too many 
 						// movie "assets" displayed on the page. technically, we can get as many movies
-						// as we want, but 3 seems to be a pretty good number. The movieCounter variable
+						// as we want, but 3 seems to be a pretty good number. The data.movieCounter variable
 						// starts at 0, but it's a bit confusing: it's both inclusive (since it gets checked)
 						// after the response already comes back) and reflects (# of movies - 1). All of that
 						// to say, it needs to check the page by subtracting 2 from the number of movies we 
@@ -40,25 +38,24 @@ var warpDrive = function(engage){
 						// If there are 3 assets up on the page, the innerHTML of the input form fields will disappear
 	
 
-						if(movieCounter > 1){
+						if(data.movieCounter > 1){
 							//we want to hide the movieInput section completely, erasing even the space it took up
 							get("movieInput").style.display = "none";
 							//we want to erase the instructions too, but to keep things from changing too much, we want to keep the same space it took up and just have it invisible
-							get("instructions").innerHTML = "";
+							get("instructions").style.visibility = "hidden";
 
-							elButton.value = "Shortify!";
+							elButton.value = "Generate!";
 							elButton.id = "generator";
 						}
-						else if(movieCounter <= 1){
+						else if(data.movieCounter <= 1){
 							elYear.value = "1941";
 							elMovie.value = "The Maltese Falcon";
 							get('option').style.display = "";
 						}
 
-						movieCounter++;						
+						data.movieCounter++;						
 					}	
 					else{
-						console.log("Invalid entry");
 						get("feedback").innerHTML = "";
 						get("loading").innerHTML = "";
 						domMan("p", tNode(cantFind()), get("feedback"), function(){
@@ -76,7 +73,7 @@ var warpDrive = function(engage){
 		omdb.open("get", destination, true);
 		omdb.send(null);
 	}
-}
+};
 
 function cantFind(){
 	var responses = ["Hmm. We weren't able to find that film in the database... is there another that you like?","You have very interesting taste! Unfortunately, we couldn't find that one in our system. Try another!","Interesting... we couldn't find that one in our DB. Is there another one that you fancy?","Blast! We don't have that one. (I'm sure you here that from your local library all the time.) Can you try another?"];
