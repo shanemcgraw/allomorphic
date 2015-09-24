@@ -1,4 +1,4 @@
-# On project 'Allomorphic' #
+# Project 'Allomorphic' #
 
 I love good movies. My dad got me started on the giants; Hitchcock, Welles, Huston... all great. 
 
@@ -10,7 +10,7 @@ Enter short stories. While many movie-lovers (myself included) don't have time t
 
 Here's to engaging the mind! (And happy reading!)
 
-# On allomorphs #
+# Allomorphs #
 What is an allomorph? 
 
 One evening (as most evenings), I was digging around in a good dictionary and came across an interesting word: "Morpheme". A morpheme, according to my dictionary, is the smallest grammatical unit in a language. Take the oft-loved word "cat". This has three morphemes; the "ckk" sound, the "aa" sound, and the "tt" sound. 
@@ -20,7 +20,7 @@ Allomorphs are morphemes that sound different than each other, but have the same
 This is the concept this site was built upon. Although films may be quite different than a story that takes up a few pages, many contain similar meanings. Hopefully both give us the opportunity to think rightly about the world that we live in, either in agreement, or disagreement, with the story tellers that bring them into our lives.
 
 
-# On the short story library #
+# The story library #
 Alas, the list is not nearly as long as I would like it to be, which means the number of unique stories that fit a particular list of genres is rather restricted, so the same story gets recommended for a broad-sweeping genre. 
 
 Now, it could be that this isn't *only* because the library size is too long. After creating the stories.js file, let me tell you- a lot of the classics are just straight DRAMATIC! My goodness! I think I have 10 "drama" stories for every "colorful" one. Actually... 
@@ -32,3 +32,6 @@ Now, it could be that this isn't *only* because the library size is too long. Af
 In any case, I hope to expand this library so the user can get access to as many story types as possible, giving the user a more refined pick in story.
 
 ** *UPDATE: I've since added a few more colorful stories, so the library is slightly less drama-leaning. Sorry dramatists.*
+
+# Credits #
+A big thank you to Brian Fritz, the man behind the curtain of oMDB API, who made all of this movie data accessible in good 'ol JSON format. You can check out his project here: http://omdbapi.com/
