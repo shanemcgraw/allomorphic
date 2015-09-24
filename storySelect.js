@@ -84,15 +84,12 @@ function sortRanked(object){
 	sortThese.sort(function(first, second){
 								   return second[1] - first[1];
 								 });
-	//now we're no longer concerned about the numbers, just the order. let's go ahead and take those metrics out...
-	//...and return what we have!
 	return sortThese;
 
 	/*.map(function(subarray){
 												 return subarray[0];
 											 });
 */
-
 }
 
 //This section helps us check the specific genre passed to it, and then, if our stories don't contain that genre,
@@ -201,12 +198,21 @@ function getStory(genreList){
 		              storyScore(genreSubArray[0],genreSubArray[1]);
 	                });
 
-	//Great! Finally, we sort all the objects by their "score" property, and we have our top 
+	//Great! Now, we sort all the objects by their "score" property, and we have our top 
 	//selection as the first element in the returned array. 
 	var sortedStoryArray = stories.sort(function(a,b){
                 						  return b.score - a.score;
                 					    });
-    return sortedStoryArray;
+    //The last thing we do is return the sorted array, with the filtering out (or not, depending on the age score) of the
+    return sortedStoryArray.filter(function(story){
+        console.log(data)
+                                     if(!data.dark){
+                                        return (story.genre.indexOf("dark") === -1);
+                                     }
+                                     else{
+                                        return true;
+                                     }
+                                   });
 }
 
 function postStory(storyArray){
@@ -223,10 +229,28 @@ function postStory(storyArray){
 function butThatsAnotherStory(e){
 	var target = e.target;
 	if(target.id === "anotherStory"){
-		if(data.shortStory < stories.length - 1){
+        //this will move through the list of stories and give the user the next-best ranked story
+		if(data.shortStory < 1){//stories.length - 1){
 			data.shortStory++;
 			data.rankedList(data.shortStory);
 		}
+        else{
+
+            //This will prompt the user to email me to get more short stories into that library!
+            var theEnd = {
+                title: "The End",
+                author: "",
+                year: 2015,
+                plot: "...And they lived happily ever after. Email Shane with questions, commments, and requests to add in your favorite short stories.",
+                genre: [],
+                link: "mailto:shanemcgraw7@gmail.com/"
+                };
+            get("selection").innerHTML = "<a id=\"linkToStory\" target= \"_blank\" href = \"" + theEnd.link + "\"><em>\""+theEnd.title + "\"</em></a>";
+            var noMoreContent = theEnd.plot;
+            domMan("p",tNode(noMoreContent),get("selection"));
+            get("anotherStory").style.display = "none";
+
+        }
 	}
 }
 

@@ -1,31 +1,23 @@
 //This is a function to determine the appropriateness of the movie ratings givent, from 0-100.
-//We can't have ourselves giving out R-rated stories to a child of 5, can we?
+//We can't have ourselves giving out super-dark stories to a child of 5, can we?
 
-function ageApp(rate1,rate2,rate3){
+function ageApp(movieList){
 	
 //baseline score = 0
-	var ageScore = 0;
-	var ratingsObj = arguments;
-	
-	var ratingArray = [];
-	
-	for(var key in ratingsObj){
-	    ratingArray.push(ratingsObj[key]);
-	}
-	
-
-	ratingArray.forEach(function(rating){
-	    if(rating === "R"){
+var ageScore = 0;
+	movieList.forEach(function(movie){
+	    if(movie.Rated === "R"){
 				ageScore += 100;
 			}
-			else if(rating === "PG-13"){
+			else if(movie.Rated === "PG-13"){
 				ageScore +=50;
 			}
-			else if(rating === "PG"){
-				ageScore +=10;
+			else if(movie.Rated === "PG"){
+				ageScore +=34;
 			}
-	    
 	});
 
-	return ageScore > 100 ? 100 : ageScore;	
+	//this will return a binary that basicallys says "YES, dark stories should be recommended" - or "NO, dark stories should NOT be recommended"
+	console.log(data.dark);
+	return ageScore > 100 ? true : false;	
 }

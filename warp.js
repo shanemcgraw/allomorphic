@@ -46,10 +46,12 @@ var warpDrive = function(engage){
 
 							elButton.value = "Generate!";
 							elButton.id = "generator";
+
+
 						}
 						else if(data.movieCounter <= 1){
-							elYear.value = "1941";
-							elMovie.value = "The Maltese Falcon";
+							elYear.value = "2003";
+							elMovie.value = "The Lord of the Rings: The Return of the King";
 							get('option').style.display = "";
 						}
 

@@ -12,17 +12,16 @@ body{
 	background-repeat: no-repeat;
 	background-size: 2500px 1750px;
 	font-family: ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
-	min-width: 610px;
+	min-width: 700px;
 }
 h1{
+	font-family: 'Sacramento', cursive;
 	font-size: 100px;
 	padding: 0 0 0 0;
 	margin: 80px 10px 10px 10px;
 	font-weight: 100;
 }
-h2{
 
-}
 p{
 	margin: 10px auto 10px auto;
 	vertical-align: middle;
@@ -73,6 +72,10 @@ button:hover, input[type="button"]:active, input[type="button"]:hover{
 
 #instructions{
 	margin: 20px auto 10px auto;
+	font-family: 'Crimson Text', serif;
+}
+#instructions > p{
+	min-width: 700px;
 }
 
 #filmTable{
@@ -113,6 +116,9 @@ figure{
 	margin: 10px auto auto auto;
 	text-align: justify;
 }
+a{
+	text-decoration: none;
+}
 
 #option{
 	position:left bottom;
@@ -138,8 +144,9 @@ figure{
 }
 
 a:link{
-	color: #B2D1DE;
+	color: #77859F;
 }
 a:visited{
-	color: #FC91FF;
+	color: #EDA598
+;
 }

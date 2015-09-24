@@ -1,7 +1,7 @@
 var stories = [{ title: 'The Last Question',
     author: 'Isaac Asimov',
     dateWritten: 1956,
-    genre: [ 'scifi', 'adventure', 'cerebral', 'famous' ],
+    genre: [ 'dark','scifi', 'adventure', 'cerebral', 'famous' ],
     link: 'http://www.physics.princeton.edu/ph115/LQ.pdf',
     plot: 'The story deals with the development of universe-scale computers called Multivacs and their relationships with humanity through the courses of seven historic settings, beginning in 2061.',
     score: 0 },
@@ -630,5 +630,5 @@ var stories = [{ title: 'The Last Question',
     plot: "...'They certainly are nice people,' I assented to my wife’s observation, using the colloquial phrase with a consciousness that it was anything but 'nice' English...",
     genre: ["comedy", "colorful"],
     link: "http://shortstoriesshort.com/story/the-nice-people/"
- }
-    ];
+  }
+];
