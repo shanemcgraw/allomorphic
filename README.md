@@ -10,7 +10,7 @@ Enter short stories. While many movie-lovers (myself included) don't have time t
 
 Here's to engaging the mind! (And happy reading!)
 
-# On Allomorphs #
+# On allomorphs #
 What is an allomorph? 
 
 One evening (as most evenings), I was digging around in a good dictionary and came across an interesting word: "Morpheme". A morpheme, according to my dictionary, is the smallest grammatical unit in a language. Take the oft-loved word "cat". This has three morphemes; the "ckk" sound, the "aa" sound, and the "tt" sound. 
