@@ -27,6 +27,8 @@ Now, it could be that this isn't *only* because the library size is too long. Af
 
 *goes back to interpreter, runs filter function*
 
-...turns out that's not a bad guess! 41 stories are labelled "drama", while only 4 are labelled "colorful". And interestingly enough, no drama stories are even slightly colorful.
+...turns out that's not a bad guess! 41 stories are labelled "drama", while only 4 are labelled "colorful".** And interestingly enough, no drama stories are even slightly colorful.
 
 In any case, I hope to expand this library so the user can get access to as many story types as possible, giving the user a more refined pick in story.
+
+** *UPDATE: I've since added a few more colorful stories, so the library is slightly less drama topheavy. Sorry dramatists.*
