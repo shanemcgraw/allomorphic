@@ -31,4 +31,4 @@ Now, it could be that this isn't *only* because the library size is too long. Af
 
 In any case, I hope to expand this library so the user can get access to as many story types as possible, giving the user a more refined pick in story.
 
-** *UPDATE: I've since added a few more colorful stories, so the library is slightly less drama topheavy. Sorry dramatists.*
+** *UPDATE: I've since added a few more colorful stories, so the library is slightly less drama-leaning. Sorry dramatists.*
