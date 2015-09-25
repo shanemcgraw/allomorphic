@@ -79,6 +79,7 @@ function updateFilmTable(filmResponse){
 function postMovie(e){
 
 	//Get the 'target'; the element that the user clicks on
+	resetFilmNumbers();
 	var target = e.target;
 	
 	if(target.id === "generator" && data.genStory){
@@ -144,6 +145,9 @@ function postMovie(e){
 //In this function, we'll take the target and display the film's contents, along with highlighting the film selected (by changing the CSS class)
 function getFilmInfo(e){
 	var target = e.target;
+
+	//resetting any element that was previously highlighted
+
 	var highlighted = document.querySelectorAll(".highlight");
 		for(var i = 0; i<highlighted.length;i++){
 			highlighted[i].className = "noHighlighted";
@@ -154,8 +158,9 @@ function getFilmInfo(e){
 	if(e.target.nodeName === "IMG" && e.target.id !== "loading"){
 		var movieNumber = parseInt(target.id.split("poster")[1]);
 		e.target.className = "highlight";
-		log(movieNumber);
-		get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] + "\"</h2><p id='selectedYear'><em>"+data.filmData[movieNumber]["Year"]+"</em></p><p id=selectedPlot>"+data.filmData[movieNumber]["Plot"]+"</p>";
+		get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] 
+		+ "\"</h2><p id='selectedYear'><em>"+data.filmData[movieNumber]["Year"]+"</em></p><p id=selectedPlot>"
+		+data.filmData[movieNumber]["Plot"]+"</p><button id=\"deleteMovie\" onclick=\"cancelFilm(this)\">Remove</button>";
 	}
 	else if(target.id === "plot"){
 		return null;
@@ -178,6 +183,8 @@ function deleteArrEl(array, position){
 
 function cancelFilm(e){
 	var target = e.target;
+	log(e.target);
+	// Checking data.genStory to see if we're still free to generate a story (the default value is true)
 	if(data.genStory){
 			//change the add button to "add"
 
@@ -207,12 +214,10 @@ function cancelFilm(e){
 }
 
 function resetFilmNumbers(){
-	var posters = tagger("figure");
-	for(var i = 0; i < posters.length; i++){
-		posters[i].id = "film" + i.toString();
+	var figuratives = tagger("figure");
+	for(var i = 0; i < figuratives.length; i++){
+		figuratives[i].id = "film" + i.toString();
+		figuratives[i].childNodes[0].id = "poster" + i.toString();
 	}
-
 }
-
-
 

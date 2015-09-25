@@ -88,9 +88,8 @@
 			var selection = get("selection");
 			var startOver = get("restart");
 
-
-			//these are just a couple of helpful variables to make sure the user doesn't accidentally input more than 3 movies or generates an extra story
-			//we'll store them in the "data" object
+			// this is to make sure that we are free to generate a story based on 
+			// the movie input
 			data.genStory = true;
 
 			//Here's a variable to keep track of the story displayed on the page
@@ -98,7 +97,6 @@
 
 			//Here's a variable to keep track of the age-appropriateness of the story
 			data.dark = true;
-			data.deleted = 0;
 
 			elForm.addEventListener('click', function(e){
 																				 postMovie(e);
@@ -110,9 +108,10 @@
 			another.addEventListener('click', function(e){
 																					butThatsAnotherStory(e);
 																				}, false);
-			startOver.addEventListener('click', function(e){
+			/*deleteMovie.addEventListener('click', function(e){
 																						cancelFilm(e);
-																					}, false);
+																					}, false);*/
+
 		</script>
 	</body>
 </html>
