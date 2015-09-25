@@ -205,7 +205,6 @@ function getStory(genreList){
                 					    });
     //The last thing we do is return the sorted array, with the filtering out (or not, depending on the age score) of the
     return sortedStoryArray.filter(function(story){
-        console.log(data)
                                      if(!data.dark){
                                         return (story.genre.indexOf("dark") === -1);
                                      }
@@ -230,7 +229,7 @@ function butThatsAnotherStory(e){
 	var target = e.target;
 	if(target.id === "anotherStory"){
         //this will move through the list of stories and give the user the next-best ranked story
-		if(data.shortStory < 1){//stories.length - 1){
+		if(data.shortStory < stories.length - 1){
 			data.shortStory++;
 			data.rankedList(data.shortStory);
 		}

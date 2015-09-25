@@ -99,6 +99,7 @@
 
 			//Here's a variable to keep track of the age-appropriateness of the story
 			data.dark = true;
+			data.deleted = 0;
 
 			elForm.addEventListener('click', function(e){
 																				 postMovie(e);
@@ -110,8 +111,8 @@
 			another.addEventListener('click', function(e){
 																					butThatsAnotherStory(e);
 																				}, false);
-			startOver.addEventListener('click', function(){
-																						location.reload();
+			startOver.addEventListener('click', function(e){
+																					cancelFilm(e);
 																					}, false);
 		</script>
 	</body>

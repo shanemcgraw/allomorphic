@@ -139,13 +139,15 @@ function postMovie(e){
 };
 
 
-//In this function, we'll take the target
+//In this function, we'll take the target and display the film's contents, along with highlighting the film selected (by changing the CSS class)
 function getFilmInfo(e){
 	var target = e.target;
 	var highlighted = document.querySelectorAll(".highlight");
 		for(var i = 0; i<highlighted.length;i++){
 			highlighted[i].className = "noHighlighted";
 		}
+
+	//check to see if the user has selected a movie image (instead of the loading .gif image)
 
 	if(e.target.nodeName === "IMG" && e.target.id !== "loading"){
 		var movieNumber = parseInt(target.id.split("poster")[1]);
@@ -157,9 +159,34 @@ function getFilmInfo(e){
 	}
 	else{
 		get("movieFacts").innerHTML = "";
-		//console.log(target.parentElement);
 	}
+}
 
+function deleteArrEl(array, position){
+	var front = array.slice(0,position);
+	var back = array.slice(position + 1, array.length);
+
+	return front.concat(back);
+}
+
+function cancelFilm(e){
+	var target = e.target;
+	if(data.genStory){
+			//change the add button to "add"
+			elButton.value = "Add";
+
+
+			//change movie counter
+			//data.movieCounter--;
+
+
+			//delete the figure passed through
+			get("film1").parentNode.removeChild(get("film1"));
+
+			data.filmData = deleteArrEl(data.filmData, 1);
+			//rename the ID's of the other elements
+			//rename the ID's of their child nodes ()
+	}
 }
 
 
