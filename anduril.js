@@ -1,3 +1,7 @@
+function log (display) {
+	return console.log(display);
+}
+
 function get(x){
 	return document.getElementById(x);
 }
@@ -21,7 +25,6 @@ function tNode(text) {
 function makeImage(imgLink, imageId){
 	return '<img '+'id= '+imageId+' src='+imgLink+' alt="Poster" onError="this.onerror=null; this.src=\'fallback.jpg\';" />';
 }
-
 
 function removeEl(elId){
 	get(elID).parentNode.removeChild(get(elID));
@@ -50,7 +53,7 @@ function updateFilmTable(filmResponse){
 	//Making sure the film came through
 	if(filmResponse.Response === "True"){
 		//we'll define a helpful variable to reference the move number we're working with
-		var filmNumber = (data.movieCounter).toString();
+		var filmNumber = (data.filmData.length).toString();
 
 		//This will add in the poster to our site. Pretty!
 		domMan("figure", tNode(""), get('posterSection'), function(){
@@ -77,7 +80,6 @@ function postMovie(e){
 
 	//Get the 'target'; the element that the user clicks on
 	var target = e.target;
-	
 	
 	if(target.id === "generator" && data.genStory){
 		data.dark = ageApp(data.filmData);
@@ -152,6 +154,7 @@ function getFilmInfo(e){
 	if(e.target.nodeName === "IMG" && e.target.id !== "loading"){
 		var movieNumber = parseInt(target.id.split("poster")[1]);
 		e.target.className = "highlight";
+		log(movieNumber);
 		get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] + "\"</h2><p id='selectedYear'><em>"+data.filmData[movieNumber]["Year"]+"</em></p><p id=selectedPlot>"+data.filmData[movieNumber]["Plot"]+"</p>";
 	}
 	else if(target.id === "plot"){
@@ -169,27 +172,47 @@ function deleteArrEl(array, position){
 	return front.concat(back);
 }
 
+// this function needs to do a few things. First, we need to basically undo
+// a call to mrSulu; reverting the changes back to whatever they were before 
+// the call. Second, we need to
+
 function cancelFilm(e){
 	var target = e.target;
 	if(data.genStory){
 			//change the add button to "add"
+
+			get("movieInput").style.display = "inline";
+			//we want to erase the instructions too, but to keep things from changing
+			// too much, we want to keep the same space it took up and just have it invisible
+			get("instructions").style.display = "inline";
+
 			elButton.value = "Add";
+			elYear.value = "2003";
+			elMovie.value = "The Lord of the Rings: The Return of the King";
+			get('option').style.display = "inline";
 
-
-			//change movie counter
-			//data.movieCounter--;
 
 
 			//delete the figure passed through
 			get("film1").parentNode.removeChild(get("film1"));
+			get("generator").id = "adder";
 
 			data.filmData = deleteArrEl(data.filmData, 1);
+
+
 			//rename the ID's of the other elements
 			//rename the ID's of their child nodes ()
+			resetFilmNumbers();
 	}
 }
 
+function resetFilmNumbers(){
+	var posters = tagger("figure");
+	for(var i = 0; i < posters.length; i++){
+		posters[i].id = "film" + i.toString();
+	}
 
+}
 
 
 

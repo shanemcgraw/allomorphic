@@ -38,7 +38,7 @@ var warpDrive = function(engage){
 						// If there are 3 assets up on the page, the innerHTML of the input form fields will disappear
 	
 
-						if(data.movieCounter > 1){
+						if(data.filmData.length > 2){
 							//we want to hide the movieInput section completely, erasing even the space it took up
 							get("movieInput").style.display = "none";
 							//we want to erase the instructions too, but to keep things from changing too much, we want to keep the same space it took up and just have it invisible
@@ -49,19 +49,19 @@ var warpDrive = function(engage){
 
 
 						}
-						else if(data.movieCounter <= 1){
+						else if(data.filmData.length <= 2){
+							log(data.filmData.length);
 							elYear.value = "2003";
 							elMovie.value = "The Lord of the Rings: The Return of the King";
 							get('option').style.display = "";
 						}
 
-						data.movieCounter++;						
+						//data.movieCounter++;						
 					}	
 					else{
 						get("feedback").innerHTML = "";
 						get("loading").innerHTML = "";
-						domMan("p", tNode(cantFind()), get("feedback"), function(){
-						});
+						domMan("p", tNode(cantFind()), get("feedback"));
 					}
 				}
 				else{
@@ -78,7 +78,12 @@ var warpDrive = function(engage){
 };
 
 function cantFind(){
-	var responses = ["Hmm. We weren't able to find that film in the database... is there another that you like?","You have very interesting taste! Unfortunately, we couldn't find that one in our system. Try another!","Interesting... we couldn't find that one in our DB. Is there another one that you fancy?","Blast! We don't have that one. (I'm sure you here that from your local library all the time.) Can you try another?"];
+	var responses = ["Hmm. We weren't able to find that film in the database... "
+	+"is there another that you like?","You have very interesting taste! Unfortun"
+	+"ately, we couldn't find that one in our system. Try another!","Interesting.."
+	+". we couldn't find that one in our DB. Is there another one that you fancy?",
+	"Blast! We don't have that one. (I'm sure you scour Netflix for this one all"
+	+" the time.) Can you try another?"];
 	var pick = Math.floor(Math.random() * responses.length);
 	return responses[pick];
 }
