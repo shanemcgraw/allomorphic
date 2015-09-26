@@ -158,9 +158,10 @@ function getFilmInfo(e){
 	if(e.target.nodeName === "IMG" && e.target.id !== "loading"){
 		var movieNumber = parseInt(target.id.split("poster")[1]);
 		e.target.className = "highlight";
+		log(movieNumber, typeof movieNumber);
 		get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] 
 		+ "\"</h2><p id='selectedYear'><em>"+data.filmData[movieNumber]["Year"]+"</em></p><p id=selectedPlot>"
-		+data.filmData[movieNumber]["Plot"]+"</p><button id=\"deleteMovie\" onclick=\"cancelFilm(this)\">Remove</button>";
+		+data.filmData[movieNumber]["Plot"]+"</p><button id=\"deleteMovie\" onclick=\"cancelFilm(["+movieNumber+"])\">Remove</button>";
 	}
 	else if(target.id === "plot"){
 		return null;
@@ -181,9 +182,7 @@ function deleteArrEl(array, position){
 // a call to mrSulu; reverting the changes back to whatever they were before 
 // the call. Second, we need to
 
-function cancelFilm(e){
-	var target = e.target;
-	log(e.target);
+function cancelFilm(movieNumber){
 	// Checking data.genStory to see if we're still free to generate a story (the default value is true)
 	if(data.genStory){
 			//change the add button to "add"
@@ -201,10 +200,10 @@ function cancelFilm(e){
 
 
 			//delete the figure passed through
-			get("film1").parentNode.removeChild(get("film1"));
+			get("film1").parentNode.removeChild(get("film"+movieNumber.toString()));
 			get("generator").id = "adder";
 
-			data.filmData = deleteArrEl(data.filmData, 1);
+			data.filmData = deleteArrEl(data.filmData, movieNumber);
 
 
 			//rename the ID's of the other elements
