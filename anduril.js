@@ -200,7 +200,7 @@ function cancelFilm(movieNumber){
 
 
 			//delete the figure passed through
-			get("film1").parentNode.removeChild(get("film"+movieNumber.toString()));
+			get("film" + movieNumber.toString()).parentNode.removeChild(get("film"+movieNumber.toString()));
 			get("generator").id = "adder";
 
 			data.filmData = deleteArrEl(data.filmData, movieNumber);

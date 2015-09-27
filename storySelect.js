@@ -203,6 +203,7 @@ function getStory(genreList){
 	var sortedStoryArray = stories.sort(function(a,b){
                 						  return b.score - a.score;
                 					    });
+	log(sortedStoryArray);
     //The last thing we do is return the sorted array, with the filtering out (or not, depending on the age score) of the
     return sortedStoryArray.filter(function(story){
                                      if(!data.dark){
@@ -212,17 +213,18 @@ function getStory(genreList){
                                         return true;
                                      }
                                    });
+
 }
 
 function postStory(storyArray){
 	return function(index){
-             get("instructions").innerHTML = "";
-    	     get("selection").innerHTML = "<a id=\"linkToStory\" target= \"_blank\" href = \"" + storyArray[index].link + "\"><em>\""+storyArray[index].title + "\"</em></a>";
-    		 
-    		 var content = storyArray[index].plot;
+	         get("instructions").innerHTML = "";
+	  	     get("selection").innerHTML = "<a id=\"linkToStory\" target= \"_blank\" href = \"" + storyArray[index].link + "\"><em>\""+storyArray[index].title + "\"</em></a>";
+	  		 
+	    		 var content = storyArray[index].plot;
 
-    		 domMan("p",tNode(content),get("selection"));
-		   }
+	    		 domMan("p",tNode(content),get("selection"));
+		   	 }
 }
 
 function butThatsAnotherStory(e){

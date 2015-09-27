@@ -27,7 +27,7 @@ var stories = [{ title: 'The Last Question',
     plot: 'This twisted tale will stick with you long after you’ve read it, documenting the strange relationship between a spendthrift mother and her son, who only longs to make her happy.',
     score: 0 },
   { title: 'A Good Man Is Hard to Find',
-    link: 'http://pegasus.cc.ucf.edu/~surette/goodman.html',
+    link: 'http://m.learning.hccs.edu/faculty/desmond.lewis/inrw-0420/a-good-man-is-hard-to-find/A%20Good%20Man%20Is%20Hard%20To%20Find.pdf',
     author: 'Flannery O\'Connor',
     dateWritten: 1953,
     genre: [ 'dark', 'shocking' ],
@@ -601,34 +601,39 @@ var stories = [{ title: 'The Last Question',
     year: 1912,
     plot: "This novella explores life following a devastating plague that wipes out most of humanity.",
     genre: ["scifi", "adventure", "thriller"],
-    link: "http://www.gutenberg.org/files/21970/21970-h/21970-h.htm"
- }, {
+    link: "http://www.gutenberg.org/files/21970/21970-h/21970-h.htm",
+    score: 0 },
+ {
     title: "The Curious Case of Benjamin Button",
     author: "F. Scott Fitzgerald",
     year: 1922,
     plot: "This story was inspired by a remark of Mark Twain's to the effect that it was a pity that the best part of life came at the beginning and the worst part at the end.",
     genre: ["drama", "fantasy", "colorful"],
-    link: "http://www.thoughtaudio.com/titlelist/TA0006-Button/FITZGERALD_BENJAMINBUTTON.pdf"
- }, {
+    link: "http://www.thoughtaudio.com/titlelist/TA0006-Button/FITZGERALD_BENJAMINBUTTON.pdf",
+    score: 0 },
+ {
     title: "The Million Pound Bank Note",
     author: "Mark Twain",
     year: 1893,
     plot: "The story takes place in Victorian London, where two very rich, eccentric brothers give the penniless story protagonist, Henry Adams, one million pounds of money in the form of a single peerless bank note.",
     genre: ["comedy", "colorful"],
-    link: "http://student.yphs.tp.edu.tw/~web10121207/7_3book/0016.pdf"
- }, {
+    link: "http://student.yphs.tp.edu.tw/~web10121207/7_3book/0016.pdf",
+    score: 0 },
+ {
     title: "Pygmalion",
     author: "George Bernard Shaw",
     year: 1912,
     plot: "A perceptive comedy of wit and wisdom about the unique relationship between a spunky cockney flower-girl and her irascible speech professor. ",
     genre: ["comedy", "romance"],
-    link: "http://www.gutenberg.org/files/3825/3825-h/3825-h.htm"
- }, {
+    link: "http://www.gutenberg.org/files/3825/3825-h/3825-h.htm",
+    score: 0 },
+ {
     title: "The Nice People",
     author: "Henry Cuyler Bunner",
     year: 1890,
     plot: "...'They certainly are nice people,' I assented to my wife’s observation, using the colloquial phrase with a consciousness that it was anything but 'nice' English...",
     genre: ["comedy", "colorful"],
-    link: "http://shortstoriesshort.com/story/the-nice-people/"
-  }
+    link: "http://shortstoriesshort.com/story/the-nice-people/",
+    score: 0 
+ }
 ];
