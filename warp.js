@@ -46,8 +46,6 @@ var warpDrive = function(engage){
 
 							elButton.value = "Generate!";
 							elButton.id = "generator";
-
-
 						}
 						else if(data.filmData.length <= 2){
 							elYear.value = "2003";
@@ -60,6 +58,7 @@ var warpDrive = function(engage){
 						//data.movieCounter++;						
 					}	
 					else{
+
 						get("feedback").innerHTML = "";
 						get("loading").innerHTML = "";
 						domMan("p", tNode(cantFind()), get("feedback"));
@@ -68,7 +67,6 @@ var warpDrive = function(engage){
 				else{
 					console.log(omdb.statusText);
 				}
-
 			}
 		}
 
@@ -106,7 +104,6 @@ function urlBuild(movie, year){
 
 	return domain + title + "&" + year + end;
 }
-
 //titleSmoother takes care of the multi-word titles. Ex. 'The Wrath of Khan' -> 'the+wrath+of+khan'
 
 function titleSmoother(title){
