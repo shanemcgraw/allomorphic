@@ -107,8 +107,9 @@ function urlBuild(movie, year){
 //titleSmoother takes care of the multi-word titles. Ex. 'The Wrath of Khan' -> 'the+wrath+of+khan'
 
 function titleSmoother(title){
-	var arr = title.split(" ");
-	return arr.join("+").toLowerCase();
+
+	var smoothie = title.replace(/ /g,"+").replace(/&/g, "%26");
+	return smoothie.toLowerCase();
 }
 
 
