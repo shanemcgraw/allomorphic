@@ -1,7 +1,12 @@
-function log (display) {
-	return console.log(display);
+/*
+Here are a series of helper functions - mostly involved in DOM manipulation - 
+that will make our lives way easier. I can't get carpal tunnel just by typing
+'document.' over and over and over again! Might as well get it from typing out 
+something meaningful!
+*/
+function log(x){
+	return console.log(x);
 }
-
 function get(x){
 	return document.getElementById(x);
 }
@@ -26,12 +31,11 @@ function makeImage(imgLink, imageId){
 	return '<img '+'id= '+imageId+' src='+imgLink+' alt="Poster" onError="this.onerror=null; this.src=\'fallback.jpg\';" />';
 }
 
-function removeEl(elId){
-	get(elID).parentNode.removeChild(get(elID));
-}
 
 
-//This is a function that will help us manipulate the DOM, while adding in a callback if we need some extra functionality
+//This is a function that will help us manipulate the DOM, while adding in 
+//a callback if we need some extra functionality
+
 function domMan(elType, text, position, callback){
 	var newEl = create(elType);
 	var textInfo = text;
@@ -44,6 +48,8 @@ function domMan(elType, text, position, callback){
 }
 
 
+// This will do exactly what it's called: update the filmTable section of our HTML
+// page.
 
 function updateFilmTable(filmResponse){
 
@@ -67,6 +73,8 @@ function updateFilmTable(filmResponse){
 	}
 }
 
+//Here we fire out commands based on the user clicking the different buttons
+// (i.e. "add" or "generate"). Here's where we string everything together.
 
 function postMovie(e){
 	resetFilmNumbers();
@@ -74,35 +82,50 @@ function postMovie(e){
 
 	//Get the 'target'; the element that the user clicks on
 	var target = e.target;
+
+	//Checking for a "generator" case and 'explode()'s if yes
 	
 	if(target.id === "generator" && data.genStory){
+
+		//checking for age appropriateness
 		data.dark = ageApp(data.filmData);
+
+		//explosion
 		explode();
-		get("theButton").innerHTML = ""; // = false;
+
+		//clear button
+		get("theButton").innerHTML = ""; 
 	}
-	
+
+	//If it's an "add" case...
 	else if(target.id === "adder"){
 
+		//get the year
+
 		var yearInt = parseInt(elYear.value);
+
+		//if input is okay...
 
 		if(elMovie.value !== "Movie" && elMovie.value && elYear.value !== "Year" && 2016 > yearInt && yearInt > 1890){
 
 			var movieTitle = elMovie.value;
 			var year = elYear.value;
 
-			
-
-
-
+			//smooth out the title to make it easy for the API, build the request URL
+			// from there
 			var urlToCall = urlBuild(titleSmoother(movieTitle), year);
 
-			//mrSulu on the bridge
+			//request the data, mrSulu! 
 			mrSulu(urlToCall);
 			
 		}
 
-		//With the logic of Spock, we can determine if the fields filled out in the form are okay or not. 
-		//Basically, this tests for acceptable data entered into the form field. If not, it will update the "feedback" tag right above the form, so the user can read it and act accordingly. Live long and prosper!
+		//With the logic of Spock, we can determine if the fields filled out in the 
+		//form are okay or not. 
+
+		//Basically, this tests for acceptable data entered into the form field. 
+		//If not, it will update the "feedback" tag right above the form, so the 
+		//user can read it and act accordingly. Live long and prosper!
 		
 		else{
 
@@ -150,7 +173,8 @@ function getFilmInfo(e){
 		}
 
 	//check to see if the user has selected a movie image 
-	// (instead of the loading .gif image)
+	// (instead of the loading .gif image) and display the movie facts
+	// through editing the innerHTML of the proper DOM node
 
 	if(e.target.nodeName === "IMG" && e.target.id !== "loading" && data.genStory){
 		var movieNumber = parseInt(target.parentNode.id.split("film")[1]);
@@ -159,22 +183,23 @@ function getFilmInfo(e){
 		+ "\"</h2><p id='selectedYear'><em>"+data.filmData[movieNumber]["Year"]+"</em></p><p id=selectedPlot>"
 		+data.filmData[movieNumber]["Plot"]+"</p><button id=\"deleteMovie\" onclick=\"cancelFilm(["+movieNumber+"])\">Remove</button>";
 	}
+
+	//Don't make the facts disappear if the user clicks on the plot!
 	else if(target.id === "plot"){
 		return null;
 	}
+	//Clear the facts if they click anywhere else
 	else{
 		get("movieFacts").innerHTML = "";
 	}
 }
 
-
+// Here's our function to call if we want to delete any data from our data.filmData array. 
+// We just give it the position and POW! it's gone...
 
 function deleteArrEl(position){
-
 	var front = data.filmData.slice(0,position);
 	var back = data.filmData.slice(position + 1, data.filmData.length);
-
-
 	return front.concat(back);
 }
 
@@ -196,28 +221,40 @@ function cancelFilm(movieNumber){
 			// too much, we want to keep the same space it took up and just have it invisible
 			get("instructions").style.display = "inline";
 
+			//Resetting to default values
 			elButton.value = "Add";
 			elYear.value = "2003";
 			elMovie.value = "The Lord of the Rings: The Return of the King";
 			get('option').style.display = "inline";
 
 			get("film" + movieNumber).parentNode.removeChild(get("film"+movieNumber));
+			//Checking to see if the button reads "generator" instead of "Add"
 			if(get("generator")){
 				get("generator").id = "adder";
 			}
 
+			//Update our data array
 
 			data.filmData = deleteArrEl(parseInt(movieNumber));
 
-			//rename the ID's of the other elements
-			//rename the ID's of their child nodes ()
+			//rename the ID's of the other elements &
+			//rename the ID's of their child nodes
 			resetFilmNumbers();
 	}
 }
 
+//This function is peppered throughout our functions- it resets the ID's of the posters and films 
+// displayed on the page to make sure that we're updating the right films
+
 function resetFilmNumbers(){
+
+	//get all 'Figure' elements using their tag lookup
 	var figuratives = tagger("figure");
+	//loop through the returned array-like object
+	// (alas, no forEach can be used!)
+
 	for(var i = 0; i < figuratives.length; i++){
+		//for each figure, update the ID and the poster child
 		figuratives[i].id = "film" + i.toString();
 		figuratives[i].childNodes[0].id = "poster" + i.toString();
 	}

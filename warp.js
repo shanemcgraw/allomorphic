@@ -18,9 +18,13 @@ var warpDrive = function(engage){
 
 
 		omdb.onload = function(){
+			//if ready
 			if(omdb.readyState === 4){
+				//if it's okay
 				if(omdb.status === 200){
+					//convert from JSON
 					var omdbData = JSON.parse(omdb.responseText);
+					//if the movie is found
 					if(omdbData.Response === "True"){
 						get("feedback").innerHTML = "";
 						get("loading").innerHTML = "";
@@ -29,13 +33,11 @@ var warpDrive = function(engage){
 
 						// If everything's okay, we want to make sure that we don't have too many 
 						// movie "assets" displayed on the page. technically, we can get as many movies
-						// as we want, but 3 seems to be a pretty good number. The data.movieCounter variable
-						// starts at 0, but it's a bit confusing: it's both inclusive (since it gets checked)
-						// after the response already comes back) and reflects (# of movies - 1). All of that
-						// to say, it needs to check the page by subtracting 2 from the number of movies we 
-						// want, so we check if it's greater than 1 (since 3-2 = 1).
-						// (catches breath)
-						// If there are 3 assets up on the page, the innerHTML of the input form fields will disappear
+						// as we want, but 3 seems to be a pretty good number. The number is directly
+						// pulled from the data.filmData array, so we can be sure that we have the data
+						// of the films we post up on the page.
+
+						// If there are 3 assets up on the page, the input form fields will disappear
 	
 
 						if(data.filmData.length > 2){
@@ -43,21 +45,18 @@ var warpDrive = function(engage){
 							get("movieInput").style.display = "none";
 							//we want to erase the instructions too, but to keep things from changing too much, we want to keep the same space it took up and just have it invisible
 							get("instructions").style.display = "none";
-
+							//change button to prompt story generation
 							elButton.value = "Generate!";
 							elButton.id = "generator";
 						}
 						else if(data.filmData.length <= 2){
+							//Make sure values are defaulted 
 							elYear.value = "2003";
 							elMovie.value = "The Lord of the Rings: The Return of the King";
-							get('option').style.display = "";
-							resetFilmNumbers();
-
 						}
-
-						//data.movieCounter++;						
 					}	
 					else{
+						//display error message, clear everything
 
 						get("feedback").innerHTML = "";
 						get("loading").innerHTML = "";
@@ -65,16 +64,22 @@ var warpDrive = function(engage){
 					}
 				}
 				else{
+					//display 'uh-oh' to our Dev team (me)
 					console.log(omdb.statusText);
 				}
 			}
 		}
 
-		
+		//Asynchronous torpedoes armed and ready, Captain.
 		omdb.open("get", destination, true);
+
+		//Fire!
 		omdb.send(null);
 	}
 };
+
+//Here's a series of random messages to give to the user if their movie
+//hasn't been found by the API
 
 function cantFind(){
 	var responses = ["Hmm. We weren't able to find that film in the database... "
@@ -94,8 +99,7 @@ function mrSulu(url){
 	return warpDrive(updateFilmTable)(url);
 }
 
-//urlBuild will make our URL for Mr. Sulu ship-shape
-
+//urlBuild will make our URL for Mr. Sulu ship-shape (HEH!)
 
 function urlBuild(movie, year){
 	var title = titleSmoother(movie);
@@ -104,6 +108,7 @@ function urlBuild(movie, year){
 
 	return domain + title + "&" + year + end;
 }
+
 //titleSmoother takes care of the multi-word titles. Ex. 'The Wrath of Khan' -> 'the+wrath+of+khan'
 
 function titleSmoother(title){
