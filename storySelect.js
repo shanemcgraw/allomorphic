@@ -219,6 +219,13 @@ function getStory(genreList){
 
 function postStory(storyArray){
 	return function(index){
+						//Making sure that we set the respective property in the "data"
+						// object to 'false' - telling our program, "hey, we generated
+						// a story for this user!"
+					 data.genStory = false;
+
+					 //No more need for instructions!
+
 	         get("instructions").innerHTML = "";
 	  	     get("selection").innerHTML = "<a id=\"linkToStory\" target= \"_blank\" href = \"" + storyArray[index].link + "\"><em>\""+storyArray[index].title + "\"</em></a>";
 	  		 
@@ -229,6 +236,10 @@ function postStory(storyArray){
 }
 
 function butThatsAnotherStory(e){
+	//This function will move down the sorted story array, giving the user
+	// more suggestions based on relevancy score, until they get to the end.
+	// The last 'story' is a shameless plug inviting feedback
+
 	var target = e.target;
 	if(target.id === "anotherStory"){
         //this will move through the list of stories and give the user the next-best ranked story
@@ -243,7 +254,7 @@ function butThatsAnotherStory(e){
                 title: "The End",
                 author: "",
                 year: 2015,
-                plot: "...And they lived happily ever after. Email Shane with questions, commments, and requests to add in your favorite short stories.",
+                plot: "...And they lived happily ever after. Email Shane with questions, commments, and requests to add in your favorite short stories!",
                 genre: [],
                 link: "mailto:shanemcgraw7@gmail.com/"
                 };

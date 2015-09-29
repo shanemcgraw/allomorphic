@@ -152,7 +152,7 @@ function getFilmInfo(e){
 	//check to see if the user has selected a movie image 
 	// (instead of the loading .gif image)
 
-	if(e.target.nodeName === "IMG" && e.target.id !== "loading"){
+	if(e.target.nodeName === "IMG" && e.target.id !== "loading" && data.genStory){
 		var movieNumber = parseInt(target.parentNode.id.split("film")[1]);
 		e.target.className = "highlight";
 		get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] 
