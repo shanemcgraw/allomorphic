@@ -201,8 +201,9 @@ function getStory(genreList){
 	//Great! Now, we sort all the objects by their "score" property, and we have our top 
 	//selection as the first element in the returned array. 
 	var sortedStoryArray = stories.sort(function(a,b){
-                						  return b.score - a.score;
-                					    });
+					
+					                						  return b.score - a.score;
+					                					   });
 	log(sortedStoryArray);
     //The last thing we do is return the sorted array, with the filtering out (or not, depending on the age score) of the
     return sortedStoryArray.filter(function(story){

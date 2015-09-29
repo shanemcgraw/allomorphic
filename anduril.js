@@ -64,22 +64,15 @@ function updateFilmTable(filmResponse){
 
 		get("poster"+filmNumber).parentNode.id = "film"+filmNumber;
 		get("poster"+filmNumber).parentNode.class = "films";
-
 	}
-
-	/*else if(get("feedback").childNodes[1] === undefined){
-		domMan("p", tNode("Hmm. We weren't able to find that film in the database... is there another that you like?"), get("feedback"), function(){
-		});
-		console.log(filmData);
-		filmData.shift();
-	}*/
 }
 
 
 function postMovie(e){
+	resetFilmNumbers();
+
 
 	//Get the 'target'; the element that the user clicks on
-	resetFilmNumbers();
 	var target = e.target;
 	
 	if(target.id === "generator" && data.genStory){
@@ -142,9 +135,12 @@ function postMovie(e){
 };
 
 
-//In this function, we'll take the target and display the film's contents, along with highlighting the film selected (by changing the CSS class)
+// In this function, we'll take the target and display the film's contents, 
+// along with highlighting the film selected (by changing the CSS class)
 function getFilmInfo(e){
 	var target = e.target;
+	//reset those film tags!
+	resetFilmNumbers();
 
 	//resetting any element that was previously highlighted
 
@@ -153,12 +149,12 @@ function getFilmInfo(e){
 			highlighted[i].className = "noHighlighted";
 		}
 
-	//check to see if the user has selected a movie image (instead of the loading .gif image)
+	//check to see if the user has selected a movie image 
+	// (instead of the loading .gif image)
 
 	if(e.target.nodeName === "IMG" && e.target.id !== "loading"){
-		var movieNumber = parseInt(target.id.split("poster")[1]);
+		var movieNumber = parseInt(target.parentNode.id.split("film")[1]);
 		e.target.className = "highlight";
-		log(movieNumber, typeof movieNumber);
 		get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] 
 		+ "\"</h2><p id='selectedYear'><em>"+data.filmData[movieNumber]["Year"]+"</em></p><p id=selectedPlot>"
 		+data.filmData[movieNumber]["Plot"]+"</p><button id=\"deleteMovie\" onclick=\"cancelFilm(["+movieNumber+"])\">Remove</button>";
@@ -171,21 +167,29 @@ function getFilmInfo(e){
 	}
 }
 
-function deleteArrEl(array, position){
-	var front = array.slice(0,position);
-	var back = array.slice(position + 1, array.length);
+
+
+function deleteArrEl(position){
+
+	var front = data.filmData.slice(0,position);
+	var back = data.filmData.slice(position + 1, data.filmData.length);
+
 
 	return front.concat(back);
 }
 
-// this function needs to do a few things. First, we need to basically undo
-// a call to mrSulu; reverting the changes back to whatever they were before 
-// the call. Second, we need to
+// this function needs to basically undo a call to mrSulu; 
+// reverting the changes back to whatever they were before 
+// the call
 
 function cancelFilm(movieNumber){
+
 	// Checking data.genStory to see if we're still free to generate a story (the default value is true)
 	if(data.genStory){
 			//change the add button to "add"
+			//resetFilmNumbers();
+			movieNumber = movieNumber.toString();
+
 
 			get("movieInput").style.display = "inline";
 			//we want to erase the instructions too, but to keep things from changing
@@ -197,14 +201,13 @@ function cancelFilm(movieNumber){
 			elMovie.value = "The Lord of the Rings: The Return of the King";
 			get('option').style.display = "inline";
 
+			get("film" + movieNumber).parentNode.removeChild(get("film"+movieNumber));
+			if(get("generator")){
+				get("generator").id = "adder";
+			}
 
 
-			//delete the figure passed through
-			get("film" + movieNumber.toString()).parentNode.removeChild(get("film"+movieNumber.toString()));
-			get("generator").id = "adder";
-
-			data.filmData = deleteArrEl(data.filmData, movieNumber);
-
+			data.filmData = deleteArrEl(parseInt(movieNumber));
 
 			//rename the ID's of the other elements
 			//rename the ID's of their child nodes ()
