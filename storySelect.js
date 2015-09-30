@@ -3,7 +3,12 @@
 var data = {
     genres : [], 
     rankedGenres : {}, 
-    filmData : []
+    filmData : [],
+    dark: true,
+    shortStory: 0,
+    genStory: true,
+    instructGetInfo: true,
+    instructLeaveInfo: true
 };
 
 //

@@ -39,9 +39,15 @@
 
 			<div id="filmTable">
 				<div id="posterSection">
+
 				</div>
 				<div id="movieFacts">
+
 				</div>
+			</div>
+
+			<div id="posterInstructions">
+		
 			</div>
 
 			<div id = "output">
@@ -85,6 +91,7 @@
 
 			// this is to make sure that we are free to generate a story based on 
 			// the movie input
+			/*
 			data.genStory = true;
 
 			//Here's a variable to keep track of the story displayed on the page
@@ -92,21 +99,26 @@
 
 			//Here's a variable to keep track of the age-appropriateness of the story
 			data.dark = true;
+*/
+			//Event handling! Listen close:
+
+			//For a click to the right element on the form, call postMovie and update the page
 
 			elForm.addEventListener('click', function(e){
 																				 postMovie(e);
 																			 }, false);
 
+			//for a click to the content, get the film info and post underneath the displayed poster
+
 			content.addEventListener('click', function(e){
 																					getFilmInfo(e);
 																				}, false);
+
+			//if the user wants another story, give it to them through the 'butThatsAnotherStory' function
+
 			another.addEventListener('click', function(e){
 																					butThatsAnotherStory(e);
 																				}, false);
-			/*deleteMovie.addEventListener('click', function(e){
-																						cancelFilm(e);
-																					}, false);*/
-
 		</script>
 	</body>
 </html>

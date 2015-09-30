@@ -182,14 +182,26 @@ function getFilmInfo(e){
 		get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] 
 		+ "\"</h2><p id='selectedYear'><em>"+data.filmData[movieNumber]["Year"]+"</em></p><p id=selectedPlot>"
 		+data.filmData[movieNumber]["Plot"]+"</p><button id=\"deleteMovie\" onclick=\"cancelFilm(["+movieNumber+"])\">Remove</button>";
+		
+		data.instructGetInfo = false;
+		if(data.instructLeaveInfo){
+			get("posterInstructions").innerHTML = "<p>Click anywhere else to hide info</p>";
+		}
+		else{
+			get("posterInstructions").style.display = "none";
+		}
 	}
-
+	/*
 	//Don't make the facts disappear if the user clicks on the plot!
 	else if(target.id === "plot"){
 		return null;
-	}
+	}*/
 	//Clear the facts if they click anywhere else
 	else{
+		if(!data.instructGetInfo){
+			data.instructLeaveInfo = false;
+			get("posterInstructions").style.display = "none";
+		}
 		get("movieFacts").innerHTML = "";
 	}
 }
