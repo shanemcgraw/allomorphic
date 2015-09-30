@@ -246,8 +246,8 @@ function cancelFilm(movieNumber){
 
 			//Resetting to default values
 			elButton.value = "Add";
-			elYear.value = "2003";
-			elMovie.value = "The Lord of the Rings: The Return of the King";
+			elYear.value = "Year (best guess)";
+			elMovie.value = "Title";
 			get('option').style.display = "inline";
 
 			get("film" + movieNumber).parentNode.removeChild(get("film"+movieNumber));

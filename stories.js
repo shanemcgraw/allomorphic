@@ -600,7 +600,7 @@ var stories = [{ title: 'The Last Question',
     author: "Jack London",
     year: 1912,
     plot: "This novella explores life following a devastating plague that wipes out most of humanity.",
-    genre: ["scifi", "adventure", "thriller"],
+    genre: ["scifi", "adventure", "cerebral"],
     link: "http://www.gutenberg.org/files/21970/21970-h/21970-h.htm",
     score: 0 },
  {
