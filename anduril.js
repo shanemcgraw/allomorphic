@@ -28,7 +28,7 @@ function tNode(text) {
 }
 
 function makeImage(imgLink, imageId){
-	return '<img '+'id= '+imageId+' src='+imgLink+' alt="Poster" onError="this.onerror=null; this.src=\'fallback.jpg\';" />';
+	return '<img '+'id= '+imageId+' src='+imgLink+' alt="Poster" onError="this.onerror=null; this.src=\'/images/fallback.jpg\';" />';
 }
 
 
