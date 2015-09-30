@@ -51,12 +51,11 @@ var warpDrive = function(engage){
 						}
 						else if(data.filmData.length <= 2){
 							//Make sure values are defaulted 
-							elYear.value = "2003";
-							elMovie.value = "The Lord of the Rings: The Return of the King";
+							elYear.value = "Year (best guess)";
+							elMovie.value = "Title";
 
 							//Throw out a bit of helpful advice...
 							if(data.instructGetInfo){
-								log("GREAT SCOTT");
 								get("posterInstructions").innerHTML = "<p>Click poster for more info</p>"
 							}
 

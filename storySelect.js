@@ -34,6 +34,7 @@ var storyMasterList = ['scifi',
 function explode(){
   //Release the Kraken! AKA the "output" div tag
   get('output').style.display = '';
+  get("posterInstructions").style.display = "none";
 
 	//Here's where things get a bit complex. In the "filmData" array, we have 3 elements in each array that contain one or many genres per movie, in a String type. 
 	//So, we just need to have a forEach get each string-list of genres, split it with the native method on strings to convert it to its own array, and then have another 
