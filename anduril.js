@@ -106,7 +106,7 @@ function postMovie(e){
 
 		//if input is okay...
 
-		if(elMovie.value !== "Movie" && elMovie.value && elYear.value !== "Year" && 2016 > yearInt && yearInt > 1890){
+		if(elMovie.value !== "Title" && elMovie.value && elYear.value !== "Year" && 2016 > yearInt && yearInt > 1890){
 
 			var movieTitle = elMovie.value;
 			var year = elYear.value;
@@ -129,13 +129,12 @@ function postMovie(e){
 		
 		else{
 
-			if((elMovie.value === "Movie" || !elMovie.value) && (isNaN(parseInt(elYear.value)) || typeof parseInt(elYear.value) !== "number" || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890)){
+			if((elMovie.value === "Title" || !elMovie.value) && (isNaN(parseInt(elYear.value)) || typeof parseInt(elYear.value) !== "number" || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890)){
 				//clear the feedback paragraph
 				get("feedback").innerHTML = "";
 				//update with error
 				domMan("p", tNode("Valid movie title and year required"), get("feedback"));
 				get("movie").focus();
-
 			}
 
 			else if(isNaN(parseInt(elYear.value)) || typeof parseInt(elYear.value) !== "number" || 2016 < parseInt(elYear.value) || parseInt(elYear.value) < 1890){
@@ -179,11 +178,23 @@ function getFilmInfo(e){
 	if(e.target.nodeName === "IMG" && e.target.id !== "loading" && data.genStory){
 		var movieNumber = parseInt(target.parentNode.id.split("film")[1]);
 		e.target.className = "highlight";
-		get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] 
-		+ "\"</h2><p id='selectedYear'><em>"+data.filmData[movieNumber]["Year"]+"</em></p><p id=selectedPlot>"
-		+data.filmData[movieNumber]["Plot"]+"</p><button id=\"deleteMovie\" onclick=\"cancelFilm(["+movieNumber+"])\">Remove</button>";
+
+		//Check for plot data- display if it's there!
 		
+		if(data.filmData[movieNumber]["Plot"] === "N/A"){
+			get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] 
+			+ "\"</h2><p id='selectedYear'><em>"+data.filmData[movieNumber]["Year"]+"</em></p>"
+			+"<button id=\"deleteMovie\" onclick=\"cancelFilm(["+movieNumber+"])\">Remove</button>";
+		}
+
+		else{
+			get("movieFacts").innerHTML = "<h2 id='selectedTitle'>\""+data.filmData[movieNumber]["Title"] 
+			+ "\"</h2><p id='selectedYear'><em>"+data.filmData[movieNumber]["Year"]+"</em></p><p id=selectedPlot>"
+			+data.filmData[movieNumber]["Plot"]+"</p><button id=\"deleteMovie\" onclick=\"cancelFilm(["+movieNumber+"])\">Remove</button>";
+		}
+
 		data.instructGetInfo = false;
+
 		if(data.instructLeaveInfo){
 			get("posterInstructions").innerHTML = "<p>Click anywhere else to hide info</p>";
 		}
