@@ -6,7 +6,7 @@ While there is a romance to film that cannot be replaced, I've found myself want
 
 While smelling the gunfire from Sam Spade's .45 isn't possible unless you're an unfortunate player in the world of "The Maltese Falcon", there is a sense in which this can be visualized in the mind with greater detail while reading it off of a page.
 
-Enter short stories. While many movie-lovers (myself included) don't have time to plunge into a 300 page novel, I believe the same essence of a good can be captured by a few pages and a bit more brain power. The only question- which kind of story are you feeling? Is it a charmed, heart-wrenching drama of Rick and Ilsa (here's looking at you, kid) in 1930's Morocco? ...Or a thought-planting thriller in the mind of a powerful business mogul's heir? Based on the three titles entered, the page will give (and continue to give, if prompted) a recommendation based on genre relevancy- engaging the user's mind in a way that isn't possible with a film.
+Enter short stories. While many movie-lovers (myself included) don't have as much time as they'd like to plunge into a 300 page novel, I believe the essence can be captured in a few well-written pages. The only question- which kind of story are you feeling? Is it a charmed, heart-wrenching drama of Rick and Ilsa (here's looking at you, kid) in 1930's Morocco? ...Or a thought-planting thriller in the mind of a powerful business mogul's heir? Based on the three titles entered, the page will give (and continue to give, if prompted) a recommendation based on genre relevancy- engaging the user's mind in a way that isn't possible with a film.
 
 Happy reading!
 
@@ -22,7 +22,7 @@ This is the concept this site was built upon. Although films may be quite differ
 # The story library #
 Alas, the list is not nearly as long as I would like it to be, which means the number of unique stories that fit a particular list of genres is rather restricted, so the same story gets recommended for a broad-sweeping genre. 
 
-Now, it could be that this isn't *only* because the library size is too long. After creating the stories.js file, let me tell you- a lot of the classics are just straight DRAMATIC! My goodness! I think I have 10 "drama" stories for every "colorful" one. Actually... 
+Now, it could be that this isn't *only* because the library size is too long. After creating the stories.js file, let me tell you- a lot of the classics are just so *dramatic*! My goodness! I think I have 10 "drama" stories for every "colorful" one. Actually... 
 
 *goes back to interpreter, runs filter function*
 
